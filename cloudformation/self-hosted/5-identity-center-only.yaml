@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >
+  Enable IAM Identity Center for Kiro CLI subscription.
+  Single-account instance - assumes AdministratorAccess in sandbox account.
+  Based on workshop 5-identity-center.yaml with ParticipantIdentityCenterPolicy removed.
+
+Resources:
+  IdentityCenterInstance:
+    Type: AWS::SSO::Instance
+    Properties:
+      Name: education-agents-idc
+
+Outputs:
+  IdentityCenterID:
+    Description: IAM Identity Center ID
+    Value: !GetAtt IdentityCenterInstance.IdentityStoreId
+  PortalUrl:
+    Description: IAM Identity Center start URL for users
+    Value: !Sub https://${IdentityCenterInstance.IdentityStoreId}.awsapps.com/start

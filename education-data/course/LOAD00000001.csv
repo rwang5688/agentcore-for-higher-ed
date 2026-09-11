@@ -1,0 +1,287 @@
+course_id,course_name,course_level,course_code,school_id,department_id
+1090,Aircraft Systems Engineering,100,AERO-0100,2,25
+1091,Space Flight Mechanics,200,AERO-0200,2,25
+1092,Advanced Algorithms,100,COMP-0100,2,26
+1242,Programming for Designers,130,COMP-15100,2,26
+1192,Introduction to Computing for Non-Majors,140,COMP-10100,2,26
+1093,Advanced Data Structures,200,COMP-0200,2,26
+1243,Python,230,COMP-15200,2,26
+1193,Introduction to Computing,240,COMP-10200,2,26
+1248,Python Data Visualization,280,COMP-15700,2,26
+1094,Advanced Operating Systems Structures and Implementation,300,COMP-0300,2,26
+1194,Introduction to Cybersecurity,340,COMP-10300,2,26
+1099,Algorithmic Lower Bounds: Fun with Hardness Proofs,350,COMP-0800,2,26
+1256,Software Engineering: Introduction,365,COMP-16500,2,26
+1206,Introduction to Python: Absolute Beginner,375,COMP-11500,2,26
+1249,Python Programming Essentials,380,COMP-15800,2,26
+1199,Introduction to Embedded Systems,390,COMP-10800,2,26
+1095,Algorithms Part I,400,COMP-0400,2,26
+1245,Python for Data Science and AI,430,COMP-15400,2,26
+1107,Free Course in Multiple formats,435,COMP-1600,2,26
+1207,Introduction to Python: Fundamentals,475,COMP-11600,2,26
+1250,Quantum Computing for the Determined,480,COMP-15900,2,26
+1200,Introduction to Formal Systems & Computation,490,COMP-10900,2,26
+1096,Algorithms Part II,500,COMP-0500,2,26
+1246,Python Data Analysis,530,COMP-15500,2,26
+1196,Introduction to Cybersecurity Tools & Cyber Attacks,540,COMP-10500,2,26
+1101,Android Development,550,COMP-1000,2,26
+1258,TCP/IP,565,COMP-16700,2,26
+1208,Introduction to TensorFlow for Artificial Intelligence Machine Learning and Deep Learning,575,COMP-11700,2,26
+1251,Ray Tracing for Global Illumination,580,COMP-16000,2,26
+1201,Introduction to Information Studies,590,COMP-11000,2,26
+1097,Algorithm Design and Analysis,600,COMP-0600,2,26
+1247,Python Data Representations,630,COMP-15600,2,26
+1197,Introduction to Electrical Engineering and Computer Science I,640,COMP-10600,2,26
+1102,AI for Everyone,650,COMP-1100,2,26
+1259,Technical Support Fundamentals,665,COMP-16800,2,26
+1252,Responsible Computing,680,COMP-16100,2,26
+1202,Introduction to iPhone Application Development,690,COMP-11100,2,26
+1098,Algorithms for Big Data,700,COMP-0700,2,26
+1103,Applied AI with DeepLearning,750,COMP-1200,2,26
+1260,The Beauty and Joy of Computing,765,COMP-16900,2,26
+1210,iPhone Application Development in iOS5 (Fall 2011),775,COMP-11900,2,26
+1253,Search Engines: Technology Society and Business,780,COMP-16200,2,26
+1203,Introduction to Linux,790,COMP-11200,2,26
+1104,Artificial Intelligence,850,COMP-1300,2,26
+1261,The Bits and Bytes of Computer Networking,865,COMP-17000,2,26
+1211,IT Security: Defense against the digital dark arts,875,COMP-12000,2,26
+1254,Signal Processing on Databases,880,COMP-16300,2,26
+1204,Introduction to Problem Solving & Programming,890,COMP-11300,2,26
+1112,Basic Concepts of Operating Systems & System Programming,935,COMP-2100,2,26
+1262,The Future of the Internet,965,COMP-17100,2,26
+1212,Linux Implementation/Administration Practicum,975,COMP-12100,2,26
+1255,Software as a Service,980,COMP-16400,2,26
+1205,An Introduction to Practical Deep Learning,990,COMP-11400,2,26
+1113,Bitcoin and Cryptocurrency Technologies,1035,COMP-2200,2,26
+1263,The Society of Mind,1065,COMP-17200,2,26
+1213,Learning from Data: A Machine Learning Course,1075,COMP-12200,2,26
+1214,Local Area Network,1175,COMP-12300,2,26
+1115,Bits: The Computer Science of Digital Information,1235,COMP-2400,2,26
+1265,The Structure and Interpretation of Computer Programs,1265,COMP-17400,2,26
+1215,Logic & Proofs,1275,COMP-12400,2,26
+1116,Blender 3D Design,1335,COMP-2500,2,26
+1266,Theory of Computation,1365,COMP-17500,2,26
+1216,Machine Learning,1375,COMP-12500,2,26
+1117,Building Dynamic Web Sites,1435,COMP-2600,2,26
+1267,Understanding Computers and the Internet,1465,COMP-17600,2,26
+1118,Building Mobile Applications,1535,COMP-2700,2,26
+1268,Using Python to Access Web Data,1565,COMP-17700,2,26
+1119,Calling Bullshit in the Age of Big Data,1635,COMP-2800,2,26
+1269,Virtual Reality,1665,COMP-17800,2,26
+1219,Machine Learning Crash Course,1675,COMP-12800,2,26
+1120,C Programming: Getting Started,1735,COMP-2900,2,26
+1270,Visual Navigation for Flying Robots,1765,COMP-17900,2,26
+1220,Machine Learning with Python: A Practical Introduction,1775,COMP-12900,2,26
+1121,Codecademy,1835,COMP-3000,2,26
+1271,Wide Area Networks,1865,COMP-18000,2,26
+1221,Machine Structures,1875,COMP-13000,2,26
+1122,Coding Together: Apps for iPhone and iPad (2013),1935,COMP-3100,2,26
+1272,Wireless Networking,1965,COMP-18100,2,26
+1222,Massively Parallel Computing,1975,COMP-13100,2,26
+1123,Computational Camera and Photography,2035,COMP-3200,2,26
+1273,XML with Java,2065,COMP-18200,2,26
+1223,Mathematics for Computer Science,2075,COMP-13200,2,26
+1124,Computational Discrete Mathematics,2135,COMP-3300,2,26
+1224,Media Programming,2175,COMP-13300,2,26
+1125,Computer Architecture,2235,COMP-3400,2,26
+1225,Mobile Software Engineering,2275,COMP-13400,2,26
+1126,Computer Graphics,2335,COMP-3500,2,26
+1226,Multicore Programming Primer,2375,COMP-13500,2,26
+1227,Network Security,2475,COMP-13600,2,26
+1128,Computer Language Engineering,2535,COMP-3700,2,26
+1228,Neural Networks and Deep Learning,2575,COMP-13700,2,26
+1129,Computer Networks,2635,COMP-3800,2,26
+1229,Neural Networks for Machine Learning,2675,COMP-13800,2,26
+1130,Computer Science: Foundations of Computer & Information Security,2735,COMP-3900,2,26
+1230,Operating Systems and System Programming ,2775,COMP-13900,2,26
+1131,Computer Systems,2835,COMP-4000,2,26
+1231,Performance Engineering of Software Systems,2875,COMP-14000,2,26
+1132,Computer System Engineering,2935,COMP-4100,2,26
+1232,Principles of Computing,2975,COMP-14100,2,26
+1133,Computer Systems Security,3035,COMP-4200,2,26
+1233,Principles of Digital Communications I,3075,COMP-14200,2,26
+1134,Convolutional Neural Networks,3135,COMP-4300,2,26
+1135,Cryptocurrency and Blockchain: An Introduction to Digital Currencies,3235,COMP-4400,2,26
+1235,Principles of Digital Communications II,3275,COMP-14400,2,26
+1136,Introductory Computer Science Course (2017),3335,COMP-4500,2,26
+1236,Probabilistic Systems Analysis and Applied Probability,3375,COMP-14500,2,26
+1137,Introductory Computer Science Course (2016),3435,COMP-4600,2,26
+1237,Probability for Computer Scientists,3475,COMP-14600,2,26
+1138,Cybersecurity and Its Ten Domains,3535,COMP-4700,2,26
+1238,Programming for Everybody (Getting Started with Python),3575,COMP-14700,2,26
+1139,Cybersecurity Fundamentals,3635,COMP-4800,2,26
+1239,Programming Languages Part A,3675,COMP-14800,2,26
+1140,Cybersecurity Risk Management,3735,COMP-4900,2,26
+1240,Programming Languages Part B,3775,COMP-14900,2,26
+1141,Data Science (What is Data Science?),3835,COMP-5000,2,26
+1241,Programming Languages and Compilers,3875,COMP-15000,2,26
+1142,Database Systems Design,3935,COMP-5100,2,26
+1143,Data Structures,4035,COMP-5200,2,26
+1145,Data Structures and Algorithms,4235,COMP-5400,2,26
+1147,Deep Learning Explained,4435,COMP-5600,2,26
+1148,Deep Learning,4535,COMP-5700,2,26
+1150,Design and Analysis of Algorithms,4735,COMP-5900,2,26
+1151,Design in Computing,4835,COMP-6000,2,26
+1152,Developing iOS 9 Apps with Swift,4935,COMP-6100,2,26
+1153,Developing iOS 10 Apps with Swift,5035,COMP-6200,2,26
+1154,Developing iPad Applications for Visualization and Insight,5135,COMP-6300,2,26
+1155,Discrete Mathematical Structures,5235,COMP-6400,2,26
+1156,Discrete Mathematics and Probability Theory,5335,COMP-6500,2,26
+1157,Discrete Stochastic Processes,5435,COMP-6600,2,26
+1159,Discrete Structures,5635,COMP-6800,2,26
+1161,Efficient Algorithms and Intractable Problems,5835,COMP-7000,2,26
+1162,Essential Math for Machine Learning: Python Edition,5935,COMP-7100,2,26
+1163,Foundations of Computer Graphics,6035,COMP-7200,2,26
+1164,Google Cloud Platform Fundamentals: Core Infrastructure,6135,COMP-7300,2,26
+1165,Graphics Architecture,6235,COMP-7400,2,26
+1166,Great Insights in Computing,6335,COMP-7500,2,26
+1167,Higher Computing,6435,COMP-7600,2,26
+1168,Human-Computer Interaction Seminar,6535,COMP-7700,2,26
+1169,Learn to Program in Java,6635,COMP-7800,2,26
+1170,Improving Deep Neural Networks: Hyperparameter tuning Regularization and Optimization,6735,COMP-7900,2,26
+1171,Innovative Computing,6835,COMP-8000,2,26
+1172,Intensive Introduction to Computer Science Using C PHP and JavaScript,6935,COMP-8100,2,26
+1174,Internet of Things: Communication Technologies,7135,COMP-8300,2,26
+1175,Introduction to Artificial Intelligence (AI),7235,COMP-8400,2,26
+1176,Introduction to AI Robotics,7335,COMP-8500,2,26
+1177,Introduction to Algorithms,7435,COMP-8600,2,26
+1179,Introduction to Computer Graphics & GPU Programming,7635,COMP-8800,2,26
+1180,Introduction to Computer Science and Programming in Python,7735,COMP-8900,2,26
+1181,Introduction to Computational Thinking and Data Science,7835,COMP-9000,2,26
+1182,Introduction to Computer Science and Programming (Using Python),7935,COMP-9100,2,26
+1183,Introduction to Computer Science: Programming Methodology,8035,COMP-9200,2,26
+1185,Introduction to Computer Science: Programming Abstractions,8235,COMP-9400,2,26
+1187,Introduction to Computer Science: Programming Paradigms,8435,COMP-9600,2,26
+1189,Introduction to Computer Architecture (2013),8635,COMP-9800,2,26
+1190,Introduction to Computer Architecture (2012),8735,COMP-9900,2,26
+1191,Introduction to Computer Graphics,8835,COMP-10000,2,26
+1274,A Crash Course in Data Science,100,DATA-0100,2,27
+1275,Applied Data Science,200,DATA-0200,2,27
+1281,Data Science: Linear Regression,350,DATA-0800,2,27
+1277,Creating Dashboards and Storytelling with Tableau,400,DATA-0400,2,27
+1289,Data Science: R Basics,435,DATA-1600,2,27
+1282,Data Science Methodology,450,DATA-0900,2,27
+1290,Data Science: Visualization,535,DATA-1700,2,27
+1283,Data Science: Probability,550,DATA-1000,2,27
+1279,Databases and SQL for Data Science,600,DATA-0600,2,27
+1291,Data Science: Wrangling,635,DATA-1800,2,27
+1284,Data Science: Productivity Tools,650,DATA-1100,2,27
+1280,Data Science Ethics,700,DATA-0700,2,27
+1292,Developing Data Products,735,DATA-1900,2,27
+1285,Data Science Tools,750,DATA-1200,2,27
+1293,Essential Design Principles for Tableau,835,DATA-2000,2,27
+1286,Data Science: Machine Learning,850,DATA-1300,2,27
+1294,Exploratory Data Analysis,935,DATA-2100,2,27
+1287,Data Science Math Skills,950,DATA-1400,2,27
+1295,Getting and Cleaning Data,1035,DATA-2200,2,27
+1296,Inferential Statistics,1135,DATA-2300,2,27
+1297,Introduction to Big Data,1235,DATA-2400,2,27
+1299,Introduction to Data Science in Python,1435,DATA-2600,2,27
+1300,Introduction to Probability,1535,DATA-2700,2,27
+1301,Introduction to R for Data Science,1635,DATA-2800,2,27
+1302,Linear Regression and Modeling,1735,DATA-2900,2,27
+1304,Managing Data Analysis,1935,DATA-3100,2,27
+1305,Open Source Tools for Data Science,2035,DATA-3200,2,27
+1306,Practical Machine Learning,2135,DATA-3300,2,27
+1307,Probability and Statistics in Data Science using Python,2235,DATA-3400,2,27
+1309,Python Data Structures,2435,DATA-3600,2,27
+1310,R Programming,2535,DATA-3700,2,27
+1311,Reproducible Research,2635,DATA-3800,2,27
+1312,Statistics and R,2735,DATA-3900,2,27
+1313,The Data Scientist's Toolbox,2835,DATA-4000,2,27
+1314,Advanced Analog Integrated Circuits,100,ENGI-0100,2,28
+1315,Advanced Visualization,200,ENGI-0200,2,28
+1316,Atomistic Computer Modeling of Materials,300,ENGI-0300,2,28
+1328,Dynamics of Machines,335,ENGI-1500,2,28
+1321,Peter Woolf University of Michigan,350,ENGI-0800,2,28
+1329,Dynamics and Control I,435,ENGI-1600,2,28
+1322,Communications Systems,450,ENGI-0900,2,28
+1318,Basic Electronics,500,ENGI-0500,2,28
+1330,Electrical,535,ENGI-1700,2,28
+1323,Control Systems Engineering,550,ENGI-1000,2,28
+1319,Cellular Solids: Structure Properties and Applications,600,ENGI-0600,2,28
+1331,S.C Dutta Roy IIT,635,ENGI-1800,2,28
+1324,Convex Optimization I,650,ENGI-1100,2,28
+1320,Chemical Engineering: Process Dynamics and Controls,700,ENGI-0700,2,28
+1332,Electro Magnetic Fields,735,ENGI-1900,2,28
+1325,Convex Optimization 2,750,ENGI-1200,2,28
+1333,Electronics & Communication Engineering,835,ENGI-2000,2,28
+1326,Digital Signal Processing,850,ENGI-1300,2,28
+1334,K.S. Venktesh IIT Kanpur,935,ENGI-2100,2,28
+1327,Direct Solar/Thermal to Electrical Energy Conversion Technologies,950,ENGI-1400,2,28
+1335,Electronic Feedback Systems,1035,ENGI-2200,2,28
+1336,Electronic Techniques for Engineering ,1135,ENGI-2300,2,28
+1337,Electronics,1235,ENGI-2400,2,28
+1339,Engineering Dynamics,1435,ENGI-2600,2,28
+1341,Engineering Ethics,1635,ENGI-2800,2,28
+1343,Engineering Statics,1835,ENGI-3000,2,28
+1344,Environmental Air Pollution,1935,ENGI-3100,2,28
+1345,Fields and Waves,2035,ENGI-3200,2,28
+1346,Fluid Mechanics,2135,ENGI-3300,2,28
+1347,Fundamentals of Photovoltaics,2235,ENGI-3400,2,28
+1349,Green Supply Chain Management,2435,ENGI-3600,2,28
+1351,Groundwater Hydrology,2635,ENGI-3800,2,28
+1352,Charles Harvey,2735,ENGI-3900,2,28
+1353,High-Speed Digital Design (requires registration),2835,ENGI-4000,2,28
+1354,Humanitarian Engineering,2935,ENGI-4100,2,28
+1355,Image Processing,3035,ENGI-4200,2,28
+1356,Information and Entropy,3135,ENGI-4300,2,28
+1357,Information Theory and Coding,3235,ENGI-4400,2,28
+1358,Integrated Circuit Devices,3335,ENGI-4500,2,28
+1360,Introduction to Digital Integrated Circuits,3535,ENGI-4700,2,28
+1361,Introduction to Engineering,3635,ENGI-4800,2,28
+1363,Introduction to Fluid Mechanics,3835,ENGI-5000,2,28
+1364,Introduction to Lean Six Sigma Methods,3935,ENGI-5100,2,28
+1365,Introduction to Linear Dynamical Systems,4035,ENGI-5200,2,28
+1366,Introduction to Microelectronic Devices & Circuits,4135,ENGI-5300,2,28
+1367,Introduction to Modeling and Simulation,4235,ENGI-5400,2,28
+1368,Linear Integrated Circuits,4335,ENGI-5500,2,28
+1369,Mechanical Engineering: Introduction to MEMS Design,4435,ENGI-5600,2,28
+1370,Microelectronic Devices and Circuits,4535,ENGI-5700,2,28
+1371,Microcontroller Design,4635,ENGI-5800,2,28
+1372,Microcontroller and System-on-Chip Construction Using Verilog and Altera FPGA,4735,ENGI-5900,2,28
+1373,Nano-to-Macro Transport Processes,4835,ENGI-6000,2,28
+1374,Nanomanufacturing,4935,ENGI-6100,2,28
+1375,John Hart U Michigan,5035,ENGI-6200,2,28
+1376,Nonlinear Finite Element Analysis,5135,ENGI-6300,2,28
+1377,Nuclear Engineering,5235,ENGI-6400,2,28
+1378,Nuclear Engineering 101 Nuclear Reactions and Radiation,5335,ENGI-6500,2,28
+1379,Optimization Models in Engineering,5435,ENGI-6600,2,28
+1380,Pre-Engineering: Intro to Microcontrollers,5535,ENGI-6700,2,28
+1381,The Art of Engineering,5635,ENGI-6800,2,28
+1382,The Engineering Profession,5735,ENGI-6900,2,28
+1383,The Fourier Transform and its Applications,5835,ENGI-7000,2,28
+1386,Understanding Lasers and Fiberoptics,6135,ENGI-7300,2,28
+1388,Adaptation to Climate Change,100,ENVI-0100,2,29
+1389,American Environmental History,200,ENVI-0200,2,29
+1390,Americans and the Global Forest,300,ENVI-0300,2,29
+1402,Global Warming: Understanding the Forecast,335,ENVI-1500,2,29
+1395,Energy Regulations and the Environment,350,ENVI-0800,2,29
+1391,Australian Environmental History,400,ENVI-0400,2,29
+1403,David Archer University of Chicago,435,ENVI-1600,2,29
+1396,Environmental Economics & Policy,450,ENVI-0900,2,29
+1392,Blue Planet: Introduction to Oceanography,500,ENVI-0500,2,29
+1404,How Climate Works,535,ENVI-1700,2,29
+1393,Climate Change: Law and Policy,600,ENVI-0600,2,29
+1405,International Environmental Law,635,ENVI-1800,2,29
+1398,Environmental Law and Policy,650,ENVI-1100,2,29
+1394,Education for Sustainable Living: Environment,700,ENVI-0700,2,29
+1406,Introduction to Environmental Science,735,ENVI-1900,2,29
+1399,Environmental Politics and Law,750,ENVI-1200,2,29
+1407,Introduction to Earthquakes Their Causes and Effects,835,ENVI-2000,2,29
+1400,Free Video & Course Materials,850,ENVI-1300,2,29
+1408,Introduction to Environmental Economics and Policy,935,ENVI-2100,2,29
+1401,Food and the Environment,950,ENVI-1400,2,29
+1409,Introduction to Literature and the Environment,1035,ENVI-2200,2,29
+1410,Introduction to Permaculture,1135,ENVI-2300,2,29
+1411,Microeconomic Theory with Application to Natural Resources,1235,ENVI-2400,2,29
+1412,Mitigating Agriculture's Impact,1335,ENVI-2500,2,29
+1413,On Thin Ice: Climate Change and the Cryosphere,1435,ENVI-2600,2,29
+1414,Our Earth's Future,1535,ENVI-2700,2,29
+1415,Radar,1635,ENVI-2800,2,29
+1416,Renewable Energy & Alternative Fuels (Law & Policy),1735,ENVI-2900,2,29
+1417,Sustainable Living,1835,ENVI-3000,2,29
+1418,The Atmosphere the Ocean and Environmental Change,1935,ENVI-3100,2,29
+1420,Tipping Points: Climate Change and Society,2135,ENVI-3300,2,29
+1421,Wildlife Ecology,2235,ENVI-3400,2,29
+1422,Woods Energy Seminar,2335,ENVI-3500,2,29

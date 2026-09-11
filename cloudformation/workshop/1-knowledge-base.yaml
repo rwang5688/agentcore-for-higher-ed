@@ -1,0 +1,534 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Bedrock Knowledge Base with S3 vectors, hierarchical chunking, and asset copy
+
+Parameters:
+  AssetsBucketName:
+    Type: String
+    Description: Workshop Studio assets bucket
+  KnowledgeZipS3Path:
+    Type: String
+    Description: Full S3 path to knowledge.zip (bucket/prefix/knowledge.zip)
+  EmbeddingModelId:
+    Type: String
+    Default: amazon.titan-embed-text-v2:0
+    Description: Foundation model ID for embeddings
+
+Resources:
+
+  # --- S3 bucket for KB documents ---
+
+  KBDocumentsBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub ${AWS::AccountId}-${AWS::Region}-education-kb-docs
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+
+  KBSupplementalBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub ${AWS::AccountId}-${AWS::Region}-education-kb-supplemental
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+
+  # --- IAM role for the Knowledge Base service ---
+
+  KnowledgeBaseRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub education-kb-role-${AWS::AccountId}
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Sid: AmazonBedrockKnowledgeBaseTrustPolicy
+            Effect: Allow
+            Principal:
+              Service: bedrock.amazonaws.com
+            Action: sts:AssumeRole
+            Condition:
+              StringEquals:
+                aws:SourceAccount: !Ref AWS::AccountId
+              ArnLike:
+                aws:SourceArn: !Sub arn:${AWS::Partition}:bedrock:${AWS::Region}:${AWS::AccountId}:knowledge-base/*
+      Policies:
+        - PolicyName: BedrockInvokeModel
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Sid: BedrockInvokeModelStatement
+                Effect: Allow
+                Action:
+                  - bedrock:InvokeModel
+                Resource:
+                  - !Sub arn:${AWS::Partition}:bedrock:${AWS::Region}::foundation-model/${EmbeddingModelId}
+              - Sid: MarketplaceOperationsFromBedrockFor3pModels
+                Effect: Allow
+                Action:
+                  - aws-marketplace:Subscribe
+                  - aws-marketplace:ViewSubscriptions
+                  - aws-marketplace:Unsubscribe
+                Resource: '*'
+                Condition:
+                  StringEquals:
+                    aws:CalledViaLast: bedrock.amazonaws.com
+        - PolicyName: S3DataSourceAccess
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Sid: S3ListBucketStatement
+                Effect: Allow
+                Action:
+                  - s3:ListBucket
+                Resource:
+                  - !GetAtt KBDocumentsBucket.Arn
+                Condition:
+                  StringEquals:
+                    aws:ResourceAccount:
+                      - !Ref AWS::AccountId
+              - Sid: S3GetObjectStatement
+                Effect: Allow
+                Action:
+                  - s3:GetObject
+                Resource:
+                  - !Sub ${KBDocumentsBucket.Arn}/*
+                Condition:
+                  StringEquals:
+                    aws:ResourceAccount:
+                      - !Ref AWS::AccountId
+              - Sid: S3SupplementalDataWrite
+                Effect: Allow
+                Action:
+                  - s3:GetObject
+                  - s3:PutObject
+                  - s3:ListBucket
+                Resource:
+                  - !GetAtt KBSupplementalBucket.Arn
+                  - !Sub ${KBSupplementalBucket.Arn}/*
+                Condition:
+                  StringEquals:
+                    aws:ResourceAccount:
+                      - !Ref AWS::AccountId
+        - PolicyName: S3VectorsAccess
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Sid: S3VectorsPermissions
+                Effect: Allow
+                Action:
+                  - s3vectors:GetIndex
+                  - s3vectors:QueryVectors
+                  - s3vectors:PutVectors
+                  - s3vectors:GetVectors
+                  - s3vectors:DeleteVectors
+                Resource: !Sub arn:${AWS::Partition}:s3vectors:${AWS::Region}:${AWS::AccountId}:bucket/education-kb-vectors-${AWS::AccountId}/index/education-kb-default-index
+                Condition:
+                  StringEquals:
+                    aws:ResourceAccount:
+                      - !Ref AWS::AccountId
+
+  # --- Lambda to extract knowledge.zip into the KB docs bucket ---
+
+  KBCopyRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+      Policies:
+        - PolicyName: KBCopyPolicy
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action: [s3:GetObject, s3:ListBucket]
+                Resource:
+                  - !Sub arn:aws:s3:::${AssetsBucketName}
+                  - !Sub arn:aws:s3:::${AssetsBucketName}/*
+              - Effect: Allow
+                Action: [s3:PutObject, s3:ListBucket]
+                Resource:
+                  - !GetAtt KBDocumentsBucket.Arn
+                  - !Sub ${KBDocumentsBucket.Arn}/*
+
+  KBCopyFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: !Sub education-kb-copy-${AWS::AccountId}
+      Runtime: python3.12
+      Handler: index.lambda_handler
+      Role: !GetAtt KBCopyRole.Arn
+      Timeout: 120
+      MemorySize: 512
+      Code:
+        ZipFile: |
+          # MIT No Attribution
+          # Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+          # SPDX-License-Identifier: MIT-0
+          import json, urllib.request, zipfile, io
+          def _r(event, context, status, data={}):
+              body = json.dumps({'Status': status, 'Reason': str(data), 'PhysicalResourceId': context.log_stream_name, 'StackId': event['StackId'], 'RequestId': event['RequestId'], 'LogicalResourceId': event['LogicalResourceId'], 'Data': data})
+              req = urllib.request.Request(event['ResponseURL'], data=body.encode(), headers={'Content-Type': ''}, method='PUT')
+              urllib.request.urlopen(req)
+          import boto3
+
+          def lambda_handler(event, context):
+              try:
+                  if event['RequestType'] == 'Delete':
+                      _r(event, context, "SUCCESS", {})
+                      return
+                  props = event['ResourceProperties']
+                  s3_path = props['KnowledgeZipS3Path']
+                  dst_bucket = props['DestBucket']
+                  parts = s3_path.split('/', 1)
+                  src_bucket = parts[0]
+                  src_key = parts[1] if len(parts) > 1 else 'knowledge.zip'
+                  print(f"Fetching s3://{src_bucket}/{src_key}")
+                  s3 = boto3.client('s3')
+                  resp = s3.get_object(Bucket=src_bucket, Key=src_key)
+                  zip_bytes = io.BytesIO(resp['Body'].read())
+                  count = 0
+                  with zipfile.ZipFile(zip_bytes) as zf:
+                      for name in zf.namelist():
+                          if name.endswith('/'):
+                              continue
+                          s3.put_object(Bucket=dst_bucket, Key=name, Body=zf.read(name), ContentType='text/markdown')
+                          count += 1
+                  _r(event, context, "SUCCESS", {'FilesExtracted': count})
+              except Exception as e:
+                  _r(event, context, "FAILED", {'Error': str(e)})
+
+  KBCopy:
+    Type: AWS::CloudFormation::CustomResource
+    Properties:
+      ServiceToken: !GetAtt KBCopyFunction.Arn
+      KnowledgeZipS3Path: !Ref KnowledgeZipS3Path
+      DestBucket: !Ref KBDocumentsBucket
+
+  # --- Custom resource: Create S3 Vectors store + KB + DataSource + Sync ---
+  # Commented out ? KB creation is now a manual console step in the workshop
+
+  # KBCreateRole:
+  #   Type: AWS::IAM::Role
+  #   Properties:
+  #     AssumeRolePolicyDocument:
+  #       Version: 2012-10-17
+  #       Statement:
+  #         - Effect: Allow
+  #           Principal:
+  #             Service: lambda.amazonaws.com
+  #           Action: sts:AssumeRole
+  #     ManagedPolicyArns:
+  #       - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+  #     Policies:
+  #       - PolicyName: KBCreatePolicy
+  #         PolicyDocument:
+  #           Version: 2012-10-17
+  #           Statement:
+  #             - Effect: Allow
+  #               Action:
+  #                 - bedrock:CreateKnowledgeBase
+  #                 - bedrock:DeleteKnowledgeBase
+  #                 - bedrock:GetKnowledgeBase
+  #                 - bedrock:CreateDataSource
+  #                 - bedrock:DeleteDataSource
+  #                 - bedrock:GetDataSource
+  #                 - bedrock:StartIngestionJob
+  #                 - bedrock:GetIngestionJob
+  #               Resource: '*'
+  #             - Effect: Allow
+  #               Action: iam:PassRole
+  #               Resource: !GetAtt KnowledgeBaseRole.Arn
+  #             - Effect: Allow
+  #               Action:
+  #                 - s3vectors:CreateVectorBucket
+  #                 - s3vectors:DeleteVectorBucket
+  #                 - s3vectors:GetVectorBucket
+  #                 - s3vectors:ListVectorBuckets
+  #                 - s3vectors:CreateIndex
+  #                 - s3vectors:DeleteIndex
+  #                 - s3vectors:GetIndex
+  #                 - s3vectors:ListIndexes
+  #               Resource:
+  #                 - !Sub arn:${AWS::Partition}:s3vectors:${AWS::Region}:${AWS::AccountId}:bucket/education-kb-vectors-${AWS::AccountId}
+  #                 - !Sub arn:${AWS::Partition}:s3vectors:${AWS::Region}:${AWS::AccountId}:bucket/education-kb-vectors-${AWS::AccountId}/index/education-kb-default-index
+
+  # KBCreateFunction:
+  #   Type: AWS::Lambda::Function
+  #   DependsOn: KBCopy
+  #   Properties:
+  #     FunctionName: !Sub education-kb-create-${AWS::AccountId}
+  #     Runtime: python3.12
+  #     Handler: index.lambda_handler
+  #     Role: !GetAtt KBCreateRole.Arn
+  #     Timeout: 300
+  #     Code:
+  #       ZipFile: |
+  #         import json, urllib.request, time, traceback
+  #         def _r(event, context, status, phys_id=None, data={}):
+  #             body = json.dumps({
+  #                 'Status': status,
+  #                 'Reason': str(data),
+  #                 'PhysicalResourceId': phys_id or context.log_stream_name,
+  #                 'StackId': event['StackId'],
+  #                 'RequestId': event['RequestId'],
+  #                 'LogicalResourceId': event['LogicalResourceId'],
+  #                 'Data': data
+  #             })
+  #             req = urllib.request.Request(event['ResponseURL'], data=body.encode(), headers={'Content-Type': ''}, method='PUT')
+  #             urllib.request.urlopen(req)
+  #         import boto3
+  #
+  #         def lambda_handler(event, context):
+  #             bedrock = boto3.client('bedrock-agent')
+  #             s3v = boto3.client('s3vectors')
+  #             props = event['ResourceProperties']
+  #             phys_id = event.get('PhysicalResourceId')
+  #
+  #             vector_bucket_name = props['VectorBucketName']
+  #             vector_index_name = props['VectorIndexName']
+  #
+  #             try:
+  #                 if event['RequestType'] == 'Delete':
+  #                     if phys_id and '|' in phys_id:
+  #                         kb_id, ds_id = phys_id.split('|', 1)
+  #                         try:
+  #                             bedrock.delete_data_source(knowledgeBaseId=kb_id, dataSourceId=ds_id)
+  #                             print(f"Deleted data source {ds_id}")
+  #                         except Exception as e:
+  #                             print(f"Data source delete: {e}")
+  #                         try:
+  #                             bedrock.delete_knowledge_base(knowledgeBaseId=kb_id)
+  #                             print(f"Deleted knowledge base {kb_id}")
+  #                         except Exception as e:
+  #                             print(f"KB delete: {e}")
+  #                     # Delete the S3 Vectors index and bucket
+  #                     try:
+  #                         s3v.delete_index(
+  #                             vectorBucketName=vector_bucket_name,
+  #                             indexName=vector_index_name
+  #                         )
+  #                         print(f"Deleted vector index {vector_index_name}")
+  #                     except Exception as e:
+  #                         print(f"Vector index delete: {e}")
+  #                     try:
+  #                         s3v.delete_vector_bucket(vectorBucketName=vector_bucket_name)
+  #                         print(f"Deleted vector bucket {vector_bucket_name}")
+  #                     except Exception as e:
+  #                         print(f"Vector bucket delete: {e}")
+  #                     _r(event, context, "SUCCESS", phys_id)
+  #                     return
+  #
+  #                 role_arn = props['RoleArn']
+  #                 embedding_model_arn = props['EmbeddingModelArn']
+  #                 bucket_arn = props['BucketArn']
+  #                 supplemental_bucket_arn = props['SupplementalBucketArn']
+  #                 supplemental_bucket_name = supplemental_bucket_arn.split(':')[-1]
+  #                 supplemental_uri = f"s3://{supplemental_bucket_name}"
+  #                 region = props['Region']
+  #                 account_id = props['AccountId']
+  #
+  #                 # 1. Create S3 Vectors bucket
+  #                 print(f"Creating S3 Vectors bucket: {vector_bucket_name}")
+  #                 try:
+  #                     create_resp = s3v.create_vector_bucket(vectorBucketName=vector_bucket_name)
+  #                     print(f"create_vector_bucket response: {json.dumps(create_resp, default=str)}")
+  #                 except Exception as e:
+  #                     if 'already exists' in str(e).lower() or 'conflict' in str(e).lower():
+  #                         print(f"Vector bucket already exists: {vector_bucket_name}")
+  #                     else:
+  #                         raise
+  #
+  #                 # Wait for vector bucket to be ready
+  #                 for i in range(20):
+  #                     resp = s3v.get_vector_bucket(vectorBucketName=vector_bucket_name)
+  #                     print(f"get_vector_bucket response: {json.dumps(resp, default=str)}")
+  #                     vb = resp.get('vectorBucket', resp)
+  #                     status = vb.get('status', vb.get('vectorBucketStatus', 'UNKNOWN'))
+  #                     print(f"Vector bucket status: {status}")
+  #                     if status in ('ACTIVE', 'UNKNOWN'):
+  #                         break
+  #                     time.sleep(5)
+  #                 else:
+  #                     raise Exception("Vector bucket did not become ACTIVE in time")
+  #
+  #                 # 2. Create index on the vector bucket
+  #                 vector_bucket_arn = f"arn:aws:s3vectors:{region}:{account_id}:bucket/{vector_bucket_name}"
+  #                 index_arn = f"{vector_bucket_arn}/index/{vector_index_name}"
+  #                 print(f"Creating vector index: {vector_index_name}")
+  #                 try:
+  #                     s3v.create_index(
+  #                         vectorBucketName=vector_bucket_name,
+  #                         indexName=vector_index_name,
+  #                         dataType='float32',
+  #                         dimension=1024,
+  #                         distanceMetric='cosine'
+  #                     )
+  #                     print(f"Created vector index: {vector_index_name}")
+  #                 except Exception as e:
+  #                     if 'already exists' in str(e).lower():
+  #                         print(f"Vector index already exists: {vector_index_name}")
+  #                     else:
+  #                         raise
+  #
+  #                 # Wait for index to be ready
+  #                 for i in range(20):
+  #                     resp = s3v.get_index(
+  #                         vectorBucketName=vector_bucket_name,
+  #                         indexName=vector_index_name
+  #                     )
+  #                     print(f"get_index response: {json.dumps(resp, default=str)}")
+  #                     idx = resp.get('index', resp)
+  #                     status = idx.get('status', idx.get('indexStatus', 'UNKNOWN'))
+  #                     print(f"Vector index status: {status}")
+  #                     if status in ('ACTIVE', 'UNKNOWN'):
+  #                         break
+  #                     time.sleep(5)
+  #                 else:
+  #                     raise Exception("Vector index did not become ACTIVE in time")
+  #
+  #                 # 3. Create Knowledge Base pointing to existing S3 Vectors store
+  #                 kb_resp = None
+  #                 for attempt in range(6):
+  #                     try:
+  #                         print(f"Creating knowledge base (attempt {attempt + 1})...")
+  #                         kb_resp = bedrock.create_knowledge_base(
+  #                             name='course-handbook-kb',
+  #                             description='Peculiar U course handbook knowledge base',
+  #                             roleArn=role_arn,
+  #                             knowledgeBaseConfiguration={
+  #                                 'type': 'VECTOR',
+  #                                 'vectorKnowledgeBaseConfiguration': {
+  #                                     'embeddingModelArn': embedding_model_arn,
+  #                                     'supplementalDataStorageConfiguration': {
+  #                                         'storageLocations': [
+  #                                             {
+  #                                                 'type': 'S3',
+  #                                                 's3Location': {
+  #                                                     'uri': supplemental_uri
+  #                                                 }
+  #                                             }
+  #                                         ]
+  #                                     }
+  #                                 }
+  #                             },
+  #                             storageConfiguration={
+  #                                 'type': 'S3_VECTORS',
+  #                                 's3VectorsConfiguration': {
+  #                                     'vectorBucketArn': vector_bucket_arn,
+  #                                     'indexArn': index_arn
+  #                                 }
+  #                             }
+  #                         )
+  #                         break
+  #                     except bedrock.exceptions.ValidationException as e:
+  #                         if 'unable to assume' in str(e).lower() and attempt < 5:
+  #                             print(f"Role not ready, waiting 15s...")
+  #                             time.sleep(15)
+  #                         else:
+  #                             raise
+  #                 if not kb_resp:
+  #                     raise Exception("Failed to create KB after retries")
+  #                 kb_id = kb_resp['knowledgeBase']['knowledgeBaseId']
+  #                 kb_arn = kb_resp['knowledgeBase']['knowledgeBaseArn']
+  #                 print(f"Created KB: {kb_id}")
+  #
+  #                 # Wait for KB to be active
+  #                 for _ in range(30):
+  #                     kb = bedrock.get_knowledge_base(knowledgeBaseId=kb_id)
+  #                     status = kb['knowledgeBase']['status']
+  #                     print(f"KB status: {status}")
+  #                     if status == 'ACTIVE':
+  #                         break
+  #                     elif status == 'FAILED':
+  #                         reason = kb['knowledgeBase'].get('failureReasons', [])
+  #                         raise Exception(f"KB creation failed: {reason}")
+  #                     time.sleep(5)
+  #                 else:
+  #                     raise Exception("KB did not become ACTIVE in time")
+  #
+  #                 # 4. Create Data Source with chunking
+  #                 print("Creating data source...")
+  #                 ds_resp = bedrock.create_data_source(
+  #                     knowledgeBaseId=kb_id,
+  #                     name='course-handbook-docs',
+  #                     description='Course handbook markdown files',
+  #                     dataDeletionPolicy='DELETE',
+  #                     dataSourceConfiguration={
+  #                         'type': 'S3',
+  #                         's3Configuration': {
+  #                             'bucketArn': bucket_arn
+  #                         }
+  #                     },
+  #                     vectorIngestionConfiguration={
+  #                         'chunkingConfiguration': {
+  #                             'chunkingStrategy': 'FIXED_SIZE',
+  #                             'fixedSizeChunkingConfiguration': {
+  #                                 'maxTokens': 300,
+  #                                 'overlapPercentage': 20
+  #                             }
+  #                         }
+  #                     }
+  #                 )
+  #                 ds_id = ds_resp['dataSource']['dataSourceId']
+  #                 print(f"Created data source: {ds_id}")
+  #
+  #                 phys_id = f"{kb_id}|{ds_id}"
+  #
+  #                 # 5. Start ingestion job (runs async, does not block stack)
+  #                 print("Starting ingestion job...")
+  #                 ingest_resp = bedrock.start_ingestion_job(
+  #                     knowledgeBaseId=kb_id,
+  #                     dataSourceId=ds_id
+  #                 )
+  #                 job_id = ingest_resp['ingestionJob']['ingestionJobId']
+  #                 print(f"Ingestion job started: {job_id} (completing async)")
+  #
+  #                 _r(event, context, "SUCCESS", phys_id, {
+  #                     'KnowledgeBaseId': kb_id,
+  #                     'KnowledgeBaseArn': kb_arn,
+  #                     'DataSourceId': ds_id,
+  #                     'IngestionJobId': job_id
+  #                 })
+  #
+  #             except Exception as e:
+  #                 traceback.print_exc()
+  #                 _r(event, context, "FAILED", phys_id or context.log_stream_name, {'Error': str(e)})
+
+  # KnowledgeBase:
+  #   Type: AWS::CloudFormation::CustomResource
+  #   DependsOn: KBCopy
+  #   Properties:
+  #     ServiceToken: !GetAtt KBCreateFunction.Arn
+  #     RoleArn: !GetAtt KnowledgeBaseRole.Arn
+  #     EmbeddingModelArn: !Sub arn:${AWS::Partition}:bedrock:${AWS::Region}::foundation-model/${EmbeddingModelId}
+  #     BucketArn: !GetAtt KBDocumentsBucket.Arn
+  #     SupplementalBucketArn: !GetAtt KBSupplementalBucket.Arn
+  #     VectorBucketName: !Sub education-kb-vectors-${AWS::AccountId}
+  #     VectorIndexName: education-kb-default-index
+  #     Region: !Ref AWS::Region
+  #     AccountId: !Ref AWS::AccountId
+
+Outputs:
+  KBDocumentsBucketURI:
+    Description: S3 URI for the Knowledge Base documents
+    Value: !Sub s3://${KBDocumentsBucket}/
+    Export:
+      Name: KBDocumentsBucketURI
+  KBSupplementalBucketURI:
+    Description: S3 URI for supplemental data storage
+    Value: !Sub s3://${KBSupplementalBucket}
+  KnowledgeBaseRoleArn:
+    Description: IAM role ARN for the Knowledge Base (use when creating KB in console)
+    Value: !GetAtt KnowledgeBaseRole.Arn

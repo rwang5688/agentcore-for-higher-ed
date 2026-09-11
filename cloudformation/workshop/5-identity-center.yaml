@@ -1,0 +1,42 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Enable IAM Identity Center with permissions for workshop participants
+
+Resources:
+
+  IdentityCenterInstance:
+    Type: AWS::SSO::Instance
+    Properties:
+      Name: education-agents-idc
+
+  ParticipantIdentityCenterPolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: WorkshopIdentityCenterAccess
+      Description: Allows workshop participants to fully manage Identity Center for the workshop
+      Roles:
+        - WSParticipantRole
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: FullSSOAccess
+            Effect: Allow
+            Action:
+              - sso:*
+              - sso-directory:*
+              - identitystore:*
+              - sso-oauth:*
+            Resource: '*'
+          - Sid: QDeveloperSetup
+            Effect: Allow
+            Action:
+              - q:*
+              - codewhisperer:*
+            Resource: '*'
+
+Outputs:
+  IdentityCenterID:
+    Description: IAM Identity Center ID
+    Value: !GetAtt IdentityCenterInstance.IdentityStoreId
+  PortalUrl:
+    Description: IAM Identity Center start URL for users
+    Value: !Sub https://${IdentityCenterInstance.IdentityStoreId}.awsapps.com/start

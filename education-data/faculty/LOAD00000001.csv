@@ -1,0 +1,97 @@
+faculty_id,first_name,last_name,gender,department_id,tenure_years,is_tenured,title,dept_chair
+5313,Umama,Benz,F,25,16,1,associate professor,1
+5314,Poppy-Blue,Kueneman,F,26,19,1,associate professor,0
+5315,Roslyn,Vaitkus,F,26,15,1,professor,1
+5316,Luci-Scott,Rocano,F,26,19,0,associate professor,0
+5317,Keavah,Croswell,F,26,5,0,instructor,0
+5318,Lio,Sezer,M,26,12,1,associate professor,0
+5319,Elsa,Zerance,F,26,16,0,associate professor,0
+5320,Cali,Leibee,F,26,3,0,assistant instructor,0
+5321,Aeryn,Prochko,F,26,18,1,associate professor,1
+5322,Abdelmoneim,Stacherski,M,26,19,1,professor,1
+5323,Missy,Vein,F,26,3,0,instructor,0
+5324,Coben,Mcgarry,M,26,13,1,associate professor,0
+5325,Meribelle,Chavelas,F,26,16,0,professor,1
+5326,Bilal,Frew,M,26,8,1,associate professor,0
+5327,Carys,Ashkenazy,F,26,14,1,professor,0
+5328,Eben,Yannotta,M,26,8,0,instructor,0
+5329,Lacey,Betley,F,26,3,0,assistant instructor,0
+5330,Clancy,Davern,F,26,19,0,professor,1
+5331,Sukhbir,Pirone,M,26,7,0,associate professor,0
+5332,Keiran,Farless,M,26,11,0,associate professor,1
+5333,Miransh,Welser,M,26,18,0,professor,0
+5334,Sorin,Greinert,M,26,4,0,associate professor,0
+5335,Shae,Nielander,M,26,5,0,professor,0
+5336,Mallon,Piascik,M,26,2,0,instructor,0
+5337,Graedyn,Florance,M,26,15,1,associate professor,0
+5338,Sadie,Mccarney,F,26,11,1,professor,1
+5339,Helaina,Dunnivant,F,26,11,0,associate professor,1
+5340,Liane,Luedeke,F,26,5,0,professor,0
+5341,Aubree,Marschel,F,26,18,1,professor,1
+5342,Karmen,Hormozi,F,26,4,0,associate professor,0
+5343,Elaine,Rion,F,26,5,0,instructor,0
+5344,Kolbey,Samaro,M,26,10,0,associate professor,1
+5345,Chance,Strenk,M,26,2,0,instructor,0
+5346,Lincoln,Pou,M,26,17,0,associate professor,0
+5347,Loretta,Lieuallen,F,26,16,0,associate professor,1
+5348,Ada-Rose,Cessna,F,26,16,1,professor,1
+5349,Zachary,Stasik,M,26,11,0,associate professor,1
+5350,Jorja,Kassler,F,26,9,0,instructor,0
+5351,Zarrah,Breeser,F,26,2,0,instructor,0
+5352,Mael,Verhey,M,26,4,0,associate professor,0
+5353,Raffi,Century,M,26,5,0,instructor,0
+5354,Ranbir,Marecki,M,26,14,1,professor,1
+5355,Utjiuomuni,Petras,F,26,5,0,associate professor,0
+5356,Elyna,Barrow,F,26,5,0,instructor,0
+5357,Imageon,Northcutt,F,26,20,0,professor,0
+5358,Leonora,Bransky,F,26,7,0,professor,1
+5359,Loughlin,Biltoft,M,26,14,1,associate professor,0
+5360,Freya,Brizzee,F,26,9,1,associate professor,0
+5361,Orlyn,Pelfrey,F,26,5,0,associate professor,0
+5362,Fatma,Jaganathan,F,26,19,1,professor,0
+5363,Lennon,Sedey,M,26,13,1,professor,0
+5364,Jumanah,Hasenbeck,F,26,15,0,professor,0
+5365,Essa,Mansourian,M,26,2,0,instructor,0
+5366,Dennis,Neeves,M,27,8,1,professor,1
+5367,Octavia,Plue,F,27,5,0,professor,0
+5368,Kendal,Lessman,F,27,13,0,instructor,0
+5369,Devika,Finochio,F,27,7,0,associate professor,0
+5370,Aleksander-Benjamin,Grissam,M,27,17,0,associate professor,0
+5371,Ella-Louise,Guillemin,F,27,4,0,assistant instructor,0
+5372,Eva-Rae,Roepke,F,27,8,0,associate professor,1
+5373,Aayesha,Charboneau,F,27,18,0,professor,1
+5374,Morwen,Kellems,F,27,4,0,professor,0
+5375,Haala,Moltz,F,27,5,0,professor,0
+5376,Lotte,Fricchione,F,27,6,0,associate professor,0
+5377,Jacoby,Collin,M,27,3,0,associate professor,0
+5378,Elijah,Runningen,M,28,8,1,professor,1
+5379,Ayushi,Castillo,F,28,12,1,associate professor,1
+5380,Indiana,Borodkin,F,28,20,0,associate professor,1
+5381,Rahela-Ilona,Mai,F,28,6,0,instructor,0
+5382,Scheherazade,Borth,F,28,2,0,assistant instructor,0
+5383,Sylvia,Reamey,F,28,17,1,professor,0
+5384,Eabha,Cheromiah,F,28,16,0,associate professor,1
+5385,Hydar,Mahl,M,28,1,0,assistant instructor,0
+5386,Adley,Krehbiel,F,28,14,1,professor,0
+5387,Arlah,Schieler,F,28,14,1,associate professor,0
+5388,Maanvik,Deamaral,M,28,9,1,professor,1
+5389,Harley-Raine,Woodcock,M,28,11,1,associate professor,0
+5390,Arla,Pittsley,F,28,3,0,instructor,0
+5391,Swift,Chenier,M,28,7,0,professor,0
+5392,Toleen,Cuentas,F,28,8,0,professor,1
+5393,Khalid,Pruthi,M,28,2,0,assistant instructor,0
+5394,Harley-Mae,Hazra,F,28,14,1,professor,1
+5395,Robyn-Rose,Kopman,F,28,2,0,professor,0
+5396,Maryam,Pattenaude,F,28,9,0,instructor,0
+5397,Lucio,Frauenhofer,M,28,19,0,associate professor,1
+5398,Lindy,Greenbank,F,28,12,0,professor,1
+5399,Oroghene,Turingan,M,29,14,0,professor,1
+5400,Lairig,Miloro,M,29,2,0,associate professor,0
+5401,Ayan,Moz,M,29,10,0,associate professor,0
+5402,Freyja-Marie,Osland,F,29,8,0,professor,1
+5403,Iosif,Ogilvy,M,29,11,1,associate professor,0
+5404,Sophie-Leigh,Beguhl,F,29,18,1,associate professor,0
+5405,Ellias,Kosaraju,M,29,5,0,instructor,0
+5406,Lexi-Louise,Durkan,F,29,19,0,professor,0
+5407,Dre,Dostaler,M,29,13,1,associate professor,0
+5408,Kasper,Rute,M,29,18,1,professor,1

@@ -1,0 +1,508 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >
+  Athena/Glue setup, query Lambda, advisor requests, and Cognito OAuth.
+  Data foundation for agents - split from workshop 4-athena.yaml.
+  Requires 4-athena-buckets.yaml deployed and education data uploaded to S3.
+
+Resources:
+  AthenaSetupRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+      Policies:
+        - PolicyName: AthenaSetupPolicy
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action: [glue:CreateDatabase, glue:CreateTable, glue:DeleteDatabase, glue:DeleteTable, glue:GetDatabase, glue:GetTable, glue:GetTables]
+                Resource: '*'
+              - Effect: Allow
+                Action: [athena:CreateWorkGroup, athena:DeleteWorkGroup, athena:GetWorkGroup]
+                Resource: '*'
+              - Effect: Allow
+                Action: [s3:GetObject, s3:ListBucket]
+                Resource:
+                  - !ImportValue AthenaDataBucketArn
+                  - !Sub
+                    - ${BucketArn}/*
+                    - BucketArn: !ImportValue AthenaDataBucketArn
+              - Effect: Allow
+                Action: [s3:PutObject, s3:GetObject, s3:ListBucket]
+                Resource:
+                  - !ImportValue AthenaResultsBucketArn
+                  - !Sub
+                    - ${BucketArn}/*
+                    - BucketArn: !ImportValue AthenaResultsBucketArn
+
+  AthenaSetupFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: !Sub education-athena-setup-${AWS::AccountId}
+      Runtime: python3.12
+      Handler: index.lambda_handler
+      Role: !GetAtt AthenaSetupRole.Arn
+      Timeout: 120
+      MemorySize: 512
+      Environment:
+        Variables:
+          VERSION: '2'
+      Code:
+        ZipFile: |
+          # MIT No Attribution
+          # Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+          # SPDX-License-Identifier: MIT-0
+          import json, urllib.request
+          def _r(event, context, status, data={}):
+              body = json.dumps({'Status': status, 'Reason': str(data), 'PhysicalResourceId': context.log_stream_name, 'StackId': event['StackId'], 'RequestId': event['RequestId'], 'LogicalResourceId': event['LogicalResourceId'], 'Data': data})
+              req = urllib.request.Request(event['ResponseURL'], data=body.encode(), headers={'Content-Type': ''}, method='PUT')
+              urllib.request.urlopen(req)
+          import boto3, csv, io
+
+          DATABASE = 'education_workshop_db'
+          WORKGROUP = 'education_workgroup'
+
+          def lambda_handler(event, context):
+              try:
+                  if event['RequestType'] == 'Delete':
+                      glue = boto3.client('glue')
+                      try:
+                          tables = glue.get_tables(DatabaseName=DATABASE).get('TableList', [])
+                          for t in tables:
+                              glue.delete_table(DatabaseName=DATABASE, Name=t['Name'])
+                          glue.delete_database(Name=DATABASE)
+                      except Exception:
+                          pass
+                      _r(event, context, "SUCCESS", {})
+                      return
+
+                  props = event['ResourceProperties']
+                  data_bucket = props['DataBucket']
+                  results_bucket = props['ResultsBucket']
+
+                  s3 = boto3.client('s3')
+                  glue = boto3.client('glue')
+                  athena = boto3.client('athena')
+
+                  try:
+                      glue.create_database(DatabaseInput={'Name': DATABASE})
+                  except glue.exceptions.AlreadyExistsException:
+                      pass
+
+                  try:
+                      athena.create_work_group(
+                          Name=WORKGROUP,
+                          Configuration={'ResultConfiguration': {'OutputLocation': f's3://{results_bucket}/'}, 'EnforceWorkGroupConfiguration': True}
+                      )
+                  except athena.exceptions.InvalidRequestException:
+                      pass
+
+                  # Discover table folders by listing top-level prefixes
+                  paginator = s3.get_paginator('list_objects_v2')
+                  prefixes = set()
+                  for page in paginator.paginate(Bucket=data_bucket, Delimiter='/'):
+                      for prefix in page.get('CommonPrefixes', []):
+                          prefixes.add(prefix['Prefix'].rstrip('/'))
+
+                  # Create Glue tables from CSV headers in each prefix
+                  count = 0
+                  for table_name in sorted(prefixes):
+                      # Find first CSV in the prefix
+                      objects = s3.list_objects_v2(Bucket=data_bucket, Prefix=f'{table_name}/', MaxKeys=10)
+                      csv_key = None
+                      for obj in objects.get('Contents', []):
+                          if obj['Key'].endswith('.csv'):
+                              csv_key = obj['Key']
+                              break
+                      if not csv_key:
+                          print(f'No CSV found in {table_name}/, skipping')
+                          continue
+
+                      try:
+                          response = s3.get_object(Bucket=data_bucket, Key=csv_key, Range='bytes=0-4096')
+                          first_line = response['Body'].read().decode('utf-8').split('\n')[0]
+                          headers = next(csv.reader(io.StringIO(first_line)))
+                      except Exception as e:
+                          print(f'HEADER READ FAILED s3://{data_bucket}/{csv_key}: {e}')
+                          continue
+
+                      columns = [{'Name': h.strip().replace(' ', '_').replace('-', '_').lower(), 'Type': 'string'} for h in headers]
+                      try:
+                          glue.create_table(
+                              DatabaseName=DATABASE,
+                              TableInput={
+                                  'Name': table_name,
+                                  'StorageDescriptor': {
+                                      'Columns': columns,
+                                      'Location': f's3://{data_bucket}/{table_name}/',
+                                      'InputFormat': 'org.apache.hadoop.mapred.TextInputFormat',
+                                      'OutputFormat': 'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat',
+                                      'SerdeInfo': {
+                                          'SerializationLibrary': 'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe',
+                                          'Parameters': {'field.delim': ',', 'skip.header.line.count': '1'}
+                                      }
+                                  },
+                                  'TableType': 'EXTERNAL_TABLE'
+                              }
+                          )
+                          count += 1
+                          print(f'Created table {table_name}')
+                      except glue.exceptions.AlreadyExistsException:
+                          count += 1
+
+                  _r(event, context, "SUCCESS", {'DatabaseName': DATABASE, 'TablesCreated': count})
+              except Exception as e:
+                  _r(event, context, "FAILED", {'Error': str(e)})
+
+  AthenaSetup:
+    Type: AWS::CloudFormation::CustomResource
+    Properties:
+      ServiceToken: !GetAtt AthenaSetupFunction.Arn
+      DataBucket: !ImportValue AthenaDataBucketName
+      ResultsBucket: !ImportValue AthenaResultsBucketName
+
+  AthenaQueryLambdaRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+      Policies:
+        - PolicyName: AthenaQueryPolicy
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action: [athena:StartQueryExecution, athena:GetQueryExecution, athena:GetQueryResults, athena:StopQueryExecution]
+                Resource: '*'
+              - Effect: Allow
+                Action: [s3:GetObject, s3:PutObject, s3:ListBucket, s3:GetBucketLocation]
+                Resource:
+                  - !ImportValue AthenaDataBucketArn
+                  - !Sub
+                    - ${BucketArn}/*
+                    - BucketArn: !ImportValue AthenaDataBucketArn
+                  - !ImportValue AthenaResultsBucketArn
+                  - !Sub
+                    - ${BucketArn}/*
+                    - BucketArn: !ImportValue AthenaResultsBucketArn
+              - Effect: Allow
+                Action: [glue:GetTable, glue:GetDatabase, glue:GetPartitions]
+                Resource: '*'
+
+  AthenaQueryLambda:
+    Type: AWS::Lambda::Function
+    DependsOn: AthenaSetup
+    Properties:
+      FunctionName: education-athena-query
+      Runtime: python3.12
+      Handler: index.lambda_handler
+      Role: !GetAtt AthenaQueryLambdaRole.Arn
+      Timeout: 60
+      Environment:
+        Variables:
+          DATABASE: education_workshop_db
+          WORKGROUP: education_workgroup
+          RESULTS_BUCKET: !ImportValue AthenaResultsBucketName
+      Code:
+        ZipFile: |
+          # MIT No Attribution
+          # Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+          # SPDX-License-Identifier: MIT-0
+          import boto3, json, time, os
+
+          athena = boto3.client('athena')
+          DATABASE = os.environ['DATABASE']
+          WORKGROUP = os.environ['WORKGROUP']
+          RESULTS_BUCKET = os.environ['RESULTS_BUCKET']
+
+          def lambda_handler(event, context):
+              sql = (event.get('parameters') or {}).get('sql') \
+                  or (json.loads(event['body']) if isinstance(event.get('body'), str) else (event.get('body') or {})).get('sql') \
+                  or event.get('sql')
+
+              if not sql:
+                  return {'statusCode': 400, 'body': json.dumps({'error': 'No SQL query provided'})}
+
+              resp = athena.start_query_execution(
+                  QueryString=sql,
+                  QueryExecutionContext={'Database': DATABASE},
+                  WorkGroup=WORKGROUP,
+                  ResultConfiguration={'OutputLocation': f's3://{RESULTS_BUCKET}/'}
+              )
+              exec_id = resp['QueryExecutionId']
+
+              for _ in range(30):
+                  status = athena.get_query_execution(QueryExecutionId=exec_id)['QueryExecution']['Status']
+                  state = status['State']
+                  if state == 'SUCCEEDED':
+                      break
+                  if state in ('FAILED', 'CANCELLED'):
+                      return {'statusCode': 500, 'body': json.dumps({'error': f'Query {state}: {status.get("StateChangeReason", "")}'})}
+                  time.sleep(1)
+
+              rows = athena.get_query_results(QueryExecutionId=exec_id)['ResultSet']['Rows']
+              if not rows:
+                  return {'statusCode': 200, 'body': json.dumps({'result': 'No results found'})}
+
+              headers = [c['VarCharValue'] for c in rows[0]['Data']]
+              data = [{headers[i]: c.get('VarCharValue', '') for i, c in enumerate(row['Data'])} for row in rows[1:51]]
+              return {'statusCode': 200, 'body': json.dumps({'result': data})}
+
+  # --- Advisor Requests (DynamoDB + Lambda for MCP) ---
+
+  AdvisorRequestsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: education-advisor-requests
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: request_id
+          AttributeType: S
+        - AttributeName: student_id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: request_id
+          KeyType: HASH
+      GlobalSecondaryIndexes:
+        - IndexName: student-index
+          KeySchema:
+            - AttributeName: student_id
+              KeyType: HASH
+          Projection:
+            ProjectionType: ALL
+
+  AdvisorRequestsLambdaRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+      Policies:
+        - PolicyName: DynamoDBAccess
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action:
+                  - dynamodb:PutItem
+                  - dynamodb:GetItem
+                  - dynamodb:Query
+                  - dynamodb:UpdateItem
+                Resource:
+                  - !GetAtt AdvisorRequestsTable.Arn
+                  - !Sub ${AdvisorRequestsTable.Arn}/index/*
+
+  AdvisorRequestsLambda:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: education-advisor-requests
+      Runtime: python3.12
+      Handler: index.lambda_handler
+      Role: !GetAtt AdvisorRequestsLambdaRole.Arn
+      Timeout: 30
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref AdvisorRequestsTable
+      Code:
+        ZipFile: |
+          # MIT No Attribution
+          # Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+          # SPDX-License-Identifier: MIT-0
+          import boto3, json, os, uuid
+          from datetime import datetime
+
+          dynamodb = boto3.resource('dynamodb')
+          table = dynamodb.Table(os.environ['TABLE_NAME'])
+
+          def lambda_handler(event, context):
+              body = json.loads(event['body']) if isinstance(event.get('body'), str) else event
+
+              if 'request_type' in body and 'description' in body:
+                  item = {
+                      'request_id': str(uuid.uuid4()),
+                      'student_id': body['student_id'],
+                      'request_type': body['request_type'],
+                      'description': body['description'],
+                      'status': 'pending',
+                      'created_at': datetime.utcnow().isoformat(),
+                  }
+                  table.put_item(Item=item)
+                  return {'statusCode': 200, 'body': json.dumps({'result': item})}
+
+              elif 'student_id' in body and 'request_type' not in body:
+                  resp = table.query(
+                      IndexName='student-index',
+                      KeyConditionExpression='student_id = :sid',
+                      ExpressionAttributeValues={':sid': body['student_id']},
+                  )
+                  return {'statusCode': 200, 'body': json.dumps({'result': resp['Items']})}
+
+              return {'statusCode': 400, 'body': json.dumps({'error': f'Unknown action: {action}'})}
+
+  # --- Cognito for Gateway authentication ---
+
+  EducationCognitoUserPool:
+    Type: AWS::Cognito::UserPool
+    Properties:
+      UserPoolName: education-workshop-pool
+
+  EducationCognitoUserPoolDomain:
+    Type: AWS::Cognito::UserPoolDomain
+    Properties:
+      Domain: !Sub education-workshop-${AWS::AccountId}
+      UserPoolId: !Ref EducationCognitoUserPool
+
+  EducationCognitoResourceServer:
+    Type: AWS::Cognito::UserPoolResourceServer
+    Properties:
+      UserPoolId: !Ref EducationCognitoUserPool
+      Identifier: education-gateway
+      Name: Education Gateway
+      Scopes:
+        - ScopeName: read
+          ScopeDescription: Read access to education data
+        - ScopeName: write
+          ScopeDescription: Write access to education data
+
+  EducationCognitoClient:
+    Type: AWS::Cognito::UserPoolClient
+    DependsOn: EducationCognitoResourceServer
+    Properties:
+      UserPoolId: !Ref EducationCognitoUserPool
+      ClientName: education-gateway-client
+      GenerateSecret: true
+      AllowedOAuthFlows:
+        - client_credentials
+      AllowedOAuthScopes:
+        - education-gateway/read
+        - education-gateway/write
+      AllowedOAuthFlowsUserPoolClient: true
+      ExplicitAuthFlows: []
+
+  CognitoClientSecretRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+      Policies:
+        - PolicyName: CognitoDescribeClient
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action: cognito-idp:DescribeUserPoolClient
+                Resource: !GetAtt EducationCognitoUserPool.Arn
+
+  CognitoClientSecretFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      Runtime: python3.12
+      Handler: index.handler
+      Timeout: 10
+      Role: !GetAtt CognitoClientSecretRole.Arn
+      Code:
+        ZipFile: |
+          import boto3, json, urllib.request
+          def handler(event, context):
+              data = {}
+              status = 'SUCCESS'
+              try:
+                  if event['RequestType'] != 'Delete':
+                      props = event['ResourceProperties']
+                      resp = boto3.client('cognito-idp').describe_user_pool_client(
+                          UserPoolId=props['UserPoolId'], ClientId=props['ClientId'])
+                      data['ClientSecret'] = resp['UserPoolClient']['ClientSecret']
+              except Exception as e:
+                  status = 'FAILED'
+                  data['Error'] = str(e)
+              body = json.dumps({'Status': status, 'Reason': str(data), 'PhysicalResourceId': context.log_stream_name,
+                  'StackId': event['StackId'], 'RequestId': event['RequestId'],
+                  'LogicalResourceId': event['LogicalResourceId'], 'NoEcho': True, 'Data': data})
+              urllib.request.urlopen(urllib.request.Request(event['ResponseURL'], data=body.encode(), headers={'Content-Type': ''}, method='PUT'))
+
+  CognitoClientSecret:
+    Type: Custom::ClientSecret
+    Properties:
+      ServiceToken: !GetAtt CognitoClientSecretFunction.Arn
+      UserPoolId: !Ref EducationCognitoUserPool
+      ClientId: !Ref EducationCognitoClient
+
+Outputs:
+  AthenaQueryLambdaArn:
+    Description: Lambda ARN for Gateway target
+    Value: !GetAtt AthenaQueryLambda.Arn
+    Export:
+      Name: AthenaQueryLambdaArn
+  AthenaQueryLambdaName:
+    Description: Lambda function name
+    Value: !Ref AthenaQueryLambda
+    Export:
+      Name: AthenaQueryLambdaName
+  AthenaDataBucketName:
+    Description: Data bucket name
+    Value: !ImportValue AthenaDataBucketName
+    Export:
+      Name: AthenaDataBucketNameExport
+  AthenaDatabaseName:
+    Description: Glue/Athena database name
+    Value: education_workshop_db
+    Export:
+      Name: AthenaDatabaseName
+  CognitoDiscoveryUrl:
+    Description: Cognito OIDC discovery URL
+    Value: !Sub https://cognito-idp.${AWS::Region}.amazonaws.com/${EducationCognitoUserPool}/.well-known/openid-configuration
+    Export:
+      Name: CognitoDiscoveryUrl
+  CognitoClientId:
+    Description: Cognito client ID
+    Value: !Ref EducationCognitoClient
+    Export:
+      Name: CognitoClientId
+  CognitoTokenUrl:
+    Description: OAuth2 token endpoint
+    Value: !Sub https://education-workshop-${AWS::AccountId}.auth.${AWS::Region}.amazoncognito.com/oauth2/token
+    Export:
+      Name: CognitoTokenUrl
+  CognitoClientSecret:
+    Description: Cognito client secret
+    Value: !GetAtt CognitoClientSecret.ClientSecret
+    Export:
+      Name: CognitoClientSecret
+  AdvisorRequestsLambdaName:
+    Description: Advisor requests Lambda function name
+    Value: !Ref AdvisorRequestsLambda
+    Export:
+      Name: AdvisorRequestsLambdaName
+  AdvisorRequestsTableName:
+    Description: Advisor requests DynamoDB table name
+    Value: !Ref AdvisorRequestsTable
+    Export:
+      Name: AdvisorRequestsTableName

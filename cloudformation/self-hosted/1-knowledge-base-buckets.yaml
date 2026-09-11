@@ -1,0 +1,100 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >
+  S3 buckets for Bedrock Knowledge Base (self-hosted deployment).
+  Creates the KB documents bucket, supplemental bucket, and an S3 access logs bucket.
+  Based on baseline/1-knowledge-base.yaml with Workshop Studio dependencies removed.
+
+Resources:
+
+  # --- Access logs bucket (for all S3 buckets in this account) ---
+
+  AccessLogsBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub ${AWS::AccountId}-${AWS::Region}-access-logs
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      LifecycleConfiguration:
+        Rules:
+          - Id: ExpireOldLogs
+            Status: Enabled
+            ExpirationInDays: 90
+
+  AccessLogsBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref AccessLogsBucket
+      PolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Sid: S3ServerAccessLogsPolicy
+            Effect: Allow
+            Principal:
+              Service: logging.s3.amazonaws.com
+            Action: s3:PutObject
+            Resource: !Sub ${AccessLogsBucket.Arn}/*
+            Condition:
+              ArnLike:
+                aws:SourceArn: !Sub arn:aws:s3:::${AWS::AccountId}-${AWS::Region}-*
+              StringEquals:
+                aws:SourceAccount: !Ref AWS::AccountId
+
+  # --- S3 bucket for KB documents ---
+
+  KBDocumentsBucket:
+    Type: AWS::S3::Bucket
+    DependsOn: AccessLogsBucket
+    Properties:
+      BucketName: !Sub ${AWS::AccountId}-${AWS::Region}-education-kb-docs
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      LoggingConfiguration:
+        DestinationBucketName: !Ref AccessLogsBucket
+        LogFilePrefix: education-kb-docs/
+
+  # --- S3 bucket for supplemental data ---
+
+  KBSupplementalBucket:
+    Type: AWS::S3::Bucket
+    DependsOn: AccessLogsBucket
+    Properties:
+      BucketName: !Sub ${AWS::AccountId}-${AWS::Region}-education-kb-supplemental
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      LoggingConfiguration:
+        DestinationBucketName: !Ref AccessLogsBucket
+        LogFilePrefix: education-kb-supplemental/
+
+Outputs:
+  KBDocumentsBucketURI:
+    Description: S3 URI for the Knowledge Base documents
+    Value: !Sub s3://${KBDocumentsBucket}/
+    Export:
+      Name: KBDocumentsBucketURI
+
+  KBSupplementalBucketURI:
+    Description: S3 URI for supplemental data storage
+    Value: !Sub s3://${KBSupplementalBucket}/
+    Export:
+      Name: KBSupplementalBucketURI
+
+  S3AccessLogBucketURI:
+    Description: S3 URI for access logs
+    Value: !Sub s3://${AccessLogsBucket}/
+    Export:
+      Name: AccessLogBucketURI
+
+  AccessLogsBucketName:
+    Description: Access logs bucket name (for cross-stack ImportValue)
+    Value: !Ref AccessLogsBucket
+    Export:
+      Name: AccessLogsBucketName

@@ -1,0 +1,21 @@
+{
+    "100016": {
+        "name": "Mateo Jackson",
+        "program": "Bachelor of Aeronautics",
+        "completed_units": ["AERO-0100", "AERO-0200"],
+        "credit_points": 48
+    },
+    "100033": {
+        "name": "Diego Ramirez",
+        "program": "Bachelor of Computer Science",
+        "completed_units": [
+            "COMP-11500",
+            "COMP-1600",
+            "COMP-10900",
+            "COMP-16800",
+            "COMP-12000",
+            "COMP-2100"
+        ],
+        "credit_points": 96
+    }
+}

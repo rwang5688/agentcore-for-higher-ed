@@ -1,0 +1,221 @@
+# Computer Science (COMP)
+
+**School:** College of Engineering  
+**University:** Peculiar U  
+**Total Courses:** 154  
+**Degree Credit Points Required:** 128  
+
+## Faculty Roster
+
+- **Abdelmoneim Stacherski** - Professor | Tenured | Department Chair
+- **Ada-Rose Cessna** - Professor | Tenured | Department Chair
+- **Aeryn Prochko** - Associate Professor | Tenured | Department Chair
+- **Aubree Marschel** - Professor | Tenured | Department Chair
+- **Bilal Frew** - Associate Professor | Tenured
+- **Cali Leibee** - Assistant Instructor
+- **Carys Ashkenazy** - Professor | Tenured
+- **Chance Strenk** - Instructor
+- **Clancy Davern** - Professor | Department Chair
+- **Coben Mcgarry** - Associate Professor | Tenured
+- **Eben Yannotta** - Instructor
+- **Elaine Rion** - Instructor
+- **Elsa Zerance** - Associate Professor
+- **Elyna Barrow** - Instructor
+- **Essa Mansourian** - Instructor
+- **Fatma Jaganathan** - Professor | Tenured
+- **Freya Brizzee** - Associate Professor | Tenured
+- **Graedyn Florance** - Associate Professor | Tenured
+- **Helaina Dunnivant** - Associate Professor | Department Chair
+- **Imageon Northcutt** - Professor
+- **Jorja Kassler** - Instructor
+- **Jumanah Hasenbeck** - Professor
+- **Karmen Hormozi** - Associate Professor
+- **Keavah Croswell** - Instructor
+- **Keiran Farless** - Associate Professor | Department Chair
+- **Kolbey Samaro** - Associate Professor | Department Chair
+- **Lacey Betley** - Assistant Instructor
+- **Lennon Sedey** - Professor | Tenured
+- **Leonora Bransky** - Professor | Department Chair
+- **Liane Luedeke** - Professor
+- **Lincoln Pou** - Associate Professor
+- **Lio Sezer** - Associate Professor | Tenured
+- **Loretta Lieuallen** - Associate Professor | Department Chair
+- **Loughlin Biltoft** - Associate Professor | Tenured
+- **Luci-Scott Rocano** - Associate Professor
+- **Mael Verhey** - Associate Professor
+- **Mallon Piascik** - Instructor
+- **Meribelle Chavelas** - Professor | Department Chair
+- **Miransh Welser** - Professor
+- **Missy Vein** - Instructor
+- **Orlyn Pelfrey** - Associate Professor
+- **Poppy-Blue Kueneman** - Associate Professor | Tenured
+- **Raffi Century** - Instructor
+- **Ranbir Marecki** - Professor | Tenured | Department Chair
+- **Roslyn Vaitkus** - Professor | Tenured | Department Chair
+- **Sadie Mccarney** - Professor | Tenured | Department Chair
+- **Shae Nielander** - Professor
+- **Sorin Greinert** - Associate Professor
+- **Sukhbir Pirone** - Associate Professor
+- **Utjiuomuni Petras** - Associate Professor
+- **Zachary Stasik** - Associate Professor | Department Chair
+- **Zarrah Breeser** - Instructor
+
+## Courses
+
+- [COMP-0100: Advanced Algorithms](courses/COMP-0100.md) (Level 100, 3 credits)
+- [COMP-15100: Programming for Designers](courses/COMP-15100.md) (Level 130, 3 credits)
+- [COMP-10100: Introduction to Computing for Non-Majors](courses/COMP-10100.md) (Level 140, 3 credits)
+- [COMP-0200: Advanced Data Structures](courses/COMP-0200.md) (Level 200, 3 credits)
+- [COMP-15200: Python](courses/COMP-15200.md) (Level 230, 4 credits)
+- [COMP-10200: Introduction to Computing](courses/COMP-10200.md) (Level 240, 4 credits)
+- [COMP-15700: Python Data Visualization](courses/COMP-15700.md) (Level 280, 4 credits)
+- [COMP-0300: Advanced Operating Systems Structures and Implementation](courses/COMP-0300.md) (Level 300, 4 credits)
+- [COMP-10300: Introduction to Cybersecurity](courses/COMP-10300.md) (Level 340, 4 credits)
+- [COMP-0800: Algorithmic Lower Bounds: Fun with Hardness Proofs](courses/COMP-0800.md) (Level 350, 4 credits)
+- [COMP-16500: Software Engineering: Introduction](courses/COMP-16500.md) (Level 365, 4 credits)
+- [COMP-11500: Introduction to Python: Absolute Beginner](courses/COMP-11500.md) (Level 375, 4 credits)
+- [COMP-15800: Python Programming Essentials](courses/COMP-15800.md) (Level 380, 4 credits)
+- [COMP-10800: Introduction to Embedded Systems](courses/COMP-10800.md) (Level 390, 4 credits)
+- [COMP-0400: Algorithms Part I](courses/COMP-0400.md) (Level 400, 4 credits)
+- [COMP-15400: Python for Data Science and AI](courses/COMP-15400.md) (Level 430, 4 credits)
+- [COMP-1600: Free Course in Multiple formats](courses/COMP-1600.md) (Level 435, 4 credits)
+- [COMP-11600: Introduction to Python: Fundamentals](courses/COMP-11600.md) (Level 475, 4 credits)
+- [COMP-15900: Quantum Computing for the Determined](courses/COMP-15900.md) (Level 480, 4 credits)
+- [COMP-10900: Introduction to Formal Systems & Computation](courses/COMP-10900.md) (Level 490, 4 credits)
+- [COMP-0500: Algorithms Part II](courses/COMP-0500.md) (Level 500, 4 credits)
+- [COMP-15500: Python Data Analysis](courses/COMP-15500.md) (Level 530, 3 credits)
+- [COMP-10500: Introduction to Cybersecurity Tools & Cyber Attacks](courses/COMP-10500.md) (Level 540, 3 credits)
+- [COMP-1000: Android Development](courses/COMP-1000.md) (Level 550, 3 credits)
+- [COMP-16700: TCP/IP](courses/COMP-16700.md) (Level 565, 3 credits)
+- [COMP-11700: Introduction to TensorFlow for Artificial Intelligence Machine Learning and Deep Learning](courses/COMP-11700.md) (Level 575, 3 credits)
+- [COMP-16000: Ray Tracing for Global Illumination](courses/COMP-16000.md) (Level 580, 3 credits)
+- [COMP-11000: Introduction to Information Studies](courses/COMP-11000.md) (Level 590, 3 credits)
+- [COMP-0600: Algorithm Design and Analysis](courses/COMP-0600.md) (Level 600, 3 credits)
+- [COMP-15600: Python Data Representations](courses/COMP-15600.md) (Level 630, 3 credits)
+- [COMP-10600: Introduction to Electrical Engineering and Computer Science I](courses/COMP-10600.md) (Level 640, 3 credits)
+- [COMP-1100: AI for Everyone](courses/COMP-1100.md) (Level 650, 3 credits)
+- [COMP-16800: Technical Support Fundamentals](courses/COMP-16800.md) (Level 665, 3 credits)
+- [COMP-16100: Responsible Computing](courses/COMP-16100.md) (Level 680, 3 credits)
+- [COMP-11100: Introduction to iPhone Application Development](courses/COMP-11100.md) (Level 690, 3 credits)
+- [COMP-0700: Algorithms for Big Data](courses/COMP-0700.md) (Level 700, 3 credits)
+- [COMP-1200: Applied AI with DeepLearning](courses/COMP-1200.md) (Level 750, 3 credits)
+- [COMP-16900: The Beauty and Joy of Computing](courses/COMP-16900.md) (Level 765, 3 credits)
+- [COMP-11900: iPhone Application Development in iOS5 (Fall 2011)](courses/COMP-11900.md) (Level 775, 3 credits)
+- [COMP-16200: Search Engines: Technology Society and Business](courses/COMP-16200.md) (Level 780, 3 credits)
+- [COMP-11200: Introduction to Linux](courses/COMP-11200.md) (Level 790, 3 credits)
+- [COMP-1300: Artificial Intelligence](courses/COMP-1300.md) (Level 850, 3 credits)
+- [COMP-17000: The Bits and Bytes of Computer Networking](courses/COMP-17000.md) (Level 865, 3 credits)
+- [COMP-12000: IT Security: Defense against the digital dark arts](courses/COMP-12000.md) (Level 875, 3 credits)
+- [COMP-16300: Signal Processing on Databases](courses/COMP-16300.md) (Level 880, 3 credits)
+- [COMP-11300: Introduction to Problem Solving & Programming](courses/COMP-11300.md) (Level 890, 3 credits)
+- [COMP-2100: Basic Concepts of Operating Systems & System Programming](courses/COMP-2100.md) (Level 935, 3 credits)
+- [COMP-17100: The Future of the Internet](courses/COMP-17100.md) (Level 965, 3 credits)
+- [COMP-12100: Linux Implementation/Administration Practicum](courses/COMP-12100.md) (Level 975, 3 credits)
+- [COMP-16400: Software as a Service](courses/COMP-16400.md) (Level 980, 3 credits)
+- [COMP-11400: An Introduction to Practical Deep Learning](courses/COMP-11400.md) (Level 990, 3 credits)
+- [COMP-2200: Bitcoin and Cryptocurrency Technologies](courses/COMP-2200.md) (Level 1035, 3 credits)
+- [COMP-17200: The Society of Mind](courses/COMP-17200.md) (Level 1065, 3 credits)
+- [COMP-12200: Learning from Data: A Machine Learning Course](courses/COMP-12200.md) (Level 1075, 3 credits)
+- [COMP-12300: Local Area Network](courses/COMP-12300.md) (Level 1175, 3 credits)
+- [COMP-2400: Bits: The Computer Science of Digital Information](courses/COMP-2400.md) (Level 1235, 3 credits)
+- [COMP-17400: The Structure and Interpretation of Computer Programs](courses/COMP-17400.md) (Level 1265, 3 credits)
+- [COMP-12400: Logic & Proofs](courses/COMP-12400.md) (Level 1275, 3 credits)
+- [COMP-2500: Blender 3D Design](courses/COMP-2500.md) (Level 1335, 3 credits)
+- [COMP-17500: Theory of Computation](courses/COMP-17500.md) (Level 1365, 3 credits)
+- [COMP-12500: Machine Learning](courses/COMP-12500.md) (Level 1375, 3 credits)
+- [COMP-2600: Building Dynamic Web Sites](courses/COMP-2600.md) (Level 1435, 3 credits)
+- [COMP-17600: Understanding Computers and the Internet](courses/COMP-17600.md) (Level 1465, 3 credits)
+- [COMP-2700: Building Mobile Applications](courses/COMP-2700.md) (Level 1535, 3 credits)
+- [COMP-17700: Using Python to Access Web Data](courses/COMP-17700.md) (Level 1565, 3 credits)
+- [COMP-2800: Calling Bullshit in the Age of Big Data](courses/COMP-2800.md) (Level 1635, 3 credits)
+- [COMP-17800: Virtual Reality](courses/COMP-17800.md) (Level 1665, 3 credits)
+- [COMP-12800: Machine Learning Crash Course](courses/COMP-12800.md) (Level 1675, 3 credits)
+- [COMP-2900: C Programming: Getting Started](courses/COMP-2900.md) (Level 1735, 3 credits)
+- [COMP-17900: Visual Navigation for Flying Robots](courses/COMP-17900.md) (Level 1765, 3 credits)
+- [COMP-12900: Machine Learning with Python: A Practical Introduction](courses/COMP-12900.md) (Level 1775, 3 credits)
+- [COMP-3000: Codecademy](courses/COMP-3000.md) (Level 1835, 3 credits)
+- [COMP-18000: Wide Area Networks](courses/COMP-18000.md) (Level 1865, 3 credits)
+- [COMP-13000: Machine Structures](courses/COMP-13000.md) (Level 1875, 3 credits)
+- [COMP-3100: Coding Together: Apps for iPhone and iPad (2013)](courses/COMP-3100.md) (Level 1935, 3 credits)
+- [COMP-18100: Wireless Networking](courses/COMP-18100.md) (Level 1965, 3 credits)
+- [COMP-13100: Massively Parallel Computing](courses/COMP-13100.md) (Level 1975, 3 credits)
+- [COMP-3200: Computational Camera and Photography](courses/COMP-3200.md) (Level 2035, 3 credits)
+- [COMP-18200: XML with Java](courses/COMP-18200.md) (Level 2065, 3 credits)
+- [COMP-13200: Mathematics for Computer Science](courses/COMP-13200.md) (Level 2075, 3 credits)
+- [COMP-3300: Computational Discrete Mathematics](courses/COMP-3300.md) (Level 2135, 3 credits)
+- [COMP-13300: Media Programming](courses/COMP-13300.md) (Level 2175, 3 credits)
+- [COMP-3400: Computer Architecture](courses/COMP-3400.md) (Level 2235, 3 credits)
+- [COMP-13400: Mobile Software Engineering](courses/COMP-13400.md) (Level 2275, 3 credits)
+- [COMP-3500: Computer Graphics](courses/COMP-3500.md) (Level 2335, 3 credits)
+- [COMP-13500: Multicore Programming Primer](courses/COMP-13500.md) (Level 2375, 3 credits)
+- [COMP-13600: Network Security](courses/COMP-13600.md) (Level 2475, 3 credits)
+- [COMP-3700: Computer Language Engineering](courses/COMP-3700.md) (Level 2535, 3 credits)
+- [COMP-13700: Neural Networks and Deep Learning](courses/COMP-13700.md) (Level 2575, 3 credits)
+- [COMP-3800: Computer Networks](courses/COMP-3800.md) (Level 2635, 3 credits)
+- [COMP-13800: Neural Networks for Machine Learning](courses/COMP-13800.md) (Level 2675, 3 credits)
+- [COMP-3900: Computer Science: Foundations of Computer & Information Security](courses/COMP-3900.md) (Level 2735, 3 credits)
+- [COMP-13900: Operating Systems and System Programming ](courses/COMP-13900.md) (Level 2775, 3 credits)
+- [COMP-4000: Computer Systems](courses/COMP-4000.md) (Level 2835, 3 credits)
+- [COMP-14000: Performance Engineering of Software Systems](courses/COMP-14000.md) (Level 2875, 3 credits)
+- [COMP-4100: Computer System Engineering](courses/COMP-4100.md) (Level 2935, 3 credits)
+- [COMP-14100: Principles of Computing](courses/COMP-14100.md) (Level 2975, 3 credits)
+- [COMP-4200: Computer Systems Security](courses/COMP-4200.md) (Level 3035, 3 credits)
+- [COMP-14200: Principles of Digital Communications I](courses/COMP-14200.md) (Level 3075, 3 credits)
+- [COMP-4300: Convolutional Neural Networks](courses/COMP-4300.md) (Level 3135, 3 credits)
+- [COMP-4400: Cryptocurrency and Blockchain: An Introduction to Digital Currencies](courses/COMP-4400.md) (Level 3235, 3 credits)
+- [COMP-14400: Principles of Digital Communications II](courses/COMP-14400.md) (Level 3275, 3 credits)
+- [COMP-4500: Introductory Computer Science Course (2017)](courses/COMP-4500.md) (Level 3335, 3 credits)
+- [COMP-14500: Probabilistic Systems Analysis and Applied Probability](courses/COMP-14500.md) (Level 3375, 3 credits)
+- [COMP-4600: Introductory Computer Science Course (2016)](courses/COMP-4600.md) (Level 3435, 3 credits)
+- [COMP-14600: Probability for Computer Scientists](courses/COMP-14600.md) (Level 3475, 3 credits)
+- [COMP-4700: Cybersecurity and Its Ten Domains](courses/COMP-4700.md) (Level 3535, 3 credits)
+- [COMP-14700: Programming for Everybody (Getting Started with Python)](courses/COMP-14700.md) (Level 3575, 3 credits)
+- [COMP-4800: Cybersecurity Fundamentals](courses/COMP-4800.md) (Level 3635, 3 credits)
+- [COMP-14800: Programming Languages Part A](courses/COMP-14800.md) (Level 3675, 3 credits)
+- [COMP-4900: Cybersecurity Risk Management](courses/COMP-4900.md) (Level 3735, 3 credits)
+- [COMP-14900: Programming Languages Part B](courses/COMP-14900.md) (Level 3775, 3 credits)
+- [COMP-5000: Data Science (What is Data Science?)](courses/COMP-5000.md) (Level 3835, 3 credits)
+- [COMP-15000: Programming Languages and Compilers](courses/COMP-15000.md) (Level 3875, 3 credits)
+- [COMP-5100: Database Systems Design](courses/COMP-5100.md) (Level 3935, 3 credits)
+- [COMP-5200: Data Structures](courses/COMP-5200.md) (Level 4035, 3 credits)
+- [COMP-5400: Data Structures and Algorithms](courses/COMP-5400.md) (Level 4235, 3 credits)
+- [COMP-5600: Deep Learning Explained](courses/COMP-5600.md) (Level 4435, 3 credits)
+- [COMP-5700: Deep Learning](courses/COMP-5700.md) (Level 4535, 3 credits)
+- [COMP-5900: Design and Analysis of Algorithms](courses/COMP-5900.md) (Level 4735, 3 credits)
+- [COMP-6000: Design in Computing](courses/COMP-6000.md) (Level 4835, 3 credits)
+- [COMP-6100: Developing iOS 9 Apps with Swift](courses/COMP-6100.md) (Level 4935, 3 credits)
+- [COMP-6200: Developing iOS 10 Apps with Swift](courses/COMP-6200.md) (Level 5035, 3 credits)
+- [COMP-6300: Developing iPad Applications for Visualization and Insight](courses/COMP-6300.md) (Level 5135, 3 credits)
+- [COMP-6400: Discrete Mathematical Structures](courses/COMP-6400.md) (Level 5235, 3 credits)
+- [COMP-6500: Discrete Mathematics and Probability Theory](courses/COMP-6500.md) (Level 5335, 3 credits)
+- [COMP-6600: Discrete Stochastic Processes](courses/COMP-6600.md) (Level 5435, 3 credits)
+- [COMP-6800: Discrete Structures](courses/COMP-6800.md) (Level 5635, 3 credits)
+- [COMP-7000: Efficient Algorithms and Intractable Problems](courses/COMP-7000.md) (Level 5835, 3 credits)
+- [COMP-7100: Essential Math for Machine Learning: Python Edition](courses/COMP-7100.md) (Level 5935, 3 credits)
+- [COMP-7200: Foundations of Computer Graphics](courses/COMP-7200.md) (Level 6035, 3 credits)
+- [COMP-7300: Google Cloud Platform Fundamentals: Core Infrastructure](courses/COMP-7300.md) (Level 6135, 3 credits)
+- [COMP-7400: Graphics Architecture](courses/COMP-7400.md) (Level 6235, 3 credits)
+- [COMP-7500: Great Insights in Computing](courses/COMP-7500.md) (Level 6335, 3 credits)
+- [COMP-7600: Higher Computing](courses/COMP-7600.md) (Level 6435, 3 credits)
+- [COMP-7700: Human-Computer Interaction Seminar](courses/COMP-7700.md) (Level 6535, 3 credits)
+- [COMP-7800: Learn to Program in Java](courses/COMP-7800.md) (Level 6635, 3 credits)
+- [COMP-7900: Improving Deep Neural Networks: Hyperparameter tuning Regularization and Optimization](courses/COMP-7900.md) (Level 6735, 3 credits)
+- [COMP-8000: Innovative Computing](courses/COMP-8000.md) (Level 6835, 3 credits)
+- [COMP-8100: Intensive Introduction to Computer Science Using C PHP and JavaScript](courses/COMP-8100.md) (Level 6935, 3 credits)
+- [COMP-8300: Internet of Things: Communication Technologies](courses/COMP-8300.md) (Level 7135, 3 credits)
+- [COMP-8400: Introduction to Artificial Intelligence (AI)](courses/COMP-8400.md) (Level 7235, 3 credits)
+- [COMP-8500: Introduction to AI Robotics](courses/COMP-8500.md) (Level 7335, 3 credits)
+- [COMP-8600: Introduction to Algorithms](courses/COMP-8600.md) (Level 7435, 3 credits)
+- [COMP-8800: Introduction to Computer Graphics & GPU Programming](courses/COMP-8800.md) (Level 7635, 3 credits)
+- [COMP-8900: Introduction to Computer Science and Programming in Python](courses/COMP-8900.md) (Level 7735, 3 credits)
+- [COMP-9000: Introduction to Computational Thinking and Data Science](courses/COMP-9000.md) (Level 7835, 3 credits)
+- [COMP-9100: Introduction to Computer Science and Programming (Using Python)](courses/COMP-9100.md) (Level 7935, 3 credits)
+- [COMP-9200: Introduction to Computer Science: Programming Methodology](courses/COMP-9200.md) (Level 8035, 3 credits)
+- [COMP-9400: Introduction to Computer Science: Programming Abstractions](courses/COMP-9400.md) (Level 8235, 3 credits)
+- [COMP-9600: Introduction to Computer Science: Programming Paradigms](courses/COMP-9600.md) (Level 8435, 3 credits)
+- [COMP-9800: Introduction to Computer Architecture (2013)](courses/COMP-9800.md) (Level 8635, 3 credits)
+- [COMP-9900: Introduction to Computer Architecture (2012)](courses/COMP-9900.md) (Level 8735, 3 credits)
+- [COMP-10000: Introduction to Computer Graphics](courses/COMP-10000.md) (Level 8835, 3 credits)
+
+---
+*Peculiar U Department Handbook*

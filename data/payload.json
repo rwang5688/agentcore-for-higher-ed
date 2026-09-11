@@ -1,0 +1,1 @@
+{"sql": "SELECT student_id, first_name, last_name FROM student WHERE student_id = '100033'"}

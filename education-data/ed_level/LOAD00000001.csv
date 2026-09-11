@@ -1,0 +1,11 @@
+ed_level_id,ed_level_code,ed_level_desc
+0,NA,Not provided
+1,No HS,No High School
+2,Some HS,Some High School
+3,HS Grad,High School Diploma or GED
+4,Some Coll,Some College
+5,Associate,Associate Degree
+6,Bachelors,Bachelors Degree
+7,Masters,Masters Degree
+8,Post Grad,Post Graduate
+9,Doctorate,Doctorate Degree

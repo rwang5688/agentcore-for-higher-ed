@@ -1,0 +1,14 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "AWS Credentials Check",
+      "trigger": "SessionStart",
+      "description": "Runs aws sts get-caller-identity at session start so AWS credentials are verified up front.",
+      "action": {
+        "type": "command",
+        "command": "aws sts get-caller-identity"
+      }
+    }
+  ]
+}

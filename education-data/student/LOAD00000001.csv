@@ -1,0 +1,988 @@
+student_id,first_name,last_name,gender,birth_date,email_address,admitted,enrolled,parent_alum,parent_highest_ed,first_gen_hed_student,high_school_gpa,was_hs_athlete_ind,home_state_name,admit_type,private_hs_indicator,multiple_majors_indicator,secondary_class_percentile,department_id,admit_semester_id,first_year_gpa,cumulative_gpa,enroll_status,planned_grad_semester_id
+100011,Jane,Doe_154,F,,Jane.Doe_154@example.com,1,0,0,6,0,3.57,1,Iowa,Regular,0,0,89,28,29,0,0,admitted,0
+100016,Mateo,Jackson_184,M,,Mateo.Jackson_184@example.com,1,1,1,8,0,4.2,1,Washington,Early Action,0,0,100,25,29,0,0,enrolled,36
+100031,Marcia,Oliveira_187,F,,Marcia.Oliveira_187@example.com,0,0,0,1,1,3.24,0,Ohio,Regular,0,1,80,26,29,0,0,declined,0
+100033,Diego,Ramirez_027,M,,Diego.Ramirez_027@example.com,1,1,0,8,0,2.69,1,Connecticut,Regular,0,0,67,26,29,0,0,enrolled,36
+100043,Diego,Ramirez_418,M,,Diego.Ramirez_418@example.com,1,1,0,7,0,3.41,1,Delaware,Regular,0,0,85,25,29,0,0,enrolled,36
+100048,Shirley,Rodriguez_242,F,,Shirley.Rodriguez_242@example.com,1,1,1,0,1,3.35,0,Nebraska,Regular,0,0,83,27,29,0,0,enrolled,36
+100062,Maria,Garcia_080,F,,Maria.Garcia_080@example.com,1,1,0,6,0,2.92,1,Colorado,Regular,0,0,73,25,29,0,0,enrolled,36
+100063,Jane,Doe_346,F,,Jane.Doe_346@example.com,1,1,1,0,1,2.5,1,Florida,Regular,0,0,62,27,29,0,0,enrolled,36
+100085,John,Stiles_126,M,,John.Stiles_126@example.com,0,0,0,8,0,3.56,0,Iowa,Regular,0,1,89,28,29,0,0,declined,0
+100089,Richard,Roe_107,M,,Richard.Roe_107@example.com,0,0,0,3,1,2.49,0,Oklahoma,Regular,0,1,62,29,29,0,0,declined,0
+100093,Marcia,Oliveira_386,F,,Marcia.Oliveira_386@example.com,1,1,1,7,0,4.37,1,New York,Early Action,0,0,100,28,29,0,0,enrolled,36
+100096,Marcia,Oliveira_437,F,,Marcia.Oliveira_437@example.com,1,1,0,4,0,3.79,1,of Columbia,Regular,0,0,94,27,29,0,0,enrolled,36
+100101,John,Doe_025,M,,John.Doe_025@example.com,1,1,0,6,0,3.14,1,Rhode Island,Regular,0,0,78,29,29,0,0,enrolled,36
+100105,Jane,Doe_179,F,,Jane.Doe_179@example.com,1,1,0,2,1,3.21,1,Kentucky,Regular,0,0,80,26,29,0,0,enrolled,36
+100117,Martha,Rivera_268,F,,Martha.Rivera_268@example.com,1,1,0,4,0,2.67,1,Illinois,Regular,0,0,66,28,29,0,0,enrolled,36
+100118,Jane,Doe_178,F,,Jane.Doe_178@example.com,1,1,0,4,0,3.52,1,District ,Regular,0,0,88,29,29,0,0,enrolled,36
+100126,John,Stiles_036,M,,John.Stiles_036@example.com,0,0,0,0,1,3.29,0,North Dakota,Regular,0,1,82,28,29,0,0,declined,0
+100135,Maria,Garcia_376,F,,Maria.Garcia_376@example.com,0,0,0,1,1,2.94,0,Florida,Regular,1,1,73,26,29,0,0,declined,0
+100141,Alejandro,Rosalez_260,M,,Alejandro.Rosalez_260@example.com,0,0,0,0,1,2.72,0,Florida,Regular,0,1,68,25,29,0,0,declined,0
+100151,Martha,Rivera_395,F,,Martha.Rivera_395@example.com,1,1,0,6,0,3.65,1,Pennsylvania,Regular,0,0,91,26,29,0,0,enrolled,36
+100166,Paulo,Santos_293,M,,Paulo.Santos_293@example.com,1,1,0,6,0,2.62,1,North Dakota,Regular,0,0,65,27,29,0,0,enrolled,36
+100167,Nikki,Wolf_207,F,,Nikki.Wolf_207@example.com,1,1,0,8,0,2.76,1,Alabama,Regular,0,0,68,27,29,0,0,enrolled,36
+100192,Marcia,Oliveira_213,F,,Marcia.Oliveira_213@example.com,1,1,0,1,1,3.46,1,Indiana,Regular,0,0,86,28,29,0,0,enrolled,36
+100196,Mateo,Jackson_157,M,,Mateo.Jackson_157@example.com,1,1,1,3,1,3.2,1,Puerto Rico,Regular,0,0,80,29,29,0,0,enrolled,36
+100197,Martha,Rivera_131,F,,Martha.Rivera_131@example.com,1,1,0,5,0,3.05,1,Puerto Rico,Regular,0,0,76,27,29,0,0,enrolled,36
+100202,Diego,Ramirez_132,M,,Diego.Ramirez_132@example.com,0,0,0,1,1,3.33,0,Montana,Regular,1,1,83,25,29,0,0,declined,0
+100207,Shirley,Rodriguez_158,F,,Shirley.Rodriguez_158@example.com,1,0,0,8,0,2.74,1,Massachusetts,Regular,0,0,68,26,29,0,0,admitted,0
+100210,Richard,Roe_054,M,,Richard.Roe_054@example.com,1,1,0,4,0,3.62,1,New Hampshire,Regular,0,0,90,26,29,0,0,enrolled,36
+100217,John,Stiles_335,M,,John.Stiles_335@example.com,1,0,0,0,1,3.36,0,Michigan,Regular,0,0,83,26,29,0,0,admitted,0
+100224,Ana,Silva_271,F,,Ana.Silva_271@example.com,1,1,0,7,0,2.6,1,Pennsylvania,Regular,0,0,65,25,29,0,0,enrolled,36
+100225,Carlos,Salazar_252,M,,Carlos.Salazar_252@example.com,1,1,0,2,1,3.02,1,Maine,Regular,0,0,75,28,29,0,0,enrolled,36
+100232,Jane,Doe_109,F,,Jane.Doe_109@example.com,1,1,0,1,1,3.33,1,Utah,Regular,0,0,83,25,29,0,0,enrolled,36
+100241,Mary,Major_077,F,,Mary.Major_077@example.com,1,1,0,1,1,2.24,1,Kentucky,Regular,0,0,55,27,29,0,0,enrolled,36
+100245,Mary,Major_302,F,,Mary.Major_302@example.com,1,1,0,5,0,3.48,1,Vermont,Regular,0,0,86,25,29,0,0,enrolled,36
+100247,Mateo,Jackson_196,M,,Mateo.Jackson_196@example.com,1,0,0,3,1,2.47,1,Delaware,Regular,0,0,61,27,29,0,0,admitted,0
+100253,John,Stiles_390,M,,John.Stiles_390@example.com,1,1,0,8,0,3.06,0,Montana,Regular,0,0,76,27,29,0,0,enrolled,36
+100254,Richard,Roe_127,M,,Richard.Roe_127@example.com,1,1,1,5,0,3.21,1,Colorado,Regular,0,0,80,26,29,0,0,enrolled,36
+100262,Marcia,Oliveira_367,F,,Marcia.Oliveira_367@example.com,1,1,0,7,0,2.85,0,South Dakota,Regular,0,0,71,27,29,0,0,enrolled,36
+100263,Paulo,Santos_253,M,,Paulo.Santos_253@example.com,1,1,0,3,1,2.74,1,Delaware,Regular,0,0,68,29,29,0,0,enrolled,36
+100267,Ana,Silva_118,F,,Ana.Silva_118@example.com,1,1,1,8,0,3.71,1,Missouri,Regular,0,0,92,29,29,0,0,enrolled,36
+100287,Mary,Major_163,F,,Mary.Major_163@example.com,0,0,0,5,0,2.72,0,Louisiana,Regular,1,1,67,26,29,0,0,declined,0
+100288,Ana,Silva_201,F,,Ana.Silva_201@example.com,0,0,0,8,0,2.66,0,West Virginia,Regular,0,1,66,29,29,0,0,declined,0
+100290,Jane,Doe_345,F,,Jane.Doe_345@example.com,1,1,0,1,1,3.42,0,Oregon,Regular,0,0,85,29,29,0,0,enrolled,36
+100296,John,Stiles_340,M,,John.Stiles_340@example.com,0,0,0,6,0,3.15,0,Florida,Regular,0,1,78,27,29,0,0,declined,0
+100299,Mateo,Jackson_256,M,,Mateo.Jackson_256@example.com,1,1,0,5,0,3.15,0,South Carolina,Regular,0,0,78,28,29,0,0,enrolled,36
+100303,Shirley,Rodriguez_208,F,,Shirley.Rodriguez_208@example.com,1,1,0,1,1,2.99,1,Missouri,Regular,0,0,74,25,29,0,0,enrolled,36
+100318,Carlos,Salazar_218,M,,Carlos.Salazar_218@example.com,0,0,0,2,1,2.79,0,Washington,Regular,0,1,69,29,29,0,0,declined,0
+100323,Mateo,Jackson_032,M,,Mateo.Jackson_032@example.com,1,1,0,8,0,3.59,1,New Jersey,Regular,0,0,89,27,29,0,0,enrolled,36
+100325,Marcia,Oliveira_316,F,,Marcia.Oliveira_316@example.com,1,1,0,3,1,3.41,0,Texas,Regular,0,0,85,29,29,0,0,enrolled,36
+100352,Jorge,Souza_207,M,,Jorge.Souza_207@example.com,1,1,1,1,1,3.48,1,Wyoming,Regular,0,0,87,25,29,0,0,enrolled,36
+100370,Paulo,Santos_159,M,,Paulo.Santos_159@example.com,0,0,0,3,1,3.25,0,Missouri,Regular,1,1,81,25,29,0,0,declined,0
+100373,Paulo,Santos_102,M,,Paulo.Santos_102@example.com,1,1,0,5,0,3.58,1,Hawaii,Regular,0,0,89,25,29,0,0,enrolled,36
+100379,Richard,Roe_113,M,,Richard.Roe_113@example.com,1,1,0,7,0,3.11,1,New Jersey,Regular,0,0,77,28,29,0,0,enrolled,36
+100392,Nikki,Wolf_439,F,,Nikki.Wolf_439@example.com,1,1,0,8,0,3.53,1,Vermont,Regular,0,0,88,25,29,0,0,enrolled,36
+100399,Jorge,Souza_300,M,,Jorge.Souza_300@example.com,1,1,1,1,1,2.98,1,Maine,Regular,0,0,74,29,29,0,0,enrolled,36
+100402,Paulo,Santos_393,M,,Paulo.Santos_393@example.com,1,1,0,0,1,3.15,0,Nevada,Regular,0,0,78,27,29,0,0,enrolled,36
+100406,Marcia,Oliveira_314,F,,Marcia.Oliveira_314@example.com,1,0,0,8,0,3.43,1,Virginia,Regular,0,0,85,25,29,0,0,admitted,0
+100434,John,Doe_319,M,,John.Doe_319@example.com,1,1,1,0,1,3.08,1,Virginia,Regular,0,0,77,29,29,0,0,enrolled,36
+100436,Martha,Rivera_189,F,,Martha.Rivera_189@example.com,1,1,0,0,1,2.5,0,Oregon,Regular,0,0,62,28,29,0,0,enrolled,36
+100449,Paulo,Santos_295,M,,Paulo.Santos_295@example.com,1,1,0,4,0,3.07,1,California,Regular,0,0,76,29,29,0,0,enrolled,36
+100460,Mary,Major_249,F,,Mary.Major_249@example.com,0,0,0,5,0,3.11,0,Montana,Regular,0,1,77,26,29,0,0,declined,0
+100467,Nikki,Wolf_328,F,,Nikki.Wolf_328@example.com,1,0,0,7,0,3.19,1,Tennessee,Regular,0,0,79,26,29,0,0,admitted,0
+100478,Jorge,Souza_437,M,,Jorge.Souza_437@example.com,1,1,0,0,1,3,1,Iowa,Regular,0,0,75,27,29,0,0,enrolled,36
+100488,Carlos,Salazar_299,M,,Carlos.Salazar_299@example.com,1,1,1,1,1,3.25,1,Puerto Rico,Regular,0,0,81,29,29,0,0,enrolled,36
+100490,Richard,Roe_293,M,,Richard.Roe_293@example.com,1,1,1,6,0,3.49,1,North Dakota,Regular,0,0,87,26,29,0,0,enrolled,36
+100492,Alejandro,Rosalez_099,M,,Alejandro.Rosalez_099@example.com,1,0,0,7,0,3.38,1,Alaska,Regular,0,0,84,29,29,0,0,admitted,0
+100502,Ana,Silva_037,F,,Ana.Silva_037@example.com,1,1,0,5,0,3.54,1,Michigan,Regular,0,0,88,29,29,0,0,enrolled,36
+100505,John,Doe_154,M,,John.Doe_154@example.com,0,0,0,7,0,3.1,0,California,Regular,0,1,77,26,29,0,0,declined,0
+100519,Marcia,Oliveira_220,F,,Marcia.Oliveira_220@example.com,0,0,0,3,1,3.36,0,North Dakota,Regular,0,1,84,25,29,0,0,declined,0
+100522,Mateo,Jackson_194,M,,Mateo.Jackson_194@example.com,1,1,1,3,1,3.9,1,Georgia,Early Decision,0,0,97,28,29,0,0,enrolled,36
+100527,John,Stiles_075,M,,John.Stiles_075@example.com,1,0,0,1,1,3.08,1,Virginia,Regular,0,0,77,25,29,0,0,admitted,0
+100540,Marcia,Oliveira_160,F,,Marcia.Oliveira_160@example.com,1,1,1,8,0,3.43,1,Michigan,Regular,0,0,85,25,29,0,0,enrolled,36
+100552,Richard,Roe_406,M,,Richard.Roe_406@example.com,1,1,0,8,0,3.71,1,Minnesota,Regular,0,0,92,26,29,0,0,enrolled,36
+100555,Mary,Major_093,F,,Mary.Major_093@example.com,1,1,0,0,1,2.45,1,Nebraska,Regular,0,0,61,25,29,0,0,enrolled,36
+100560,Ana,Silva_002,F,,Ana.Silva_002@example.com,0,0,0,3,1,3.15,0,Puerto Rico,Regular,0,1,78,27,29,0,0,declined,0
+100571,Nikki,Wolf_412,F,,Nikki.Wolf_412@example.com,0,0,0,2,1,3.57,0,Oklahoma,Regular,0,1,89,28,29,0,0,declined,0
+100576,Alejandro,Rosalez_310,M,,Alejandro.Rosalez_310@example.com,1,1,0,4,0,3.19,1,Illinois,Regular,0,0,79,26,29,0,0,enrolled,36
+100596,Mary,Major_259,F,,Mary.Major_259@example.com,1,1,0,5,0,3.22,0,Nevada,Regular,0,0,80,25,29,0,0,enrolled,36
+100599,Diego,Ramirez_319,M,,Diego.Ramirez_319@example.com,1,1,1,1,1,2.98,1,Maine,Regular,0,0,74,27,29,0,0,enrolled,36
+100619,Paulo,Santos_315,M,,Paulo.Santos_315@example.com,1,1,0,7,0,3.32,1,Colorado,Regular,0,0,83,25,29,0,0,enrolled,36
+100622,Alejandro,Rosalez_321,M,,Alejandro.Rosalez_321@example.com,0,0,0,2,1,3.73,0,Alabama,Regular,0,1,93,28,29,0,0,declined,0
+100627,John,Doe_437,M,,John.Doe_437@example.com,1,1,0,1,1,3.38,1,Louisiana,Regular,0,0,84,29,29,0,0,enrolled,36
+100630,Martha,Rivera_163,F,,Martha.Rivera_163@example.com,0,0,0,5,0,2.88,0,Alaska,Regular,0,1,72,28,29,0,0,declined,0
+100632,Nikki,Wolf_214,F,,Nikki.Wolf_214@example.com,1,0,0,5,0,3.26,0,Tennessee,Regular,0,0,81,27,29,0,0,admitted,0
+100642,Paulo,Santos_103,M,,Paulo.Santos_103@example.com,1,1,0,0,1,2.86,1,Alaska,Regular,0,0,71,25,29,0,0,enrolled,36
+100646,John,Stiles_418,M,,John.Stiles_418@example.com,1,1,0,4,0,2.98,1,Arizona,Regular,0,0,74,26,29,0,0,enrolled,36
+100662,Martha,Rivera_005,F,,Martha.Rivera_005@example.com,1,1,0,1,1,3.16,1,North Dakota,Regular,0,0,78,29,29,0,0,enrolled,36
+100684,Martha,Rivera_197,F,,Martha.Rivera_197@example.com,1,1,0,0,1,2.83,1,Michigan,Regular,0,0,70,29,29,0,0,enrolled,36
+100689,Shirley,Rodriguez_075,F,,Shirley.Rodriguez_075@example.com,1,1,0,7,0,3.65,1,Louisiana,Regular,0,0,91,29,29,0,0,enrolled,36
+100694,Marcia,Oliveira_300,F,,Marcia.Oliveira_300@example.com,0,0,0,3,1,2.97,0,New York,Regular,1,1,74,27,29,0,0,declined,0
+100698,Alejandro,Rosalez_048,M,,Alejandro.Rosalez_048@example.com,1,1,0,3,1,2.82,0,Virginia,Regular,0,0,70,28,29,0,0,enrolled,36
+100700,Mateo,Jackson_073,M,,Mateo.Jackson_073@example.com,1,1,0,2,1,3.16,1,District ,Regular,0,0,79,29,29,0,0,enrolled,36
+100701,Shirley,Rodriguez_250,F,,Shirley.Rodriguez_250@example.com,1,1,0,2,1,2.65,1,Kansas,Regular,0,0,66,29,29,0,0,enrolled,36
+100704,Shirley,Rodriguez_143,F,,Shirley.Rodriguez_143@example.com,0,0,0,5,0,3.12,0,of Columbia,Regular,1,1,78,25,29,0,0,declined,0
+100706,Diego,Ramirez_221,M,,Diego.Ramirez_221@example.com,1,1,0,3,1,3.14,1,Oregon,Regular,0,0,78,25,29,0,0,enrolled,36
+100708,Jorge,Souza_066,M,,Jorge.Souza_066@example.com,1,1,1,5,0,3.34,1,Massachusetts,Regular,0,0,83,29,29,0,0,enrolled,36
+100713,John,Doe_410,M,,John.Doe_410@example.com,1,1,0,4,0,3.1,1,North Carolina,Regular,0,0,77,27,29,0,0,enrolled,36
+100716,John,Doe_308,M,,John.Doe_308@example.com,1,1,0,7,0,3.03,1,Puerto Rico,Regular,0,0,75,25,29,0,0,enrolled,36
+100726,Maria,Garcia_336,F,,Maria.Garcia_336@example.com,0,0,0,7,0,3.17,0,Guam,Regular,1,1,79,28,29,0,0,declined,0
+100727,Mary,Major_366,F,,Mary.Major_366@example.com,0,0,0,6,0,2.98,0,Wyoming,Regular,0,1,74,29,29,0,0,declined,0
+100729,Paulo,Santos_171,M,,Paulo.Santos_171@example.com,1,1,0,1,1,3.56,1,Puerto Rico,Regular,0,0,89,26,29,0,0,enrolled,36
+100734,Nikki,Wolf_401,F,,Nikki.Wolf_401@example.com,1,1,0,5,0,3.67,1,Oklahoma,Regular,0,0,91,29,29,0,0,enrolled,36
+100740,Marcia,Oliveira_318,F,,Marcia.Oliveira_318@example.com,0,0,0,0,1,3.29,0,Wisconsin,Regular,0,1,82,25,29,0,0,declined,0
+100762,Shirley,Rodriguez_161,F,,Shirley.Rodriguez_161@example.com,0,0,0,5,0,3.23,0,New Mexico,Regular,0,1,80,25,29,0,0,declined,0
+100778,Marcia,Oliveira_333,F,,Marcia.Oliveira_333@example.com,0,0,0,8,0,3.23,0,Missouri,Regular,1,1,80,25,29,0,0,declined,0
+100779,Paulo,Santos_277,M,,Paulo.Santos_277@example.com,1,1,0,5,0,3.8,1,Indiana,Regular,0,0,95,25,29,0,0,enrolled,36
+100782,Martha,Rivera_396,F,,Martha.Rivera_396@example.com,1,1,0,3,1,3.46,1,Nevada,Regular,0,0,86,25,29,0,0,enrolled,36
+100785,Nikki,Wolf_027,F,,Nikki.Wolf_027@example.com,1,1,0,6,0,3.07,1,Hawaii,Regular,0,0,76,27,29,0,0,enrolled,36
+100788,Carlos,Salazar_260,M,,Carlos.Salazar_260@example.com,1,1,0,0,1,3.39,1,Idaho,Regular,0,0,84,29,29,0,0,enrolled,36
+100800,Ana,Silva_300,F,,Ana.Silva_300@example.com,1,1,0,1,1,3.61,1,Wisconsin,Regular,0,0,90,28,29,0,0,enrolled,36
+100806,Mary,Major_166,F,,Mary.Major_166@example.com,1,1,0,2,1,2.93,1,Virginia,Regular,0,0,73,29,29,0,0,enrolled,36
+100807,Maria,Garcia_111,F,,Maria.Garcia_111@example.com,1,1,0,8,0,2.99,0,Delaware,Regular,0,0,74,27,29,0,0,enrolled,36
+100810,John,Stiles_326,M,,John.Stiles_326@example.com,1,1,0,8,0,3.44,1,Connecticut,Regular,0,0,86,25,29,0,0,enrolled,36
+100823,Diego,Ramirez_142,M,,Diego.Ramirez_142@example.com,0,0,0,3,1,3.09,0,New York,Regular,0,1,77,29,29,0,0,declined,0
+100825,Richard,Roe_352,M,,Richard.Roe_352@example.com,1,1,1,0,1,3.05,1,Kansas,Regular,0,0,76,28,29,0,0,enrolled,36
+100827,Nikki,Wolf_325,F,,Nikki.Wolf_325@example.com,1,1,0,3,1,3.18,1,Connecticut,Regular,0,0,79,25,29,0,0,enrolled,36
+100829,Paulo,Santos_284,M,,Paulo.Santos_284@example.com,1,1,0,8,0,2.75,1,Nevada,Regular,0,0,68,29,29,0,0,enrolled,36
+100845,Shirley,Rodriguez_135,F,,Shirley.Rodriguez_135@example.com,1,1,0,4,0,3.83,1,Nebraska,Regular,0,0,95,27,29,0,0,enrolled,36
+100847,John,Stiles_157,M,,John.Stiles_157@example.com,1,1,0,8,0,3.45,1,Colorado,Regular,0,0,86,27,29,0,0,enrolled,36
+100848,Alejandro,Rosalez_045,M,,Alejandro.Rosalez_045@example.com,1,0,0,4,0,2.97,0,Virgin Islands,Regular,0,0,74,27,29,0,0,admitted,0
+100851,Jane,Doe_228,F,,Jane.Doe_228@example.com,1,1,0,0,1,3.46,0,Massachusetts,Regular,0,0,86,27,29,0,0,enrolled,36
+100855,John,Stiles_310,M,,John.Stiles_310@example.com,0,0,0,1,1,3.43,0,Colorado,Regular,1,1,85,26,29,0,0,declined,0
+100866,Ana,Silva_038,F,,Ana.Silva_038@example.com,1,1,0,2,1,3.47,1,Virgin Islands,Regular,0,0,86,27,29,0,0,enrolled,36
+100877,Mateo,Jackson_211,M,,Mateo.Jackson_211@example.com,0,0,0,3,1,3.48,0,Virginia,Regular,1,1,87,25,29,0,0,declined,0
+100893,Marcia,Oliveira_137,F,,Marcia.Oliveira_137@example.com,1,1,0,6,0,3.22,1,Hawaii,Regular,0,0,80,25,29,0,0,enrolled,36
+100913,Diego,Ramirez_335,M,,Diego.Ramirez_335@example.com,1,1,0,4,0,3.07,1,Montana,Regular,0,0,76,27,29,0,0,enrolled,36
+100915,John,Doe_302,M,,John.Doe_302@example.com,0,0,0,0,1,2.54,0,Vermont,Regular,1,1,63,25,29,0,0,declined,0
+100945,Richard,Roe_368,M,,Richard.Roe_368@example.com,1,1,1,5,0,3.38,0,Georgia,Regular,0,0,84,26,29,0,0,enrolled,36
+100950,Alejandro,Rosalez_286,M,,Alejandro.Rosalez_286@example.com,0,0,0,1,1,3.79,0,South Carolina,Regular,0,1,94,28,29,0,0,declined,0
+100951,Jorge,Souza_171,M,,Jorge.Souza_171@example.com,1,1,0,1,1,2.76,1,Colorado,Regular,0,0,68,29,29,0,0,enrolled,36
+100952,Martha,Rivera_119,F,,Martha.Rivera_119@example.com,1,1,0,1,1,2.92,1,West Virginia,Regular,0,0,72,26,29,0,0,enrolled,36
+100956,Nikki,Wolf_106,F,,Nikki.Wolf_106@example.com,1,1,1,4,0,3.29,1,West Virginia,Regular,0,0,82,28,29,0,0,enrolled,36
+100958,Jane,Doe_404,F,,Jane.Doe_404@example.com,1,1,0,7,0,2.95,0,New York,Regular,0,0,73,28,29,0,0,enrolled,36
+100963,Shirley,Rodriguez_071,F,,Shirley.Rodriguez_071@example.com,1,1,0,1,1,3.5,1,Utah,Regular,0,0,87,28,29,0,0,enrolled,36
+100964,Diego,Ramirez_099,M,,Diego.Ramirez_099@example.com,1,1,0,8,0,3.05,1,Puerto Rico,Regular,0,0,76,27,29,0,0,enrolled,36
+100967,Carlos,Salazar_011,M,,Carlos.Salazar_011@example.com,1,1,0,6,0,3,1,Texas,Regular,0,0,74,25,29,0,0,enrolled,36
+100969,Carlos,Salazar_240,M,,Carlos.Salazar_240@example.com,0,0,0,5,0,3.04,0,Vermont,Regular,0,1,75,29,29,0,0,declined,0
+100971,Nikki,Wolf_140,F,,Nikki.Wolf_140@example.com,1,1,1,6,0,3.6,1,Guam,Regular,0,0,90,25,29,0,0,enrolled,36
+100981,Maria,Garcia_440,F,,Maria.Garcia_440@example.com,1,1,0,4,0,3.39,0,New Jersey,Regular,0,0,84,29,29,0,0,enrolled,36
+100995,Jorge,Souza_130,M,,Jorge.Souza_130@example.com,1,1,0,5,0,3.21,0,New Hampshire,Regular,0,0,80,27,29,0,0,enrolled,36
+101003,Jane,Doe_423,F,,Jane.Doe_423@example.com,1,1,0,6,0,3.01,0,Louisiana,Regular,0,0,75,28,31,0,0,enrolled,38
+101009,Mateo,Jackson_159,M,,Mateo.Jackson_159@example.com,0,0,0,4,0,3.22,0,Rhode Island,Regular,0,1,80,25,31,0,0,declined,0
+101019,Mateo,Jackson_371,M,,Mateo.Jackson_371@example.com,1,1,0,7,0,3.17,0,New Jersey,Regular,0,0,79,28,31,0,0,enrolled,38
+101022,Carlos,Salazar_223,M,,Carlos.Salazar_223@example.com,0,0,0,7,0,3.36,0,Georgia,Regular,1,1,84,29,31,0,0,declined,0
+101024,Jorge,Souza_243,M,,Jorge.Souza_243@example.com,1,1,0,2,1,3.29,1,West Virginia,Regular,0,0,82,28,31,0,0,enrolled,38
+101026,Carlos,Salazar_087,M,,Carlos.Salazar_087@example.com,1,1,0,4,0,3.32,1,Wisconsin,Regular,0,0,82,29,31,0,0,enrolled,38
+101035,Jorge,Souza_225,M,,Jorge.Souza_225@example.com,1,1,0,1,1,3.02,0,Minnesota,Regular,0,0,75,25,31,0,0,enrolled,38
+101036,John,Stiles_007,M,,John.Stiles_007@example.com,1,1,0,2,1,2.79,0,South Carolina,Regular,0,0,69,25,31,0,0,enrolled,38
+101041,Martha,Rivera_213,F,,Martha.Rivera_213@example.com,0,0,0,5,0,3.07,0,Kentucky,Regular,1,1,76,27,31,0,0,declined,0
+101055,Nikki,Wolf_356,F,,Nikki.Wolf_356@example.com,1,1,0,7,0,3.04,0,Puerto Rico,Regular,0,0,76,27,31,0,0,enrolled,38
+101056,Paulo,Santos_274,M,,Paulo.Santos_274@example.com,1,1,0,3,1,3.46,1,Virgin Islands,Regular,0,0,86,28,31,0,0,enrolled,38
+101058,John,Doe_367,M,,John.Doe_367@example.com,1,1,0,4,0,3.31,1,Maine,Regular,0,0,82,29,31,0,0,enrolled,38
+101068,Mary,Major_439,F,,Mary.Major_439@example.com,0,0,0,1,1,3.86,0,Montana,Early Decision,1,1,96,26,31,0,0,declined,0
+101077,Alejandro,Rosalez_326,M,,Alejandro.Rosalez_326@example.com,1,1,1,5,0,3.31,1,California,Regular,0,0,82,26,31,0,0,enrolled,38
+101081,Diego,Ramirez_407,M,,Diego.Ramirez_407@example.com,0,0,0,5,0,3.42,0,Montana,Regular,1,1,85,28,31,0,0,declined,0
+101083,Martha,Rivera_141,F,,Martha.Rivera_141@example.com,1,1,0,2,1,3.01,0,Arizona,Regular,0,0,75,25,31,0,0,enrolled,38
+101089,John,Stiles_332,M,,John.Stiles_332@example.com,1,1,0,2,1,3.51,1,Illinois,Regular,0,0,87,28,31,0,0,enrolled,38
+101147,Mateo,Jackson_173,M,,Mateo.Jackson_173@example.com,1,1,1,4,0,2.97,1,Massachusetts,Regular,0,0,74,28,31,0,0,enrolled,38
+101148,Marcia,Oliveira_338,F,,Marcia.Oliveira_338@example.com,1,1,1,4,0,2.59,1,Maine,Regular,0,0,64,28,31,0,0,enrolled,38
+101150,Mary,Major_269,F,,Mary.Major_269@example.com,1,1,0,0,1,3.18,0,Colorado,Regular,0,0,79,29,31,0,0,enrolled,38
+101151,John,Doe_044,M,,John.Doe_044@example.com,0,0,0,3,1,2.68,0,Nevada,Regular,1,1,66,27,31,0,0,declined,0
+101158,John,Doe_091,M,,John.Doe_091@example.com,1,1,0,0,1,2.62,1,Mississippi,Regular,0,0,65,25,31,0,0,enrolled,38
+101162,Jane,Doe_053,F,,Jane.Doe_053@example.com,0,0,0,2,1,3.16,0,Vermont,Regular,0,1,78,25,31,0,0,declined,0
+101164,John,Doe_198,M,,John.Doe_198@example.com,1,1,0,4,0,2.91,1,Kansas,Regular,0,0,72,26,31,0,0,enrolled,38
+101165,Diego,Ramirez_235,M,,Diego.Ramirez_235@example.com,1,1,1,0,1,2.72,1,Massachusetts,Regular,0,0,68,29,31,0,0,enrolled,38
+101187,John,Doe_040,M,,John.Doe_040@example.com,1,1,0,2,1,3.47,0,Oregon,Regular,0,0,86,25,31,0,0,enrolled,38
+101188,Alejandro,Rosalez_080,M,,Alejandro.Rosalez_080@example.com,1,1,0,4,0,3.75,1,American Samoa,Regular,0,0,93,25,31,0,0,enrolled,38
+101196,Marcia,Oliveira_264,F,,Marcia.Oliveira_264@example.com,1,0,0,2,1,3.26,1,Ohio,Regular,0,0,81,26,31,0,0,admitted,0
+101200,Jorge,Souza_146,M,,Jorge.Souza_146@example.com,1,1,0,1,1,2.95,1,Minnesota,Regular,0,0,73,25,31,0,0,enrolled,38
+101211,John,Stiles_065,M,,John.Stiles_065@example.com,1,1,0,7,0,3.18,1,Puerto Rico,Regular,0,0,79,25,31,0,0,enrolled,38
+101215,Ana,Silva_070,F,,Ana.Silva_070@example.com,1,1,0,6,0,2.81,1,Virgin Islands,Regular,0,0,70,26,31,0,0,enrolled,38
+101225,Shirley,Rodriguez_159,F,,Shirley.Rodriguez_159@example.com,0,0,0,3,1,3.54,0,Arizona,Regular,0,1,88,25,31,0,0,declined,0
+101238,John,Stiles_073,M,,John.Stiles_073@example.com,1,1,0,0,1,3.81,1,District ,Regular,0,0,95,27,31,0,0,enrolled,38
+101245,Martha,Rivera_040,F,,Martha.Rivera_040@example.com,1,1,0,6,0,2.72,0,Montana,Regular,0,0,67,25,31,0,0,enrolled,38
+101254,Nikki,Wolf_297,F,,Nikki.Wolf_297@example.com,0,0,0,0,1,3.11,0,Washington,Regular,1,1,77,28,31,0,0,declined,0
+101266,John,Doe_004,M,,John.Doe_004@example.com,1,1,1,3,1,2.44,1,New Jersey,Regular,0,0,61,28,31,0,0,enrolled,38
+101268,Marcia,Oliveira_002,F,,Marcia.Oliveira_002@example.com,1,1,1,6,0,3.13,1,Washington,Regular,0,0,78,25,31,0,0,enrolled,38
+101273,Richard,Roe_102,M,,Richard.Roe_102@example.com,1,1,0,2,1,2.42,1,American Samoa,Regular,0,0,60,25,31,0,0,enrolled,38
+101275,Paulo,Santos_091,M,,Paulo.Santos_091@example.com,1,1,0,6,0,3.38,1,Guam,Regular,0,0,84,29,31,0,0,enrolled,38
+101278,Jane,Doe_061,F,,Jane.Doe_061@example.com,1,1,0,8,0,3.21,1,Texas,Regular,0,0,80,28,31,0,0,enrolled,38
+101282,Mateo,Jackson_403,M,,Mateo.Jackson_403@example.com,1,1,0,7,0,3.23,0,Maine,Regular,0,0,80,25,31,0,0,enrolled,38
+101290,Mary,Major_190,F,,Mary.Major_190@example.com,1,1,0,6,0,2.93,1,Maine,Regular,0,0,73,28,31,0,0,enrolled,38
+101293,Diego,Ramirez_006,M,,Diego.Ramirez_006@example.com,1,1,0,3,1,2.93,1,District ,Regular,0,0,73,25,31,0,0,enrolled,38
+101306,Jane,Doe_395,F,,Jane.Doe_395@example.com,1,1,0,5,0,3.34,1,Alaska,Regular,0,0,83,25,31,0,0,enrolled,38
+101314,Marcia,Oliveira_103,F,,Marcia.Oliveira_103@example.com,0,0,0,7,0,3.1,0,District ,Regular,0,1,77,25,31,0,0,declined,0
+101327,Marcia,Oliveira_368,F,,Marcia.Oliveira_368@example.com,0,0,0,8,0,3,0,New Mexico,Regular,1,1,74,25,31,0,0,declined,0
+101329,Nikki,Wolf_296,F,,Nikki.Wolf_296@example.com,1,1,1,1,1,2.79,1,Delaware,Regular,0,0,69,26,31,0,0,enrolled,38
+101332,Richard,Roe_305,M,,Richard.Roe_305@example.com,1,0,0,3,1,3.11,1,District ,Regular,0,0,77,26,31,0,0,admitted,0
+101336,John,Stiles_014,M,,John.Stiles_014@example.com,1,1,0,2,1,3.04,1,Puerto Rico,Regular,0,0,75,29,31,0,0,enrolled,38
+101347,Marcia,Oliveira_122,F,,Marcia.Oliveira_122@example.com,1,1,0,2,1,3.23,0,Indiana,Regular,0,0,80,29,31,0,0,enrolled,38
+101351,Alejandro,Rosalez_312,M,,Alejandro.Rosalez_312@example.com,0,0,0,6,0,3.47,0,New Mexico,Regular,0,1,86,28,31,0,0,declined,0
+101358,Richard,Roe_178,M,,Richard.Roe_178@example.com,1,1,0,7,0,3.88,0,Oregon,Early Decision,0,0,97,29,31,0,0,enrolled,38
+101365,John,Doe_436,M,,John.Doe_436@example.com,0,0,0,4,0,2.73,0,Montana,Regular,0,1,68,25,31,0,0,declined,0
+101371,Marcia,Oliveira_436,F,,Marcia.Oliveira_436@example.com,1,0,0,7,0,3.21,1,Maine,Regular,0,0,80,29,31,0,0,admitted,0
+101376,Mateo,Jackson_402,M,,Mateo.Jackson_402@example.com,1,1,0,5,0,2.66,0,Pennsylvania,Regular,0,0,66,26,31,0,0,enrolled,38
+101381,John,Stiles_420,M,,John.Stiles_420@example.com,1,1,0,1,1,3.24,0,Idaho,Regular,0,0,80,25,31,0,0,enrolled,38
+101382,Mary,Major_424,F,,Mary.Major_424@example.com,1,1,1,2,1,2.87,1,Oklahoma,Regular,0,0,71,25,31,0,0,enrolled,38
+101385,Maria,Garcia_231,F,,Maria.Garcia_231@example.com,1,1,0,5,0,3.45,0,Kentucky,Regular,0,0,86,25,31,0,0,enrolled,38
+101387,John,Doe_291,M,,John.Doe_291@example.com,1,1,0,4,0,3.24,0,Delaware,Regular,0,0,80,28,31,0,0,enrolled,38
+101392,Ana,Silva_306,F,,Ana.Silva_306@example.com,1,1,0,3,1,3.32,1,Washington,Regular,0,0,83,25,31,0,0,enrolled,38
+101398,Ana,Silva_150,F,,Ana.Silva_150@example.com,1,1,0,7,0,3.77,1,Maryland,Regular,0,0,94,25,31,0,0,enrolled,38
+101399,Mary,Major_175,F,,Mary.Major_175@example.com,1,1,0,0,1,3.67,1,Virgin Islands,Regular,0,0,91,26,31,0,0,enrolled,38
+101410,Jane,Doe_173,F,,Jane.Doe_173@example.com,0,0,0,7,0,3.25,0,South Dakota,Regular,1,1,81,26,31,0,0,declined,0
+101431,Carlos,Salazar_010,M,,Carlos.Salazar_010@example.com,1,1,0,0,1,3,0,Michigan,Regular,0,0,75,25,31,0,0,enrolled,38
+101438,Richard,Roe_163,M,,Richard.Roe_163@example.com,1,1,1,0,1,3.1,1,New York,Regular,0,0,77,27,31,0,0,enrolled,38
+101483,Mateo,Jackson_203,M,,Mateo.Jackson_203@example.com,1,1,0,6,0,2.63,1,of Columbia,Regular,0,0,65,25,31,0,0,enrolled,38
+101491,Marcia,Oliveira_408,F,,Marcia.Oliveira_408@example.com,1,1,0,6,0,2.97,1,North Dakota,Regular,0,0,74,27,31,0,0,enrolled,38
+101495,John,Stiles_003,M,,John.Stiles_003@example.com,0,0,0,1,1,2.54,0,Texas,Regular,0,1,63,26,31,0,0,declined,0
+101503,Ana,Silva_298,F,,Ana.Silva_298@example.com,1,0,0,0,1,3.43,1,District ,Regular,0,0,85,26,31,0,0,admitted,0
+101505,Carlos,Salazar_168,M,,Carlos.Salazar_168@example.com,1,1,0,4,0,3.52,1,Alabama,Regular,0,0,88,27,31,0,0,enrolled,38
+101514,Jorge,Souza_251,M,,Jorge.Souza_251@example.com,0,0,0,3,1,3.17,0,Missouri,Regular,1,1,79,27,31,0,0,declined,0
+101519,John,Stiles_167,M,,John.Stiles_167@example.com,1,1,0,0,1,3.67,1,Guam,Regular,0,0,91,28,31,0,0,enrolled,38
+101522,Nikki,Wolf_213,F,,Nikki.Wolf_213@example.com,0,0,0,1,1,3.38,0,New Mexico,Regular,0,1,84,29,31,0,0,declined,0
+101525,Jane,Doe_144,F,,Jane.Doe_144@example.com,0,0,0,1,1,2.98,0,Hawaii,Regular,1,1,74,27,31,0,0,declined,0
+101536,Shirley,Rodriguez_083,F,,Shirley.Rodriguez_083@example.com,1,1,0,8,0,2.64,1,South Carolina,Regular,0,0,65,25,31,0,0,enrolled,38
+101553,Shirley,Rodriguez_068,F,,Shirley.Rodriguez_068@example.com,0,0,0,8,0,3.25,0,Washington,Regular,0,1,81,25,31,0,0,declined,0
+101563,Mary,Major_057,F,,Mary.Major_057@example.com,1,1,0,4,0,2.69,1,Illinois,Regular,0,0,67,25,31,0,0,enrolled,38
+101582,Maria,Garcia_340,F,,Maria.Garcia_340@example.com,1,1,1,5,0,3.09,0,Maine,Regular,0,0,77,29,31,0,0,enrolled,38
+101583,Richard,Roe_340,M,,Richard.Roe_340@example.com,1,1,0,6,0,2.98,1,North Dakota,Regular,0,0,74,28,31,0,0,enrolled,38
+101596,Shirley,Rodriguez_039,F,,Shirley.Rodriguez_039@example.com,1,1,1,3,1,3,1,Wisconsin,Regular,0,0,75,25,31,0,0,enrolled,38
+101603,Nikki,Wolf_184,F,,Nikki.Wolf_184@example.com,1,1,0,5,0,2.48,1,Idaho,Regular,0,0,61,26,31,0,0,enrolled,38
+101606,Maria,Garcia_168,F,,Maria.Garcia_168@example.com,1,1,0,1,1,3.18,0,Michigan,Regular,0,0,79,25,31,0,0,enrolled,38
+101616,Marcia,Oliveira_194,F,,Marcia.Oliveira_194@example.com,1,1,0,0,1,2.96,1,Oregon,Regular,0,0,74,26,31,0,0,enrolled,38
+101617,John,Doe_413,M,,John.Doe_413@example.com,1,1,0,4,0,3.62,1,American Samoa,Regular,0,0,90,26,31,0,0,enrolled,38
+101618,Martha,Rivera_200,F,,Martha.Rivera_200@example.com,1,1,0,4,0,2.89,1,North Dakota,Regular,0,0,72,27,31,0,0,enrolled,38
+101621,Marcia,Oliveira_048,F,,Marcia.Oliveira_048@example.com,1,1,0,2,1,2.59,0,Alaska,Regular,0,0,64,25,31,0,0,enrolled,38
+101635,Mary,Major_300,F,,Mary.Major_300@example.com,1,1,0,1,1,3.26,0,Alaska,Regular,0,0,81,28,31,0,0,enrolled,38
+101650,Mateo,Jackson_056,M,,Mateo.Jackson_056@example.com,1,1,0,6,0,3.49,1,California,Regular,0,0,87,26,31,0,0,enrolled,38
+101651,Ana,Silva_285,F,,Ana.Silva_285@example.com,0,0,0,8,0,3.6,0,Virgin Islands,Regular,1,1,89,29,31,0,0,declined,0
+101652,Paulo,Santos_176,M,,Paulo.Santos_176@example.com,0,0,0,5,0,3.55,0,Virginia,Regular,1,1,88,26,31,0,0,declined,0
+101663,Mateo,Jackson_309,M,,Mateo.Jackson_309@example.com,0,0,0,7,0,3.33,0,Ohio,Regular,1,1,83,29,31,0,0,declined,0
+101664,Paulo,Santos_250,M,,Paulo.Santos_250@example.com,0,0,0,2,1,2.92,0,North Dakota,Regular,0,1,72,28,31,0,0,declined,0
+101667,John,Stiles_143,M,,John.Stiles_143@example.com,1,1,0,3,1,2.7,0,Wyoming,Regular,0,0,67,25,31,0,0,enrolled,38
+101680,Diego,Ramirez_406,M,,Diego.Ramirez_406@example.com,1,1,0,4,0,3.66,0,Alaska,Regular,0,0,91,26,31,0,0,enrolled,38
+101681,John,Doe_281,M,,John.Doe_281@example.com,1,1,0,8,0,3.51,0,Wyoming,Regular,0,0,87,25,31,0,0,enrolled,38
+101688,Marcia,Oliveira_221,F,,Marcia.Oliveira_221@example.com,1,1,0,5,0,3.17,1,Colorado,Regular,0,0,79,27,31,0,0,enrolled,38
+101690,Paulo,Santos_054,M,,Paulo.Santos_054@example.com,1,1,0,0,1,3.22,0,Massachusetts,Regular,0,0,80,28,31,0,0,enrolled,38
+101694,Shirley,Rodriguez_001,F,,Shirley.Rodriguez_001@example.com,1,1,0,7,0,3.24,1,Minnesota,Regular,0,0,81,25,31,0,0,enrolled,38
+101699,Jane,Doe_038,F,,Jane.Doe_038@example.com,1,1,0,1,1,2.87,1,Delaware,Regular,0,0,71,27,31,0,0,enrolled,38
+101721,Nikki,Wolf_248,F,,Nikki.Wolf_248@example.com,1,1,0,5,0,3.01,1,Alabama,Regular,0,0,75,26,31,0,0,enrolled,38
+101723,Martha,Rivera_347,F,,Martha.Rivera_347@example.com,1,1,1,4,0,3.52,1,Kansas,Regular,0,0,88,26,31,0,0,enrolled,38
+101739,Jorge,Souza_293,M,,Jorge.Souza_293@example.com,1,1,0,8,0,3.16,1,Utah,Regular,0,0,78,27,31,0,0,enrolled,38
+101747,Nikki,Wolf_423,F,,Nikki.Wolf_423@example.com,1,1,0,3,1,3.5,1,South Carolina,Regular,0,0,87,26,31,0,0,enrolled,38
+101752,Shirley,Rodriguez_067,F,,Shirley.Rodriguez_067@example.com,1,1,0,5,0,3.6,1,Nevada,Regular,0,0,90,28,31,0,0,enrolled,38
+101759,Paulo,Santos_421,M,,Paulo.Santos_421@example.com,1,1,1,8,0,3.05,1,Arkansas,Regular,0,0,76,28,31,0,0,enrolled,38
+101762,Nikki,Wolf_307,F,,Nikki.Wolf_307@example.com,1,1,0,4,0,3.25,1,Georgia,Regular,0,0,81,26,31,0,0,enrolled,38
+101772,Marcia,Oliveira_341,F,,Marcia.Oliveira_341@example.com,1,1,0,1,1,3.18,1,Rhode Island,Regular,0,0,79,25,31,0,0,enrolled,38
+101783,Mateo,Jackson_142,M,,Mateo.Jackson_142@example.com,1,1,0,1,1,3.24,0,California,Regular,0,0,81,25,31,0,0,enrolled,38
+101788,Paulo,Santos_432,M,,Paulo.Santos_432@example.com,1,1,0,7,0,2.98,1,South Carolina,Regular,0,0,74,25,31,0,0,enrolled,38
+101796,Martha,Rivera_406,F,,Martha.Rivera_406@example.com,0,0,0,4,0,3.21,0,Arkansas,Regular,1,1,80,29,31,0,0,declined,0
+101801,Maria,Garcia_047,F,,Maria.Garcia_047@example.com,0,0,0,7,0,3.13,0,District ,Regular,0,1,78,26,31,0,0,declined,0
+101808,Mary,Major_334,F,,Mary.Major_334@example.com,1,1,1,8,0,2.73,1,Nevada,Regular,0,0,68,26,31,0,0,enrolled,38
+101812,Jorge,Souza_149,M,,Jorge.Souza_149@example.com,0,0,0,0,1,3.39,0,Indiana,Regular,1,1,84,29,31,0,0,declined,0
+101814,Alejandro,Rosalez_129,M,,Alejandro.Rosalez_129@example.com,1,1,0,6,0,3.5,0,Nevada,Regular,0,0,87,28,31,0,0,enrolled,38
+101820,Carlos,Salazar_113,M,,Carlos.Salazar_113@example.com,1,1,1,7,0,3.02,1,New York,Regular,0,0,75,25,31,0,0,enrolled,38
+101826,John,Stiles_138,M,,John.Stiles_138@example.com,1,1,0,8,0,3.17,1,Washington,Regular,0,0,79,26,31,0,0,enrolled,38
+101838,Diego,Ramirez_377,M,,Diego.Ramirez_377@example.com,1,1,1,7,0,3.55,0,Utah,Regular,0,0,88,26,31,0,0,enrolled,38
+101840,Jorge,Souza_052,M,,Jorge.Souza_052@example.com,1,1,0,1,1,3.58,0,Louisiana,Regular,0,0,89,28,31,0,0,enrolled,38
+101846,Ana,Silva_330,F,,Ana.Silva_330@example.com,0,0,0,5,0,3.7,0,Oregon,Regular,1,1,92,25,31,0,0,declined,0
+101852,Richard,Roe_322,M,,Richard.Roe_322@example.com,1,1,0,2,1,3.27,0,Vermont,Regular,0,0,81,25,31,0,0,enrolled,38
+101862,John,Doe_127,M,,John.Doe_127@example.com,1,1,0,4,0,2.52,0,Vermont,Regular,0,0,62,25,31,0,0,enrolled,38
+101868,Ana,Silva_193,F,,Ana.Silva_193@example.com,1,1,1,1,1,3.98,1,Vermont,Early Decision,0,0,99,26,31,0,0,enrolled,38
+101873,Mateo,Jackson_070,M,,Mateo.Jackson_070@example.com,1,1,0,5,0,3.05,1,Delaware,Regular,0,0,76,28,31,0,0,enrolled,38
+101879,Maria,Garcia_359,F,,Maria.Garcia_359@example.com,0,0,0,7,0,3.05,0,Florida,Regular,0,1,76,25,31,0,0,declined,0
+101891,Diego,Ramirez_416,M,,Diego.Ramirez_416@example.com,1,1,0,5,0,2.93,1,Iowa,Regular,0,0,73,28,31,0,0,enrolled,38
+101898,Mary,Major_078,F,,Mary.Major_078@example.com,1,1,0,8,0,2.45,1,Kansas,Regular,0,0,61,27,31,0,0,enrolled,38
+101916,Diego,Ramirez_091,M,,Diego.Ramirez_091@example.com,1,1,1,5,0,3.36,1,Indiana,Regular,0,0,84,29,31,0,0,enrolled,38
+101918,Martha,Rivera_181,F,,Martha.Rivera_181@example.com,0,0,0,1,1,3.25,0,West Virginia,Regular,0,1,81,29,31,0,0,declined,0
+101919,Jorge,Souza_196,M,,Jorge.Souza_196@example.com,1,1,1,3,1,3.53,1,Alaska,Regular,0,0,88,26,31,0,0,enrolled,38
+101931,Shirley,Rodriguez_051,F,,Shirley.Rodriguez_051@example.com,1,1,0,8,0,3.04,0,Colorado,Regular,0,0,76,28,31,0,0,enrolled,38
+101932,Paulo,Santos_118,M,,Paulo.Santos_118@example.com,0,0,0,8,0,3.54,0,Maryland,Regular,0,1,88,27,31,0,0,declined,0
+101935,Diego,Ramirez_237,M,,Diego.Ramirez_237@example.com,0,0,0,0,1,3.26,0,Nevada,Regular,0,1,81,28,31,0,0,declined,0
+101936,Nikki,Wolf_437,F,,Nikki.Wolf_437@example.com,0,0,0,7,0,3.53,0,Colorado,Regular,1,1,88,27,31,0,0,declined,0
+101941,Richard,Roe_019,M,,Richard.Roe_019@example.com,1,1,0,7,0,2.9,1,Alabama,Regular,0,0,72,25,31,0,0,enrolled,38
+101943,Carlos,Salazar_270,M,,Carlos.Salazar_270@example.com,1,1,0,2,1,2.74,1,Delaware,Regular,0,0,68,29,31,0,0,enrolled,38
+101948,John,Stiles_306,M,,John.Stiles_306@example.com,0,0,0,2,1,3.39,0,New Hampshire,Regular,0,1,84,25,31,0,0,declined,0
+101959,Maria,Garcia_278,F,,Maria.Garcia_278@example.com,0,0,0,1,1,3.34,0,Alabama,Regular,0,1,83,29,31,0,0,declined,0
+101963,Martha,Rivera_156,F,,Martha.Rivera_156@example.com,1,1,0,3,1,3.46,0,Arkansas,Regular,0,0,86,28,31,0,0,enrolled,38
+101974,Diego,Ramirez_147,M,,Diego.Ramirez_147@example.com,1,1,0,8,0,3.05,0,Delaware,Regular,0,0,76,26,31,0,0,enrolled,38
+101979,Martha,Rivera_217,F,,Martha.Rivera_217@example.com,0,0,0,2,1,3.22,0,Florida,Regular,1,1,80,26,31,0,0,declined,0
+101994,Martha,Rivera_299,F,,Martha.Rivera_299@example.com,1,1,0,1,1,3.19,1,Guam,Regular,0,0,79,26,31,0,0,enrolled,38
+101999,Mary,Major_303,F,,Mary.Major_303@example.com,1,1,0,5,0,3.38,1,Guam,Regular,0,0,84,26,31,0,0,enrolled,38
+102000,Ana,Silva_162,F,,Ana.Silva_162@example.com,1,1,0,1,1,2.83,1,Pennsylvania,Regular,0,0,70,26,33,0,0,enrolled,40
+102001,Alejandro,Rosalez_272,M,,Alejandro.Rosalez_272@example.com,0,0,0,8,0,3.08,0,Wisconsin,Regular,0,1,76,26,33,0,0,declined,0
+102003,Jane,Doe_301,F,,Jane.Doe_301@example.com,1,1,0,5,0,3.1,1,Georgia,Regular,0,0,77,28,33,0,0,enrolled,40
+102012,Mary,Major_024,F,,Mary.Major_024@example.com,1,1,0,3,1,3.32,1,Pennsylvania,Regular,0,0,82,27,33,0,0,enrolled,40
+102013,Nikki,Wolf_377,F,,Nikki.Wolf_377@example.com,1,1,0,3,1,3.41,0,Vermont,Regular,0,0,85,26,33,0,0,enrolled,40
+102018,Mary,Major_179,F,,Mary.Major_179@example.com,1,1,0,4,0,3.27,0,Oklahoma,Regular,0,0,81,29,33,0,0,enrolled,40
+102021,John,Doe_143,M,,John.Doe_143@example.com,0,0,0,2,1,3.16,0,Maryland,Regular,1,1,79,27,33,0,0,declined,0
+102031,Paulo,Santos_435,M,,Paulo.Santos_435@example.com,1,1,0,2,1,2.51,1,Nevada,Regular,0,0,62,25,33,0,0,enrolled,40
+102068,Diego,Ramirez_279,M,,Diego.Ramirez_279@example.com,1,1,0,4,0,3.33,0,Illinois,Regular,0,0,83,27,33,0,0,enrolled,40
+102070,Nikki,Wolf_101,F,,Nikki.Wolf_101@example.com,1,1,0,8,0,3.39,0,Texas,Regular,0,0,84,28,33,0,0,enrolled,40
+102081,Shirley,Rodriguez_248,F,,Shirley.Rodriguez_248@example.com,1,0,0,2,1,3,1,Wyoming,Regular,0,0,75,25,33,0,0,admitted,0
+102093,Martha,Rivera_073,F,,Martha.Rivera_073@example.com,1,0,0,6,0,2.51,1,Vermont,Regular,0,0,62,29,33,0,0,admitted,0
+102098,Jane,Doe_194,F,,Jane.Doe_194@example.com,1,1,0,8,0,2.96,1,Nebraska,Regular,0,0,74,29,33,0,0,enrolled,40
+102099,Diego,Ramirez_198,M,,Diego.Ramirez_198@example.com,0,0,0,2,1,2.69,0,North Carolina,Regular,0,1,67,28,33,0,0,declined,0
+102103,Richard,Roe_171,M,,Richard.Roe_171@example.com,0,0,0,2,1,3.11,0,New Jersey,Regular,0,1,77,28,33,0,0,declined,0
+102109,Martha,Rivera_369,F,,Martha.Rivera_369@example.com,1,1,0,5,0,3.11,1,Kentucky,Regular,0,0,77,27,33,0,0,enrolled,40
+102120,Mary,Major_396,F,,Mary.Major_396@example.com,1,1,0,1,1,3.23,1,Rhode Island,Regular,0,0,80,26,33,0,0,enrolled,40
+102126,Jorge,Souza_139,M,,Jorge.Souza_139@example.com,1,1,0,0,1,3.47,1,Nebraska,Regular,0,0,86,27,33,0,0,enrolled,40
+102130,Maria,Garcia_401,F,,Maria.Garcia_401@example.com,1,1,0,8,0,3.79,0,Washington,Regular,0,0,94,29,33,0,0,enrolled,40
+102137,Diego,Ramirez_411,M,,Diego.Ramirez_411@example.com,1,1,0,7,0,3.84,1,Florida,Regular,0,0,95,29,33,0,0,enrolled,40
+102138,John,Doe_193,M,,John.Doe_193@example.com,1,1,0,4,0,2.54,0,District ,Regular,0,0,63,26,33,0,0,enrolled,40
+102139,Carlos,Salazar_176,M,,Carlos.Salazar_176@example.com,1,1,1,0,1,3.69,0,Michigan,Regular,0,0,92,25,33,0,0,enrolled,40
+102141,Shirley,Rodriguez_093,F,,Shirley.Rodriguez_093@example.com,1,1,0,6,0,2.39,1,Colorado,Regular,0,0,59,29,33,0,0,enrolled,40
+102142,John,Stiles_342,M,,John.Stiles_342@example.com,0,0,0,4,0,3.46,0,South Carolina,Regular,0,1,86,25,33,0,0,declined,0
+102151,Paulo,Santos_354,M,,Paulo.Santos_354@example.com,1,0,0,8,0,2.46,1,Arizona,Regular,0,0,61,29,33,0,0,admitted,0
+102164,Jane,Doe_127,F,,Jane.Doe_127@example.com,1,1,1,8,0,2.88,1,Pennsylvania,Regular,0,0,71,26,33,0,0,enrolled,40
+102185,John,Doe_420,M,,John.Doe_420@example.com,1,1,0,3,1,2.72,1,West Virginia,Regular,0,0,68,29,33,0,0,enrolled,40
+102193,John,Doe_030,M,,John.Doe_030@example.com,0,0,0,7,0,3.18,0,American Samoa,Regular,1,1,79,27,33,0,0,declined,0
+102195,Maria,Garcia_091,F,,Maria.Garcia_091@example.com,1,0,0,7,0,3.09,1,Kentucky,Regular,0,0,77,25,33,0,0,admitted,0
+102199,Ana,Silva_133,F,,Ana.Silva_133@example.com,0,0,0,6,0,3.21,0,Rhode Island,Regular,0,1,80,25,33,0,0,declined,0
+102202,Marcia,Oliveira_201,F,,Marcia.Oliveira_201@example.com,0,0,0,0,1,2.68,0,Washington,Regular,0,1,67,29,33,0,0,declined,0
+102213,Alejandro,Rosalez_226,M,,Alejandro.Rosalez_226@example.com,1,1,0,0,1,3.13,0,Hawaii,Regular,0,0,78,28,33,0,0,enrolled,40
+102225,John,Stiles_216,M,,John.Stiles_216@example.com,1,1,0,6,0,3.55,1,Mississippi,Regular,0,0,88,26,33,0,0,enrolled,40
+102230,Ana,Silva_310,F,,Ana.Silva_310@example.com,1,1,0,1,1,3.41,1,Mississippi,Regular,0,0,85,27,33,0,0,enrolled,40
+102233,Maria,Garcia_415,F,,Maria.Garcia_415@example.com,1,1,0,1,1,2.39,1,Texas,Regular,0,0,59,27,33,0,0,enrolled,40
+102247,Nikki,Wolf_315,F,,Nikki.Wolf_315@example.com,1,1,0,3,1,2.78,1,South Dakota,Regular,0,0,69,25,33,0,0,enrolled,40
+102256,Jane,Doe_245,F,,Jane.Doe_245@example.com,1,1,0,7,0,3.42,1,Colorado,Regular,0,0,85,29,33,0,0,enrolled,40
+102257,Paulo,Santos_011,M,,Paulo.Santos_011@example.com,0,0,0,2,1,3.12,0,Alabama,Regular,1,1,77,25,33,0,0,declined,0
+102273,Jane,Doe_085,F,,Jane.Doe_085@example.com,1,1,1,4,0,2.64,1,Montana,Regular,0,0,66,25,33,0,0,enrolled,40
+102278,Paulo,Santos_262,M,,Paulo.Santos_262@example.com,1,1,0,8,0,3.2,1,Alabama,Regular,0,0,80,26,33,0,0,enrolled,40
+102285,Jorge,Souza_370,M,,Jorge.Souza_370@example.com,1,1,0,1,1,3.58,0,New Hampshire,Regular,0,0,89,27,33,0,0,enrolled,40
+102288,Paulo,Santos_209,M,,Paulo.Santos_209@example.com,0,0,0,1,1,2.7,0,Mississippi,Regular,1,1,67,26,33,0,0,declined,0
+102300,Richard,Roe_123,M,,Richard.Roe_123@example.com,0,0,0,0,1,2.86,0,Tennessee,Regular,0,1,71,27,33,0,0,declined,0
+102305,Jane,Doe_031,F,,Jane.Doe_031@example.com,0,0,0,7,0,3.31,0,Utah,Regular,0,1,82,28,33,0,0,declined,0
+102307,Nikki,Wolf_364,F,,Nikki.Wolf_364@example.com,0,0,0,8,0,2.65,0,Virginia,Regular,0,1,66,26,33,0,0,declined,0
+102316,Paulo,Santos_414,M,,Paulo.Santos_414@example.com,1,1,0,7,0,2.68,0,Puerto Rico,Regular,0,0,67,27,33,0,0,enrolled,40
+102318,John,Stiles_142,M,,John.Stiles_142@example.com,1,1,1,3,1,2.6,0,Guam,Regular,0,0,65,27,33,0,0,enrolled,40
+102320,Jane,Doe_192,F,,Jane.Doe_192@example.com,1,1,0,2,1,3.77,1,Louisiana,Regular,0,0,94,27,33,0,0,enrolled,40
+102331,Jane,Doe_365,F,,Jane.Doe_365@example.com,1,1,1,2,1,2.93,0,Puerto Rico,Regular,0,0,73,25,33,0,0,enrolled,40
+102334,Maria,Garcia_428,F,,Maria.Garcia_428@example.com,0,0,0,8,0,3.23,0,Utah,Regular,0,1,80,28,33,0,0,declined,0
+102363,John,Stiles_371,M,,John.Stiles_371@example.com,1,1,1,4,0,3.51,1,American Samoa,Regular,0,0,87,28,33,0,0,enrolled,40
+102365,Ana,Silva_302,F,,Ana.Silva_302@example.com,1,1,0,5,0,2.68,0,Nevada,Regular,0,0,67,27,33,0,0,enrolled,40
+102368,Carlos,Salazar_152,M,,Carlos.Salazar_152@example.com,1,1,0,8,0,3.6,1,North Carolina,Regular,0,0,90,29,33,0,0,enrolled,40
+102369,Jane,Doe_306,F,,Jane.Doe_306@example.com,1,1,0,7,0,3.57,1,Maine,Regular,0,0,89,25,33,0,0,enrolled,40
+102377,Paulo,Santos_424,M,,Paulo.Santos_424@example.com,1,0,0,6,0,3.42,1,Idaho,Regular,0,0,85,28,33,0,0,admitted,0
+102390,Carlos,Salazar_101,M,,Carlos.Salazar_101@example.com,1,1,0,1,1,3.54,1,Kentucky,Regular,0,0,88,29,33,0,0,enrolled,40
+102392,Shirley,Rodriguez_122,F,,Shirley.Rodriguez_122@example.com,1,1,0,6,0,2.83,1,Maine,Regular,0,0,70,28,33,0,0,enrolled,40
+102396,Nikki,Wolf_170,F,,Nikki.Wolf_170@example.com,1,1,0,0,1,2.84,0,Connecticut,Regular,0,0,71,28,33,0,0,enrolled,40
+102399,Mary,Major_242,F,,Mary.Major_242@example.com,1,1,0,6,0,3.39,1,Nevada,Regular,0,0,84,26,33,0,0,enrolled,40
+102415,Richard,Roe_157,M,,Richard.Roe_157@example.com,1,1,0,3,1,2.9,1,Oregon,Regular,0,0,72,29,33,0,0,enrolled,40
+102438,John,Doe_063,M,,John.Doe_063@example.com,1,0,0,3,1,3.26,1,Maine,Regular,0,0,81,26,33,0,0,admitted,0
+102443,Shirley,Rodriguez_111,F,,Shirley.Rodriguez_111@example.com,1,1,1,8,0,3.17,0,District ,Regular,0,0,79,27,33,0,0,enrolled,40
+102449,Ana,Silva_021,F,,Ana.Silva_021@example.com,1,1,0,4,0,2.86,1,Massachusetts,Regular,0,0,71,28,33,0,0,enrolled,40
+102452,Martha,Rivera_308,F,,Martha.Rivera_308@example.com,1,1,0,2,1,2.44,0,South Dakota,Regular,0,0,61,29,33,0,0,enrolled,40
+102454,Alejandro,Rosalez_132,M,,Alejandro.Rosalez_132@example.com,1,1,0,1,1,3.14,1,District ,Regular,0,0,78,29,33,0,0,enrolled,40
+102458,John,Doe_043,M,,John.Doe_043@example.com,0,0,0,1,1,3.79,0,North Carolina,Regular,0,1,94,26,33,0,0,declined,0
+102459,John,Doe_185,M,,John.Doe_185@example.com,0,0,0,7,0,3.39,0,Illinois,Regular,1,1,84,25,33,0,0,declined,0
+102461,Nikki,Wolf_202,F,,Nikki.Wolf_202@example.com,1,1,0,4,0,3.1,1,Guam,Regular,0,0,77,26,33,0,0,enrolled,40
+102464,Martha,Rivera_161,F,,Martha.Rivera_161@example.com,1,1,0,7,0,2.96,0,Utah,Regular,0,0,73,29,33,0,0,enrolled,40
+102465,Maria,Garcia_403,F,,Maria.Garcia_403@example.com,1,1,0,5,0,3.58,1,Colorado,Regular,0,0,89,28,33,0,0,enrolled,40
+102475,Nikki,Wolf_351,F,,Nikki.Wolf_351@example.com,1,1,0,1,1,3.47,1,Alaska,Regular,0,0,86,27,33,0,0,enrolled,40
+102480,John,Stiles_240,M,,John.Stiles_240@example.com,1,1,1,2,1,3.67,1,Virgin Islands,Regular,0,0,91,28,33,0,0,enrolled,40
+102486,Richard,Roe_422,M,,Richard.Roe_422@example.com,0,0,0,6,0,3.44,0,West Virginia,Regular,0,1,85,28,33,0,0,declined,0
+102502,Alejandro,Rosalez_174,M,,Alejandro.Rosalez_174@example.com,1,0,0,4,0,3.24,1,Pennsylvania,Regular,0,0,80,28,33,0,0,admitted,0
+102505,Maria,Garcia_084,F,,Maria.Garcia_084@example.com,1,1,1,3,1,2.71,1,Wyoming,Regular,0,0,67,26,33,0,0,enrolled,40
+102510,Paulo,Santos_066,M,,Paulo.Santos_066@example.com,1,1,0,3,1,3.21,0,Guam,Regular,0,0,80,25,33,0,0,enrolled,40
+102514,Ana,Silva_314,F,,Ana.Silva_314@example.com,0,0,0,6,0,2.85,0,of Columbia,Regular,0,1,71,26,33,0,0,declined,0
+102515,John,Doe_235,M,,John.Doe_235@example.com,1,1,1,4,0,3.62,1,Virgin Islands,Regular,0,0,90,29,33,0,0,enrolled,40
+102519,Paulo,Santos_412,M,,Paulo.Santos_412@example.com,0,0,0,7,0,2.81,0,Connecticut,Regular,1,1,70,29,33,0,0,declined,0
+102521,Paulo,Santos_184,M,,Paulo.Santos_184@example.com,1,1,1,4,0,3.31,0,Ohio,Regular,0,0,82,27,33,0,0,enrolled,40
+102522,Shirley,Rodriguez_156,F,,Shirley.Rodriguez_156@example.com,1,1,0,7,0,3.02,1,California,Regular,0,0,75,26,33,0,0,enrolled,40
+102536,John,Doe_428,M,,John.Doe_428@example.com,1,1,0,2,1,3.02,1,Montana,Regular,0,0,75,28,33,0,0,enrolled,40
+102568,Alejandro,Rosalez_036,M,,Alejandro.Rosalez_036@example.com,0,0,0,2,1,3.29,0,Washington,Regular,1,1,82,25,33,0,0,declined,0
+102588,Nikki,Wolf_392,F,,Nikki.Wolf_392@example.com,1,1,0,5,0,2.6,1,Wyoming,Regular,0,0,65,26,33,0,0,enrolled,40
+102595,Richard,Roe_111,M,,Richard.Roe_111@example.com,1,1,0,8,0,3.34,1,New Hampshire,Regular,0,0,83,28,33,0,0,enrolled,40
+102600,John,Doe_238,M,,John.Doe_238@example.com,0,0,0,2,1,2.97,0,Rhode Island,Regular,1,1,74,28,33,0,0,declined,0
+102603,Martha,Rivera_401,F,,Martha.Rivera_401@example.com,1,1,0,5,0,2.64,1,Virginia,Regular,0,0,65,29,33,0,0,enrolled,40
+102604,Nikki,Wolf_385,F,,Nikki.Wolf_385@example.com,1,1,0,7,0,2.93,0,Missouri,Regular,0,0,73,27,33,0,0,enrolled,40
+102605,Maria,Garcia_267,F,,Maria.Garcia_267@example.com,1,1,0,4,0,3.41,1,Montana,Regular,0,0,85,25,33,0,0,enrolled,40
+102607,John,Stiles_329,M,,John.Stiles_329@example.com,1,1,0,5,0,3.52,1,Idaho,Regular,0,0,88,26,33,0,0,enrolled,40
+102610,John,Stiles_016,M,,John.Stiles_016@example.com,1,1,0,2,1,2.91,1,Florida,Regular,0,0,72,27,33,0,0,enrolled,40
+102621,Paulo,Santos_341,M,,Paulo.Santos_341@example.com,1,1,1,7,0,2.77,1,Oregon,Regular,0,0,69,27,33,0,0,enrolled,40
+102623,Jane,Doe_133,F,,Jane.Doe_133@example.com,1,1,0,4,0,3.12,1,Florida,Regular,0,0,78,26,33,0,0,enrolled,40
+102624,Paulo,Santos_297,M,,Paulo.Santos_297@example.com,1,1,1,3,1,3.87,1,New Hampshire,Early Decision,0,0,96,26,33,0,0,enrolled,40
+102634,Paulo,Santos_279,M,,Paulo.Santos_279@example.com,0,0,0,2,1,2.95,0,South Carolina,Regular,1,1,73,28,33,0,0,declined,0
+102636,Diego,Ramirez_337,M,,Diego.Ramirez_337@example.com,1,1,0,0,1,2.88,1,Alaska,Regular,0,0,72,28,33,0,0,enrolled,40
+102648,Nikki,Wolf_080,F,,Nikki.Wolf_080@example.com,1,1,0,1,1,3.53,0,Missouri,Regular,0,0,88,26,33,0,0,enrolled,40
+102650,Paulo,Santos_120,M,,Paulo.Santos_120@example.com,1,1,1,6,0,3.76,1,Michigan,Regular,0,0,93,29,33,0,0,enrolled,40
+102657,Ana,Silva_156,F,,Ana.Silva_156@example.com,1,1,0,4,0,3.52,0,Georgia,Regular,0,0,87,29,33,0,0,enrolled,40
+102663,Martha,Rivera_398,F,,Martha.Rivera_398@example.com,1,1,0,1,1,2.97,1,Texas,Regular,0,0,74,27,33,0,0,enrolled,40
+102665,Richard,Roe_199,M,,Richard.Roe_199@example.com,1,1,0,5,0,3.25,1,Kansas,Regular,0,0,81,29,33,0,0,enrolled,40
+102716,Carlos,Salazar_243,M,,Carlos.Salazar_243@example.com,1,1,0,1,1,3.22,0,Rhode Island,Regular,0,0,80,29,33,0,0,enrolled,40
+102719,Richard,Roe_262,M,,Richard.Roe_262@example.com,1,1,1,2,1,2.79,1,Wyoming,Regular,0,0,69,27,33,0,0,enrolled,40
+102725,Mateo,Jackson_046,M,,Mateo.Jackson_046@example.com,1,1,1,7,0,3.73,0,California,Regular,0,0,93,28,33,0,0,enrolled,40
+102726,Jane,Doe_337,F,,Jane.Doe_337@example.com,1,1,0,7,0,3.41,1,District ,Regular,0,0,85,27,33,0,0,enrolled,40
+102739,Carlos,Salazar_329,M,,Carlos.Salazar_329@example.com,1,1,0,8,0,3.33,1,Tennessee,Regular,0,0,83,25,33,0,0,enrolled,40
+102745,Martha,Rivera_314,F,,Martha.Rivera_314@example.com,1,1,0,3,1,3.01,0,Connecticut,Regular,0,0,75,26,33,0,0,enrolled,40
+102748,Jane,Doe_036,F,,Jane.Doe_036@example.com,1,1,0,5,0,3.01,1,Delaware,Regular,0,0,75,26,33,0,0,enrolled,40
+102753,Mateo,Jackson_440,M,,Mateo.Jackson_440@example.com,1,1,0,5,0,2.9,1,Massachusetts,Regular,0,0,72,29,33,0,0,enrolled,40
+102755,Diego,Ramirez_297,M,,Diego.Ramirez_297@example.com,1,1,1,4,0,4.13,0,Hawaii,Early Action,0,0,100,27,33,0,0,enrolled,40
+102762,John,Doe_067,M,,John.Doe_067@example.com,0,0,0,6,0,3.05,0,Massachusetts,Regular,0,1,76,25,33,0,0,declined,0
+102769,Maria,Garcia_070,F,,Maria.Garcia_070@example.com,1,1,1,1,1,2.77,1,Pennsylvania,Regular,0,0,69,29,33,0,0,enrolled,40
+102781,Paulo,Santos_168,M,,Paulo.Santos_168@example.com,1,1,0,6,0,3.83,0,Mississippi,Regular,0,0,95,28,33,0,0,enrolled,40
+102783,John,Doe_194,M,,John.Doe_194@example.com,1,1,0,8,0,3.29,1,Mississippi,Regular,0,0,82,26,33,0,0,enrolled,40
+102802,Richard,Roe_037,M,,Richard.Roe_037@example.com,1,1,0,7,0,3.56,1,Texas,Regular,0,0,88,25,33,0,0,enrolled,40
+102805,Marcia,Oliveira_320,F,,Marcia.Oliveira_320@example.com,1,1,0,5,0,3.04,1,Oklahoma,Regular,0,0,75,25,33,0,0,enrolled,40
+102809,Richard,Roe_106,M,,Richard.Roe_106@example.com,1,1,0,8,0,3.11,1,Florida,Regular,0,0,77,25,33,0,0,enrolled,40
+102818,Martha,Rivera_137,F,,Martha.Rivera_137@example.com,1,1,0,1,1,3.03,1,Florida,Regular,0,0,75,27,33,0,0,enrolled,40
+102824,Richard,Roe_371,M,,Richard.Roe_371@example.com,0,0,0,0,1,2.94,0,Oregon,Regular,1,1,73,25,33,0,0,declined,0
+102829,Carlos,Salazar_091,M,,Carlos.Salazar_091@example.com,0,0,0,5,0,3.28,0,Illinois,Regular,1,1,81,28,33,0,0,declined,0
+102840,Mateo,Jackson_383,M,,Mateo.Jackson_383@example.com,1,1,0,4,0,3.52,1,Connecticut,Regular,0,0,88,28,33,0,0,enrolled,40
+102852,Mateo,Jackson_091,M,,Mateo.Jackson_091@example.com,0,0,0,7,0,3.4,0,New Jersey,Regular,1,1,85,29,33,0,0,declined,0
+102854,Richard,Roe_229,M,,Richard.Roe_229@example.com,1,1,1,4,0,2.91,1,Wyoming,Regular,0,0,72,27,33,0,0,enrolled,40
+102864,John,Doe_139,M,,John.Doe_139@example.com,1,1,1,3,1,2.84,0,Ohio,Regular,0,0,71,27,33,0,0,enrolled,40
+102865,John,Doe_129,M,,John.Doe_129@example.com,1,1,0,7,0,2.5,1,Michigan,Regular,0,0,62,27,33,0,0,enrolled,40
+102871,Ana,Silva_018,F,,Ana.Silva_018@example.com,1,1,0,1,1,3.07,1,Guam,Regular,0,0,76,26,33,0,0,enrolled,40
+102876,Richard,Roe_098,M,,Richard.Roe_098@example.com,1,0,0,3,1,3.57,1,New Hampshire,Regular,0,0,89,29,33,0,0,admitted,0
+102884,Paulo,Santos_256,M,,Paulo.Santos_256@example.com,1,1,0,1,1,3.8,1,Texas,Regular,0,0,94,26,33,0,0,enrolled,40
+102886,Jane,Doe_372,F,,Jane.Doe_372@example.com,0,0,0,3,1,3.17,0,Puerto Rico,Regular,0,1,79,25,33,0,0,declined,0
+102888,Richard,Roe_064,M,,Richard.Roe_064@example.com,1,1,0,1,1,3.37,1,New Mexico,Regular,0,0,84,26,33,0,0,enrolled,40
+102897,John,Stiles_301,M,,John.Stiles_301@example.com,1,1,0,7,0,2.77,0,North Carolina,Regular,0,0,69,27,33,0,0,enrolled,40
+102901,Martha,Rivera_285,F,,Martha.Rivera_285@example.com,1,1,0,1,1,2.62,1,Mississippi,Regular,0,0,65,27,33,0,0,enrolled,40
+102902,Ana,Silva_275,F,,Ana.Silva_275@example.com,1,1,0,3,1,2.83,1,Maryland,Regular,0,0,70,27,33,0,0,enrolled,40
+102905,John,Doe_088,M,,John.Doe_088@example.com,1,1,0,2,1,3.41,1,Rhode Island,Regular,0,0,85,25,33,0,0,enrolled,40
+102907,Jane,Doe_322,F,,Jane.Doe_322@example.com,1,1,0,8,0,2.9,0,Texas,Regular,0,0,72,27,33,0,0,enrolled,40
+102917,John,Stiles_021,M,,John.Stiles_021@example.com,1,1,0,6,0,3.33,1,Nevada,Regular,0,0,83,26,33,0,0,enrolled,40
+102930,Ana,Silva_262,F,,Ana.Silva_262@example.com,1,1,0,1,1,3.51,1,Pennsylvania,Regular,0,0,87,28,33,0,0,enrolled,40
+102936,Richard,Roe_088,M,,Richard.Roe_088@example.com,1,1,1,0,1,3.5,1,Kentucky,Regular,0,0,87,25,33,0,0,enrolled,40
+102940,Alejandro,Rosalez_106,M,,Alejandro.Rosalez_106@example.com,0,0,0,4,0,3.52,0,of Columbia,Regular,0,1,87,25,33,0,0,declined,0
+102946,Richard,Roe_076,M,,Richard.Roe_076@example.com,1,1,0,6,0,3.36,1,Indiana,Regular,0,0,84,29,33,0,0,enrolled,40
+102963,Alejandro,Rosalez_254,M,,Alejandro.Rosalez_254@example.com,1,1,0,3,1,3.04,0,Kansas,Regular,0,0,76,25,33,0,0,enrolled,40
+102969,Maria,Garcia_058,F,,Maria.Garcia_058@example.com,1,1,0,0,1,3.35,1,Colorado,Regular,0,0,83,28,33,0,0,enrolled,40
+102977,John,Stiles_125,M,,John.Stiles_125@example.com,0,0,0,2,1,3.26,0,Maine,Regular,0,1,81,28,33,0,0,declined,0
+102985,Richard,Roe_362,M,,Richard.Roe_362@example.com,1,1,0,0,1,3.62,1,Maryland,Regular,0,0,90,29,33,0,0,enrolled,40
+102991,Martha,Rivera_365,F,,Martha.Rivera_365@example.com,0,0,0,2,1,3.43,0,Georgia,Regular,0,1,85,29,33,0,0,declined,0
+102994,Nikki,Wolf_259,F,,Nikki.Wolf_259@example.com,1,1,0,7,0,2.97,0,Texas,Regular,0,0,74,26,33,0,0,enrolled,40
+103000,Carlos,Salazar_054,M,,Carlos.Salazar_054@example.com,1,1,0,6,0,3.22,1,Alabama,Regular,0,0,80,27,35,0,0,enrolled,42
+103005,Diego,Ramirez_135,M,,Diego.Ramirez_135@example.com,1,1,0,6,0,3.57,0,of Columbia,Regular,0,0,89,26,35,0,0,enrolled,42
+103007,John,Stiles_176,M,,John.Stiles_176@example.com,1,1,0,6,0,3.14,1,New Hampshire,Regular,0,0,78,25,35,0,0,enrolled,42
+103008,Mary,Major_375,F,,Mary.Major_375@example.com,0,0,0,7,0,2.97,0,Idaho,Regular,0,1,74,27,35,0,0,declined,0
+103009,Richard,Roe_003,M,,Richard.Roe_003@example.com,1,1,0,6,0,3.65,1,New Jersey,Regular,0,0,91,27,35,0,0,enrolled,42
+103010,Richard,Roe_117,M,,Richard.Roe_117@example.com,1,1,1,2,1,2.81,1,West Virginia,Regular,0,0,70,25,35,0,0,enrolled,42
+103011,Martha,Rivera_176,F,,Martha.Rivera_176@example.com,1,1,0,3,1,3.67,1,Mississippi,Regular,0,0,91,26,35,0,0,enrolled,42
+103012,Martha,Rivera_430,F,,Martha.Rivera_430@example.com,1,1,0,6,0,3.42,0,Georgia,Regular,0,0,85,29,35,0,0,enrolled,42
+103027,Mateo,Jackson_373,M,,Mateo.Jackson_373@example.com,0,0,0,4,0,2.98,0,Utah,Regular,0,1,74,29,35,0,0,declined,0
+103037,Marcia,Oliveira_055,F,,Marcia.Oliveira_055@example.com,1,1,0,2,1,3,1,Idaho,Regular,0,0,74,28,35,0,0,enrolled,42
+103039,Shirley,Rodriguez_183,F,,Shirley.Rodriguez_183@example.com,1,1,0,4,0,3.21,1,North Dakota,Regular,0,0,80,25,35,0,0,enrolled,42
+103055,John,Doe_288,M,,John.Doe_288@example.com,1,1,0,7,0,3.23,1,Hawaii,Regular,0,0,80,26,35,0,0,enrolled,42
+103058,John,Stiles_208,M,,John.Stiles_208@example.com,0,0,0,4,0,3.31,0,Wyoming,Regular,1,1,82,27,35,0,0,declined,0
+103066,Richard,Roe_345,M,,Richard.Roe_345@example.com,1,1,0,3,1,3.29,1,New York,Regular,0,0,82,25,35,0,0,enrolled,42
+103068,Jane,Doe_058,F,,Jane.Doe_058@example.com,1,1,1,4,0,3.02,1,Virgin Islands,Regular,0,0,75,27,35,0,0,enrolled,42
+103070,Diego,Ramirez_238,M,,Diego.Ramirez_238@example.com,1,1,0,1,1,3.66,1,South Carolina,Regular,0,0,91,26,35,0,0,enrolled,42
+103080,Carlos,Salazar_308,M,,Carlos.Salazar_308@example.com,0,0,0,8,0,3.68,0,Florida,Regular,0,1,91,29,35,0,0,declined,0
+103087,Mateo,Jackson_099,M,,Mateo.Jackson_099@example.com,1,1,0,4,0,3.06,1,Wisconsin,Regular,0,0,76,26,35,0,0,enrolled,42
+103097,Jane,Doe_292,F,,Jane.Doe_292@example.com,1,1,1,5,0,3.14,0,Nevada,Regular,0,0,78,28,35,0,0,enrolled,42
+103108,Jane,Doe_276,F,,Jane.Doe_276@example.com,1,1,0,2,1,3.46,1,Nevada,Regular,0,0,86,26,35,0,0,enrolled,42
+103110,Richard,Roe_327,M,,Richard.Roe_327@example.com,1,1,0,3,1,3.03,1,Iowa,Regular,0,0,75,29,35,0,0,enrolled,42
+103116,Paulo,Santos_016,M,,Paulo.Santos_016@example.com,1,1,0,4,0,2.75,1,Oklahoma,Regular,0,0,68,26,35,0,0,enrolled,42
+103120,Martha,Rivera_345,F,,Martha.Rivera_345@example.com,1,1,0,1,1,3.53,1,Michigan,Regular,0,0,88,26,35,0,0,enrolled,42
+103129,John,Stiles_404,M,,John.Stiles_404@example.com,1,1,0,6,0,3.23,1,Idaho,Regular,0,0,80,25,35,0,0,enrolled,42
+103134,Mary,Major_201,F,,Mary.Major_201@example.com,1,1,0,0,1,3.99,1,Louisiana,Early Decision,0,0,99,29,35,0,0,enrolled,42
+103135,Paulo,Santos_164,M,,Paulo.Santos_164@example.com,1,1,0,5,0,2.45,0,North Carolina,Regular,0,0,61,27,35,0,0,enrolled,42
+103140,Martha,Rivera_407,F,,Martha.Rivera_407@example.com,1,1,0,2,1,3.18,1,Virginia,Regular,0,0,79,27,35,0,0,enrolled,42
+103148,John,Doe_351,M,,John.Doe_351@example.com,1,1,1,7,0,3.45,0,Oregon,Regular,0,0,86,27,35,0,0,enrolled,42
+103171,Jorge,Souza_209,M,,Jorge.Souza_209@example.com,1,1,0,1,1,3.25,0,Virgin Islands,Regular,0,0,81,28,35,0,0,enrolled,42
+103190,Jane,Doe_153,F,,Jane.Doe_153@example.com,0,0,0,1,1,3.59,0,Kansas,Regular,1,1,89,26,35,0,0,declined,0
+103191,Diego,Ramirez_288,M,,Diego.Ramirez_288@example.com,1,1,0,0,1,3.29,1,Hawaii,Regular,0,0,82,26,35,0,0,enrolled,42
+103193,Mary,Major_270,F,,Mary.Major_270@example.com,0,0,0,0,1,2.94,0,Wyoming,Regular,1,1,73,26,35,0,0,declined,0
+103202,Nikki,Wolf_348,F,,Nikki.Wolf_348@example.com,1,1,0,8,0,3.48,0,New Mexico,Regular,0,0,86,28,35,0,0,enrolled,42
+103207,Mary,Major_332,F,,Mary.Major_332@example.com,0,0,0,7,0,3.15,0,Maine,Regular,1,1,78,28,35,0,0,declined,0
+103213,Paulo,Santos_247,M,,Paulo.Santos_247@example.com,1,1,0,5,0,3.18,1,Florida,Regular,0,0,79,25,35,0,0,enrolled,42
+103227,Nikki,Wolf_013,F,,Nikki.Wolf_013@example.com,1,1,1,8,0,3.31,1,Delaware,Regular,0,0,82,25,35,0,0,enrolled,42
+103234,Shirley,Rodriguez_169,F,,Shirley.Rodriguez_169@example.com,1,1,0,4,0,3.45,1,Louisiana,Regular,0,0,86,25,35,0,0,enrolled,42
+103249,Richard,Roe_008,M,,Richard.Roe_008@example.com,1,1,0,2,1,3.28,1,Rhode Island,Regular,0,0,81,28,35,0,0,enrolled,42
+103257,Mary,Major_408,F,,Mary.Major_408@example.com,1,1,0,0,1,2.94,0,Illinois,Regular,0,0,73,29,35,0,0,enrolled,42
+103258,Alejandro,Rosalez_135,M,,Alejandro.Rosalez_135@example.com,1,1,0,1,1,3.44,1,Alabama,Regular,0,0,85,25,35,0,0,enrolled,42
+103263,John,Doe_307,M,,John.Doe_307@example.com,1,1,0,6,0,3.84,1,Guam,Regular,0,0,95,25,35,0,0,enrolled,42
+103275,Paulo,Santos_302,M,,Paulo.Santos_302@example.com,1,1,0,6,0,3.08,1,Nevada,Regular,0,0,76,25,35,0,0,enrolled,42
+103297,Jorge,Souza_093,M,,Jorge.Souza_093@example.com,1,1,0,4,0,2.95,1,Indiana,Regular,0,0,73,25,35,0,0,enrolled,42
+103300,Richard,Roe_250,M,,Richard.Roe_250@example.com,1,1,0,3,1,3.44,1,Maine,Regular,0,0,86,26,35,0,0,enrolled,42
+103307,Mateo,Jackson_095,M,,Mateo.Jackson_095@example.com,1,1,0,4,0,2.73,1,Tennessee,Regular,0,0,68,27,35,0,0,enrolled,42
+103339,Jorge,Souza_208,M,,Jorge.Souza_208@example.com,1,1,1,8,0,3.02,1,of Columbia,Regular,0,0,75,25,35,0,0,enrolled,42
+103340,Ana,Silva_029,F,,Ana.Silva_029@example.com,1,1,0,6,0,3.02,1,Washington,Regular,0,0,75,25,35,0,0,enrolled,42
+103359,Jorge,Souza_045,M,,Jorge.Souza_045@example.com,1,1,0,8,0,3.26,0,Hawaii,Regular,0,0,81,27,35,0,0,enrolled,42
+103367,John,Stiles_060,M,,John.Stiles_060@example.com,1,1,1,0,1,3.25,1,Connecticut,Regular,0,0,81,25,35,0,0,enrolled,42
+103370,Ana,Silva_136,F,,Ana.Silva_136@example.com,0,0,0,1,1,2.67,0,Puerto Rico,Regular,1,1,66,26,35,0,0,declined,0
+103381,Mary,Major_365,F,,Mary.Major_365@example.com,1,1,1,3,1,2.98,1,Kentucky,Regular,0,0,74,25,35,0,0,enrolled,42
+103385,Richard,Roe_228,M,,Richard.Roe_228@example.com,1,1,0,8,0,3.14,1,Illinois,Regular,0,0,78,28,35,0,0,enrolled,42
+103400,Nikki,Wolf_057,F,,Nikki.Wolf_057@example.com,1,1,0,0,1,3.3,1,Nevada,Regular,0,0,82,26,35,0,0,enrolled,42
+103403,Jorge,Souza_186,M,,Jorge.Souza_186@example.com,1,1,0,1,1,3.05,1,South Carolina,Regular,0,0,76,26,35,0,0,enrolled,42
+103446,Maria,Garcia_017,F,,Maria.Garcia_017@example.com,0,0,0,0,1,3.57,0,New Mexico,Regular,0,1,89,29,35,0,0,declined,0
+103448,John,Doe_256,M,,John.Doe_256@example.com,1,1,0,2,1,3.55,1,Alaska,Regular,0,0,88,25,35,0,0,enrolled,42
+103450,Diego,Ramirez_354,M,,Diego.Ramirez_354@example.com,1,1,0,4,0,3.95,0,Michigan,Early Decision,0,0,98,28,35,0,0,enrolled,42
+103468,Richard,Roe_403,M,,Richard.Roe_403@example.com,1,1,1,1,1,3.75,0,Kansas,Regular,0,0,93,27,35,0,0,enrolled,42
+103469,Carlos,Salazar_277,M,,Carlos.Salazar_277@example.com,1,1,0,5,0,3.51,1,Michigan,Regular,0,0,87,28,35,0,0,enrolled,42
+103476,John,Stiles_025,M,,John.Stiles_025@example.com,1,1,0,3,1,3.31,1,New Hampshire,Regular,0,0,82,25,35,0,0,enrolled,42
+103495,Ana,Silva_322,F,,Ana.Silva_322@example.com,0,0,0,5,0,3.2,0,Montana,Regular,1,1,80,29,35,0,0,declined,0
+103496,John,Doe_321,M,,John.Doe_321@example.com,1,1,0,7,0,3.43,1,Arizona,Regular,0,0,85,26,35,0,0,enrolled,42
+103501,Carlos,Salazar_268,M,,Carlos.Salazar_268@example.com,0,0,0,2,1,2.87,0,Oregon,Regular,1,1,71,29,35,0,0,declined,0
+103503,Diego,Ramirez_113,M,,Diego.Ramirez_113@example.com,1,1,0,3,1,3.41,1,Pennsylvania,Regular,0,0,85,27,35,0,0,enrolled,42
+103507,Maria,Garcia_426,F,,Maria.Garcia_426@example.com,1,1,0,1,1,2.89,0,Alaska,Regular,0,0,72,25,35,0,0,enrolled,42
+103512,Martha,Rivera_093,F,,Martha.Rivera_093@example.com,1,1,0,8,0,3.37,1,Massachusetts,Regular,0,0,84,27,35,0,0,enrolled,42
+103513,John,Stiles_361,M,,John.Stiles_361@example.com,0,0,0,6,0,3.17,0,Virginia,Regular,0,1,79,25,35,0,0,declined,0
+103514,Mateo,Jackson_089,M,,Mateo.Jackson_089@example.com,0,0,0,1,1,2.6,0,Virgin Islands,Regular,1,1,64,29,35,0,0,declined,0
+103520,Carlos,Salazar_061,M,,Carlos.Salazar_061@example.com,1,1,0,3,1,2.96,1,Illinois,Regular,0,0,74,29,35,0,0,enrolled,42
+103527,Marcia,Oliveira_405,F,,Marcia.Oliveira_405@example.com,1,1,0,8,0,3.01,1,Oregon,Regular,0,0,75,26,35,0,0,enrolled,42
+103535,Jane,Doe_333,F,,Jane.Doe_333@example.com,1,1,0,5,0,3.28,0,Indiana,Regular,0,0,81,27,35,0,0,enrolled,42
+103544,Paulo,Santos_335,M,,Paulo.Santos_335@example.com,1,1,1,2,1,2.92,1,Alabama,Regular,0,0,72,26,35,0,0,enrolled,42
+103550,Diego,Ramirez_309,M,,Diego.Ramirez_309@example.com,0,0,0,3,1,3.36,0,Wisconsin,Regular,1,1,84,27,35,0,0,declined,0
+103554,Alejandro,Rosalez_124,M,,Alejandro.Rosalez_124@example.com,1,1,1,0,1,3.31,0,Wyoming,Regular,0,0,82,25,35,0,0,enrolled,42
+103555,Mateo,Jackson_189,M,,Mateo.Jackson_189@example.com,1,1,1,3,1,3.26,0,West Virginia,Regular,0,0,81,26,35,0,0,enrolled,42
+103562,Jane,Doe_370,F,,Jane.Doe_370@example.com,1,1,0,1,1,3.64,1,Missouri,Regular,0,0,91,28,35,0,0,enrolled,42
+103596,Shirley,Rodriguez_160,F,,Shirley.Rodriguez_160@example.com,1,1,0,0,1,2.61,0,Alaska,Regular,0,0,65,27,35,0,0,enrolled,42
+103597,Nikki,Wolf_058,F,,Nikki.Wolf_058@example.com,1,1,0,3,1,2.75,1,Vermont,Regular,0,0,68,29,35,0,0,enrolled,42
+103601,Ana,Silva_140,F,,Ana.Silva_140@example.com,1,1,0,8,0,3.29,1,Massachusetts,Regular,0,0,82,27,35,0,0,enrolled,42
+103604,Diego,Ramirez_164,M,,Diego.Ramirez_164@example.com,0,0,0,6,0,2.58,0,American Samoa,Regular,0,1,64,25,35,0,0,declined,0
+103609,Jorge,Souza_285,M,,Jorge.Souza_285@example.com,0,0,0,6,0,3.3,0,Wisconsin,Regular,0,1,82,27,35,0,0,declined,0
+103621,Maria,Garcia_297,F,,Maria.Garcia_297@example.com,1,1,0,0,1,3.43,1,South Carolina,Regular,0,0,85,29,35,0,0,enrolled,42
+103635,Maria,Garcia_242,F,,Maria.Garcia_242@example.com,1,1,1,5,0,2.75,0,New Jersey,Regular,0,0,68,27,35,0,0,enrolled,42
+103636,Alejandro,Rosalez_065,M,,Alejandro.Rosalez_065@example.com,1,1,0,8,0,3.99,1,Virginia,Early Decision,0,0,99,28,35,0,0,enrolled,42
+103646,Diego,Ramirez_313,M,,Diego.Ramirez_313@example.com,1,1,0,2,1,3.19,1,Virgin Islands,Regular,0,0,79,26,35,0,0,enrolled,42
+103649,Carlos,Salazar_321,M,,Carlos.Salazar_321@example.com,1,1,0,4,0,2.95,1,Louisiana,Regular,0,0,73,29,35,0,0,enrolled,42
+103651,Nikki,Wolf_394,F,,Nikki.Wolf_394@example.com,1,1,0,0,1,3.33,1,Oklahoma,Regular,0,0,83,29,35,0,0,enrolled,42
+103654,Mateo,Jackson_340,M,,Mateo.Jackson_340@example.com,0,0,0,2,1,3.1,0,Minnesota,Regular,0,1,77,26,35,0,0,declined,0
+103657,John,Doe_036,M,,John.Doe_036@example.com,1,1,0,3,1,3.88,1,Illinois,Early Decision,0,0,96,29,35,0,0,enrolled,42
+103665,Mary,Major_430,F,,Mary.Major_430@example.com,1,1,0,6,0,2.7,1,Kentucky,Regular,0,0,67,25,35,0,0,enrolled,42
+103667,Mateo,Jackson_108,M,,Mateo.Jackson_108@example.com,1,1,0,0,1,3.42,1,Massachusetts,Regular,0,0,85,25,35,0,0,enrolled,42
+103671,John,Doe_294,M,,John.Doe_294@example.com,0,0,0,5,0,2.4,0,Virgin Islands,Regular,0,1,59,28,35,0,0,declined,0
+103672,Jane,Doe_284,F,,Jane.Doe_284@example.com,1,1,0,2,1,3.84,1,Washington,Regular,0,0,95,26,35,0,0,enrolled,42
+103676,Mary,Major_066,F,,Mary.Major_066@example.com,0,0,0,6,0,3.22,0,Ohio,Regular,0,1,80,28,35,0,0,declined,0
+103681,Paulo,Santos_088,M,,Paulo.Santos_088@example.com,1,1,0,7,0,3,1,Pennsylvania,Regular,0,0,75,29,35,0,0,enrolled,42
+103685,Maria,Garcia_033,F,,Maria.Garcia_033@example.com,1,1,0,0,1,2.69,0,Utah,Regular,0,0,67,29,35,0,0,enrolled,42
+103695,Mary,Major_349,F,,Mary.Major_349@example.com,1,1,0,1,1,3.52,1,New York,Regular,0,0,88,28,35,0,0,enrolled,42
+103706,Nikki,Wolf_149,F,,Nikki.Wolf_149@example.com,1,1,1,3,1,3.65,1,Washington,Regular,0,0,91,25,35,0,0,enrolled,42
+103707,Maria,Garcia_053,F,,Maria.Garcia_053@example.com,0,0,0,3,1,2.76,0,New Hampshire,Regular,1,1,69,25,35,0,0,declined,0
+103713,John,Stiles_373,M,,John.Stiles_373@example.com,1,1,0,6,0,3.92,0,Illinois,Early Decision,0,0,97,26,35,0,0,enrolled,42
+103720,Richard,Roe_276,M,,Richard.Roe_276@example.com,1,1,0,0,1,2.62,1,New Hampshire,Regular,0,0,65,26,35,0,0,enrolled,42
+103729,Jorge,Souza_193,M,,Jorge.Souza_193@example.com,1,1,0,5,0,3.44,1,Massachusetts,Regular,0,0,85,29,35,0,0,enrolled,42
+103736,Alejandro,Rosalez_073,M,,Alejandro.Rosalez_073@example.com,0,0,0,7,0,3.06,0,Missouri,Regular,1,1,76,25,35,0,0,declined,0
+103740,Carlos,Salazar_208,M,,Carlos.Salazar_208@example.com,1,1,1,2,1,3.02,1,Arizona,Regular,0,0,75,27,35,0,0,enrolled,42
+103743,Jane,Doe_373,F,,Jane.Doe_373@example.com,1,1,0,5,0,3.02,1,West Virginia,Regular,0,0,75,27,35,0,0,enrolled,42
+103747,Diego,Ramirez_095,M,,Diego.Ramirez_095@example.com,1,1,1,3,1,3.14,1,Arizona,Regular,0,0,78,29,35,0,0,enrolled,42
+103761,Jane,Doe_264,F,,Jane.Doe_264@example.com,1,1,0,2,1,2.63,1,California,Regular,0,0,65,26,35,0,0,enrolled,42
+103784,Martha,Rivera_111,F,,Martha.Rivera_111@example.com,1,1,0,0,1,3.42,0,Georgia,Regular,0,0,85,26,35,0,0,enrolled,42
+103798,Mateo,Jackson_150,M,,Mateo.Jackson_150@example.com,1,1,1,6,0,3.1,1,Arizona,Regular,0,0,77,26,35,0,0,enrolled,42
+103799,Martha,Rivera_175,F,,Martha.Rivera_175@example.com,1,1,0,2,1,3.5,1,District ,Regular,0,0,87,25,35,0,0,enrolled,42
+103812,Martha,Rivera_165,F,,Martha.Rivera_165@example.com,1,1,1,7,0,3.13,0,Connecticut,Regular,0,0,78,26,35,0,0,enrolled,42
+103818,Martha,Rivera_210,F,,Martha.Rivera_210@example.com,1,1,1,6,0,3.22,1,Arkansas,Regular,0,0,80,28,35,0,0,enrolled,42
+103828,Nikki,Wolf_433,F,,Nikki.Wolf_433@example.com,1,1,0,7,0,2.76,1,Connecticut,Regular,0,0,68,28,35,0,0,enrolled,42
+103836,Diego,Ramirez_168,M,,Diego.Ramirez_168@example.com,1,1,0,2,1,2.85,1,Pennsylvania,Regular,0,0,71,28,35,0,0,enrolled,42
+103847,Jane,Doe_151,F,,Jane.Doe_151@example.com,1,1,0,2,1,3.58,1,Ohio,Regular,0,0,89,26,35,0,0,enrolled,42
+103852,Jorge,Souza_238,M,,Jorge.Souza_238@example.com,1,1,0,3,1,3.03,1,Utah,Regular,0,0,75,28,35,0,0,enrolled,42
+103856,Martha,Rivera_420,F,,Martha.Rivera_420@example.com,1,1,0,2,1,3.52,0,Oregon,Regular,0,0,87,28,35,0,0,enrolled,42
+103857,John,Stiles_094,M,,John.Stiles_094@example.com,1,1,1,0,1,3.66,1,Montana,Regular,0,0,91,29,35,0,0,enrolled,42
+103863,Jane,Doe_021,F,,Jane.Doe_021@example.com,1,1,0,2,1,2.84,1,Louisiana,Regular,0,0,70,29,35,0,0,enrolled,42
+103865,Diego,Ramirez_114,M,,Diego.Ramirez_114@example.com,0,0,0,0,1,3.56,0,Guam,Regular,1,1,89,28,35,0,0,declined,0
+103891,Mateo,Jackson_067,M,,Mateo.Jackson_067@example.com,1,1,0,3,1,3.19,0,Nebraska,Regular,0,0,79,25,35,0,0,enrolled,42
+103904,Richard,Roe_428,M,,Richard.Roe_428@example.com,1,1,0,2,1,2.98,1,Oregon,Regular,0,0,74,25,35,0,0,enrolled,42
+103919,Nikki,Wolf_420,F,,Nikki.Wolf_420@example.com,0,0,0,8,0,3.26,0,Florida,Regular,0,1,81,29,35,0,0,declined,0
+103924,Nikki,Wolf_299,F,,Nikki.Wolf_299@example.com,1,1,0,6,0,2.05,1,District ,Regular,0,0,51,27,35,0,0,enrolled,42
+103928,Maria,Garcia_418,F,,Maria.Garcia_418@example.com,1,1,0,1,1,2.55,1,New Mexico,Regular,0,0,63,28,35,0,0,enrolled,42
+103929,John,Stiles_049,M,,John.Stiles_049@example.com,1,1,0,3,1,2.73,1,New Jersey,Regular,0,0,68,26,35,0,0,enrolled,42
+103939,Carlos,Salazar_225,M,,Carlos.Salazar_225@example.com,1,1,0,3,1,2.88,1,West Virginia,Regular,0,0,72,26,35,0,0,enrolled,42
+103942,Paulo,Santos_312,M,,Paulo.Santos_312@example.com,1,1,0,1,1,2.52,1,Washington,Regular,0,0,63,26,35,0,0,enrolled,42
+103943,Mary,Major_224,F,,Mary.Major_224@example.com,1,1,1,6,0,3.3,1,Montana,Regular,0,0,82,26,35,0,0,enrolled,42
+103948,Paulo,Santos_153,M,,Paulo.Santos_153@example.com,1,1,0,6,0,3.57,1,Colorado,Regular,0,0,89,28,35,0,0,enrolled,42
+103952,John,Doe_066,M,,John.Doe_066@example.com,1,1,0,1,1,3.32,1,Utah,Regular,0,0,83,29,35,0,0,enrolled,42
+103955,Paulo,Santos_403,M,,Paulo.Santos_403@example.com,1,1,0,3,1,3.22,1,California,Regular,0,0,80,27,35,0,0,enrolled,42
+103968,John,Doe_394,M,,John.Doe_394@example.com,1,0,0,0,1,3.28,1,South Dakota,Regular,0,0,81,28,35,0,0,admitted,0
+103972,Mary,Major_387,F,,Mary.Major_387@example.com,1,0,0,0,1,4.03,1,Texas,Early Action,0,0,100,25,35,0,0,admitted,0
+103974,Paulo,Santos_365,M,,Paulo.Santos_365@example.com,0,0,0,0,1,3.2,0,Missouri,Regular,1,1,80,29,35,0,0,declined,0
+103975,John,Stiles_227,M,,John.Stiles_227@example.com,1,1,0,1,1,3.19,1,Guam,Regular,0,0,79,29,35,0,0,enrolled,42
+103976,Maria,Garcia_170,F,,Maria.Garcia_170@example.com,1,0,0,3,1,3.55,1,New York,Regular,0,0,88,29,35,0,0,admitted,0
+103980,Martha,Rivera_321,F,,Martha.Rivera_321@example.com,1,1,0,2,1,3.23,1,Alaska,Regular,0,0,80,26,35,0,0,enrolled,42
+103989,Jane,Doe_393,F,,Jane.Doe_393@example.com,1,1,0,0,1,3.57,1,Utah,Regular,0,0,89,28,35,0,0,enrolled,42
+103990,Nikki,Wolf_185,F,,Nikki.Wolf_185@example.com,1,1,1,5,0,2.71,1,West Virginia,Regular,0,0,67,29,35,0,0,enrolled,42
+103998,Jorge,Souza_023,M,,Jorge.Souza_023@example.com,0,0,0,3,1,3.03,0,Nebraska,Regular,0,1,75,27,35,0,0,declined,0
+104019,John,Stiles_368,M,,John.Stiles_368@example.com,1,1,1,5,0,2.66,1,District ,Regular,0,0,66,25,37,0,0,enrolled,44
+104020,Paulo,Santos_291,M,,Paulo.Santos_291@example.com,1,1,0,6,0,3.07,1,Arkansas,Regular,0,0,76,29,37,0,0,enrolled,44
+104032,Martha,Rivera_241,F,,Martha.Rivera_241@example.com,0,0,0,4,0,3.1,0,Maryland,Regular,1,1,77,29,37,0,0,declined,0
+104046,Nikki,Wolf_065,F,,Nikki.Wolf_065@example.com,1,1,0,5,0,3.03,1,Massachusetts,Regular,0,0,75,28,37,0,0,enrolled,44
+104051,Ana,Silva_151,F,,Ana.Silva_151@example.com,0,0,0,7,0,3.21,0,North Carolina,Regular,0,1,80,26,37,0,0,declined,0
+104057,Maria,Garcia_205,F,,Maria.Garcia_205@example.com,1,1,1,6,0,2.8,1,Pennsylvania,Regular,0,0,69,28,37,0,0,enrolled,44
+104066,Jorge,Souza_172,M,,Jorge.Souza_172@example.com,1,1,1,4,0,3.22,1,Oklahoma,Regular,0,0,80,28,37,0,0,enrolled,44
+104070,Mateo,Jackson_378,M,,Mateo.Jackson_378@example.com,1,1,0,0,1,3.34,0,Florida,Regular,0,0,83,28,37,0,0,enrolled,44
+104077,Diego,Ramirez_327,M,,Diego.Ramirez_327@example.com,0,0,0,8,0,3.8,0,New Hampshire,Regular,1,1,94,28,37,0,0,declined,0
+104085,Marcia,Oliveira_129,F,,Marcia.Oliveira_129@example.com,1,0,0,4,0,2.85,0,Virginia,Regular,0,0,71,25,37,0,0,admitted,0
+104094,Paulo,Santos_383,M,,Paulo.Santos_383@example.com,1,1,0,5,0,3.69,0,Minnesota,Regular,0,0,92,27,37,0,0,enrolled,44
+104105,Shirley,Rodriguez_239,F,,Shirley.Rodriguez_239@example.com,1,1,1,4,0,3.42,1,Virginia,Regular,0,0,85,25,37,0,0,enrolled,44
+104109,Maria,Garcia_438,F,,Maria.Garcia_438@example.com,1,1,0,7,0,3.58,1,South Dakota,Regular,0,0,89,27,37,0,0,enrolled,44
+104114,Jane,Doe_054,F,,Jane.Doe_054@example.com,0,0,0,3,1,2.76,0,Texas,Regular,0,1,69,27,37,0,0,declined,0
+104121,Jane,Doe_103,F,,Jane.Doe_103@example.com,1,1,0,5,0,3.11,1,Connecticut,Regular,0,0,77,27,37,0,0,enrolled,44
+104159,John,Stiles_359,M,,John.Stiles_359@example.com,0,0,0,4,0,3.49,0,Ohio,Regular,0,1,87,27,37,0,0,declined,0
+104161,John,Stiles_312,M,,John.Stiles_312@example.com,1,1,0,7,0,3.55,0,Massachusetts,Regular,0,0,88,26,37,0,0,enrolled,44
+104164,John,Stiles_324,M,,John.Stiles_324@example.com,1,0,0,8,0,2.98,1,Pennsylvania,Regular,0,0,74,28,37,0,0,admitted,0
+104167,Mary,Major_049,F,,Mary.Major_049@example.com,1,1,0,0,1,3.27,1,Rhode Island,Regular,0,0,81,27,37,0,0,enrolled,44
+104176,Marcia,Oliveira_005,F,,Marcia.Oliveira_005@example.com,1,1,1,8,0,2.86,0,Wisconsin,Regular,0,0,71,27,37,0,0,enrolled,44
+104184,Shirley,Rodriguez_050,F,,Shirley.Rodriguez_050@example.com,0,0,0,4,0,3.47,0,District ,Regular,0,1,86,25,37,0,0,declined,0
+104189,Paulo,Santos_179,M,,Paulo.Santos_179@example.com,1,1,0,3,1,2.95,0,Vermont,Regular,0,0,73,28,37,0,0,enrolled,44
+104197,Diego,Ramirez_145,M,,Diego.Ramirez_145@example.com,1,1,0,2,1,2.82,0,Illinois,Regular,0,0,70,26,37,0,0,enrolled,44
+104206,Maria,Garcia_402,F,,Maria.Garcia_402@example.com,1,1,0,3,1,3.2,0,West Virginia,Regular,0,0,80,28,37,0,0,enrolled,44
+104212,Marcia,Oliveira_064,F,,Marcia.Oliveira_064@example.com,0,0,0,3,1,3.04,0,Indiana,Regular,0,1,75,26,37,0,0,declined,0
+104231,Maria,Garcia_028,F,,Maria.Garcia_028@example.com,1,1,1,5,0,3.74,1,New Jersey,Regular,0,0,93,26,37,0,0,enrolled,44
+104239,John,Stiles_330,M,,John.Stiles_330@example.com,0,0,0,3,1,3.24,0,Montana,Regular,1,1,81,29,37,0,0,declined,0
+104245,Shirley,Rodriguez_251,F,,Shirley.Rodriguez_251@example.com,1,1,1,3,1,3.82,1,District ,Regular,0,0,95,26,37,0,0,enrolled,44
+104256,Jorge,Souza_176,M,,Jorge.Souza_176@example.com,0,0,0,6,0,3.04,0,Hawaii,Regular,0,1,76,28,37,0,0,declined,0
+104257,Mary,Major_090,F,,Mary.Major_090@example.com,1,1,0,2,1,3.61,0,Delaware,Regular,0,0,90,25,37,0,0,enrolled,44
+104270,Nikki,Wolf_102,F,,Nikki.Wolf_102@example.com,1,1,0,7,0,3.54,0,Puerto Rico,Regular,0,0,88,29,37,0,0,enrolled,44
+104278,Marcia,Oliveira_136,F,,Marcia.Oliveira_136@example.com,1,1,0,8,0,2.76,1,Maine,Regular,0,0,69,26,37,0,0,enrolled,44
+104281,Jorge,Souza_018,M,,Jorge.Souza_018@example.com,0,0,0,4,0,3.24,0,Missouri,Regular,0,1,81,29,37,0,0,declined,0
+104297,Richard,Roe_341,M,,Richard.Roe_341@example.com,1,1,0,8,0,3.43,1,American Samoa,Regular,0,0,85,27,37,0,0,enrolled,44
+104299,Paulo,Santos_356,M,,Paulo.Santos_356@example.com,1,1,0,7,0,3.27,1,Oregon,Regular,0,0,81,29,37,0,0,enrolled,44
+104319,Carlos,Salazar_173,M,,Carlos.Salazar_173@example.com,1,1,1,7,0,3.68,0,California,Regular,0,0,91,26,37,0,0,enrolled,44
+104331,Mary,Major_283,F,,Mary.Major_283@example.com,1,1,0,5,0,2.88,1,Wyoming,Regular,0,0,71,29,37,0,0,enrolled,44
+104337,Maria,Garcia_165,F,,Maria.Garcia_165@example.com,0,0,0,7,0,3.71,0,District ,Regular,0,1,92,25,37,0,0,declined,0
+104344,Jorge,Souza_384,M,,Jorge.Souza_384@example.com,0,0,0,2,1,3.05,0,Arkansas,Regular,1,1,76,28,37,0,0,declined,0
+104346,Mary,Major_021,F,,Mary.Major_021@example.com,1,1,0,3,1,3.47,0,of Columbia,Regular,0,0,86,29,37,0,0,enrolled,44
+104354,Jorge,Souza_434,M,,Jorge.Souza_434@example.com,1,1,0,1,1,3.46,0,Washington,Regular,0,0,86,25,37,0,0,enrolled,44
+104356,Carlos,Salazar_016,M,,Carlos.Salazar_016@example.com,0,0,0,8,0,2.78,0,Rhode Island,Regular,0,1,69,25,37,0,0,declined,0
+104362,Mary,Major_143,F,,Mary.Major_143@example.com,1,1,1,8,0,2.8,1,District ,Regular,0,0,69,29,37,0,0,enrolled,44
+104363,Maria,Garcia_363,F,,Maria.Garcia_363@example.com,0,0,0,6,0,2.81,0,West Virginia,Regular,1,1,70,25,37,0,0,declined,0
+104367,John,Doe_120,M,,John.Doe_120@example.com,0,0,0,8,0,3.58,0,Nebraska,Regular,0,1,89,29,37,0,0,declined,0
+104387,Diego,Ramirez_018,M,,Diego.Ramirez_018@example.com,1,1,0,3,1,2.8,1,North Dakota,Regular,0,0,69,29,37,0,0,enrolled,44
+104393,Nikki,Wolf_369,F,,Nikki.Wolf_369@example.com,1,1,0,1,1,3.09,1,Connecticut,Regular,0,0,77,27,37,0,0,enrolled,44
+104399,Alejandro,Rosalez_249,M,,Alejandro.Rosalez_249@example.com,1,1,0,2,1,3.15,1,New Jersey,Regular,0,0,78,25,37,0,0,enrolled,44
+104409,Paulo,Santos_208,M,,Paulo.Santos_208@example.com,1,1,0,4,0,3.36,1,Kansas,Regular,0,0,83,29,37,0,0,enrolled,44
+104415,Maria,Garcia_039,F,,Maria.Garcia_039@example.com,0,0,0,8,0,3.17,0,Florida,Regular,0,1,79,26,37,0,0,declined,0
+104423,Diego,Ramirez_090,M,,Diego.Ramirez_090@example.com,1,1,0,4,0,3.06,0,Idaho,Regular,0,0,76,27,37,0,0,enrolled,44
+104425,Mateo,Jackson_121,M,,Mateo.Jackson_121@example.com,1,1,0,7,0,2.87,1,Kansas,Regular,0,0,71,25,37,0,0,enrolled,44
+104434,Ana,Silva_256,F,,Ana.Silva_256@example.com,1,1,0,6,0,2.2,1,New Mexico,Regular,0,0,55,29,37,0,0,enrolled,44
+104436,John,Stiles_160,M,,John.Stiles_160@example.com,1,1,0,3,1,3.54,1,North Carolina,Regular,0,0,88,26,37,0,0,enrolled,44
+104442,Marcia,Oliveira_418,F,,Marcia.Oliveira_418@example.com,1,1,0,8,0,2.45,1,South Dakota,Regular,0,0,61,27,37,0,0,enrolled,44
+104446,Maria,Garcia_050,F,,Maria.Garcia_050@example.com,1,1,0,3,1,3.56,1,Texas,Regular,0,0,88,28,37,0,0,enrolled,44
+104448,Maria,Garcia_296,F,,Maria.Garcia_296@example.com,1,1,0,2,1,3.12,0,New Jersey,Regular,0,0,77,25,37,0,0,enrolled,44
+104449,Maria,Garcia_408,F,,Maria.Garcia_408@example.com,1,1,0,3,1,3.42,0,Nevada,Regular,0,0,85,27,37,0,0,enrolled,44
+104453,Jane,Doe_278,F,,Jane.Doe_278@example.com,1,1,0,7,0,3.4,1,Puerto Rico,Regular,0,0,85,27,37,0,0,enrolled,44
+104466,Jane,Doe_187,F,,Jane.Doe_187@example.com,1,1,0,3,1,2.89,1,Montana,Regular,0,0,72,25,37,0,0,enrolled,44
+104468,Paulo,Santos_303,M,,Paulo.Santos_303@example.com,1,1,0,7,0,3.24,1,Indiana,Regular,0,0,81,26,37,0,0,enrolled,44
+104472,John,Doe_414,M,,John.Doe_414@example.com,1,0,0,1,1,3.87,1,Alaska,Early Decision,0,0,96,28,37,0,0,admitted,0
+104481,Martha,Rivera_209,F,,Martha.Rivera_209@example.com,0,0,0,4,0,3.28,0,Idaho,Regular,1,1,82,27,37,0,0,declined,0
+104483,Jane,Doe_392,F,,Jane.Doe_392@example.com,1,1,0,6,0,3.1,1,Guam,Regular,0,0,77,28,37,0,0,enrolled,44
+104484,Jorge,Souza_120,M,,Jorge.Souza_120@example.com,1,1,1,3,1,3.17,1,Vermont,Regular,0,0,79,29,37,0,0,enrolled,44
+104488,Jorge,Souza_136,M,,Jorge.Souza_136@example.com,1,1,1,2,1,3.28,1,American Samoa,Regular,0,0,81,28,37,0,0,enrolled,44
+104491,John,Stiles_067,M,,John.Stiles_067@example.com,1,1,0,7,0,3.14,0,Tennessee,Regular,0,0,78,27,37,0,0,enrolled,44
+104495,Carlos,Salazar_111,M,,Carlos.Salazar_111@example.com,1,1,0,1,1,3.31,0,Colorado,Regular,0,0,82,29,37,0,0,enrolled,44
+104498,Mateo,Jackson_037,M,,Mateo.Jackson_037@example.com,1,1,0,3,1,3.05,1,Minnesota,Regular,0,0,76,28,37,0,0,enrolled,44
+104505,Shirley,Rodriguez_015,F,,Shirley.Rodriguez_015@example.com,0,0,0,3,1,3.15,0,Oklahoma,Regular,1,1,78,28,37,0,0,declined,0
+104507,Jane,Doe_040,F,,Jane.Doe_040@example.com,1,1,0,1,1,3.29,1,Mississippi,Regular,0,0,82,29,37,0,0,enrolled,44
+104510,John,Doe_370,M,,John.Doe_370@example.com,0,0,0,2,1,3.86,0,Mississippi,Early Decision,1,1,96,25,37,0,0,declined,0
+104515,Maria,Garcia_100,F,,Maria.Garcia_100@example.com,1,1,0,5,0,3.35,1,Alabama,Regular,0,0,83,27,37,0,0,enrolled,44
+104517,Carlos,Salazar_197,M,,Carlos.Salazar_197@example.com,1,1,0,4,0,2.89,1,Illinois,Regular,0,0,72,28,37,0,0,enrolled,44
+104525,Maria,Garcia_060,F,,Maria.Garcia_060@example.com,0,0,0,6,0,3.53,0,Arkansas,Regular,0,1,88,28,37,0,0,declined,0
+104527,Jane,Doe_211,F,,Jane.Doe_211@example.com,1,1,0,6,0,3.12,1,Virgin Islands,Regular,0,0,78,28,37,0,0,enrolled,44
+104528,Mateo,Jackson_030,M,,Mateo.Jackson_030@example.com,1,1,1,5,0,3.16,1,Connecticut,Regular,0,0,78,25,37,0,0,enrolled,44
+104543,Jorge,Souza_291,M,,Jorge.Souza_291@example.com,0,0,0,4,0,3.76,0,Ohio,Regular,0,1,94,29,37,0,0,declined,0
+104546,Nikki,Wolf_280,F,,Nikki.Wolf_280@example.com,1,1,0,0,1,3.46,1,Oklahoma,Regular,0,0,86,26,37,0,0,enrolled,44
+104547,Mateo,Jackson_399,M,,Mateo.Jackson_399@example.com,1,1,0,3,1,3.23,1,Vermont,Regular,0,0,80,27,37,0,0,enrolled,44
+104551,Jorge,Souza_324,M,,Jorge.Souza_324@example.com,1,1,0,8,0,2.35,0,Missouri,Regular,0,0,58,26,37,0,0,enrolled,44
+104561,Ana,Silva_074,F,,Ana.Silva_074@example.com,1,1,0,3,1,3.45,1,Texas,Regular,0,0,86,25,37,0,0,enrolled,44
+104576,Paulo,Santos_046,M,,Paulo.Santos_046@example.com,0,0,0,2,1,3.66,0,Alaska,Regular,1,1,91,27,37,0,0,declined,0
+104577,Diego,Ramirez_290,M,,Diego.Ramirez_290@example.com,0,0,0,6,0,3.27,0,Wisconsin,Regular,1,1,81,29,37,0,0,declined,0
+104578,Martha,Rivera_316,F,,Martha.Rivera_316@example.com,1,1,0,1,1,3.6,1,Ohio,Regular,0,0,90,28,37,0,0,enrolled,44
+104582,Ana,Silva_259,F,,Ana.Silva_259@example.com,1,1,0,3,1,3.87,1,Virgin Islands,Early Decision,0,0,96,25,37,0,0,enrolled,44
+104590,John,Stiles_046,M,,John.Stiles_046@example.com,1,1,0,2,1,3.1,0,South Dakota,Regular,0,0,77,25,37,0,0,enrolled,44
+104597,Maria,Garcia_005,F,,Maria.Garcia_005@example.com,1,1,0,7,0,3.27,1,Arkansas,Regular,0,0,81,25,37,0,0,enrolled,44
+104607,Alejandro,Rosalez_216,M,,Alejandro.Rosalez_216@example.com,1,1,0,8,0,2.91,1,North Dakota,Regular,0,0,72,26,37,0,0,enrolled,44
+104620,Marcia,Oliveira_277,F,,Marcia.Oliveira_277@example.com,1,1,1,5,0,3.26,1,Ohio,Regular,0,0,81,26,37,0,0,enrolled,44
+104626,Mary,Major_098,F,,Mary.Major_098@example.com,1,1,0,8,0,2.87,1,Pennsylvania,Regular,0,0,71,25,37,0,0,enrolled,44
+104637,Marcia,Oliveira_147,F,,Marcia.Oliveira_147@example.com,1,1,0,8,0,3.24,1,New York,Regular,0,0,81,27,37,0,0,enrolled,44
+104641,John,Stiles_001,M,,John.Stiles_001@example.com,1,1,0,2,1,3.89,1,Puerto Rico,Early Decision,0,0,97,27,37,0,0,enrolled,44
+104645,Maria,Garcia_125,F,,Maria.Garcia_125@example.com,1,1,0,4,0,2.82,0,Kansas,Regular,0,0,70,25,37,0,0,enrolled,44
+104647,Shirley,Rodriguez_234,F,,Shirley.Rodriguez_234@example.com,1,1,0,1,1,3.25,0,New Mexico,Regular,0,0,81,27,37,0,0,enrolled,44
+104654,Paulo,Santos_199,M,,Paulo.Santos_199@example.com,1,1,0,4,0,3.97,0,Wisconsin,Early Decision,0,0,99,27,37,0,0,enrolled,44
+104657,Marcia,Oliveira_419,F,,Marcia.Oliveira_419@example.com,1,1,0,7,0,3.04,1,Tennessee,Regular,0,0,75,25,37,0,0,enrolled,44
+104671,Richard,Roe_230,M,,Richard.Roe_230@example.com,1,1,1,6,0,3.55,1,Oregon,Regular,0,0,88,28,37,0,0,enrolled,44
+104672,Richard,Roe_269,M,,Richard.Roe_269@example.com,1,1,0,8,0,3.43,1,Minnesota,Regular,0,0,85,27,37,0,0,enrolled,44
+104674,Jorge,Souza_235,M,,Jorge.Souza_235@example.com,0,0,0,1,1,3.64,0,Colorado,Regular,1,1,91,25,37,0,0,declined,0
+104690,Diego,Ramirez_301,M,,Diego.Ramirez_301@example.com,1,1,0,8,0,3.45,1,Puerto Rico,Regular,0,0,86,29,37,0,0,enrolled,44
+104695,Richard,Roe_314,M,,Richard.Roe_314@example.com,0,0,0,3,1,3.48,0,Alaska,Regular,1,1,86,26,37,0,0,declined,0
+104699,Marcia,Oliveira_273,F,,Marcia.Oliveira_273@example.com,1,1,0,5,0,3.03,1,Oklahoma,Regular,0,0,75,29,37,0,0,enrolled,44
+104700,John,Doe_236,M,,John.Doe_236@example.com,0,0,0,7,0,3.37,0,Delaware,Regular,0,1,84,25,37,0,0,declined,0
+104703,John,Doe_090,M,,John.Doe_090@example.com,0,0,0,6,0,3.46,0,Arizona,Regular,0,1,86,26,37,0,0,declined,0
+104706,Diego,Ramirez_156,M,,Diego.Ramirez_156@example.com,1,1,0,6,0,4.03,1,New Mexico,Early Action,0,0,100,28,37,0,0,enrolled,44
+104708,Shirley,Rodriguez_186,F,,Shirley.Rodriguez_186@example.com,1,1,0,2,1,2.97,0,Vermont,Regular,0,0,74,29,37,0,0,enrolled,44
+104715,Richard,Roe_096,M,,Richard.Roe_096@example.com,0,0,0,6,0,3.2,0,New Mexico,Regular,0,1,80,28,37,0,0,declined,0
+104721,Mary,Major_130,F,,Mary.Major_130@example.com,1,0,0,1,1,3.3,1,Mississippi,Regular,0,0,82,25,37,0,0,admitted,0
+104724,Jorge,Souza_159,M,,Jorge.Souza_159@example.com,1,1,0,7,0,3.32,1,Tennessee,Regular,0,0,83,29,37,0,0,enrolled,44
+104733,Maria,Garcia_258,F,,Maria.Garcia_258@example.com,1,1,0,4,0,2.85,1,Delaware,Regular,0,0,71,27,37,0,0,enrolled,44
+104740,Richard,Roe_062,M,,Richard.Roe_062@example.com,1,1,1,8,0,2.86,1,New Hampshire,Regular,0,0,71,27,37,0,0,enrolled,44
+104743,Paulo,Santos_389,M,,Paulo.Santos_389@example.com,1,1,0,6,0,3.03,1,Maine,Regular,0,0,75,26,37,0,0,enrolled,44
+104774,Richard,Roe_310,M,,Richard.Roe_310@example.com,1,1,0,3,1,2.98,1,Kansas,Regular,0,0,74,29,37,0,0,enrolled,44
+104776,Richard,Roe_249,M,,Richard.Roe_249@example.com,1,1,0,4,0,3.01,1,Guam,Regular,0,0,75,28,37,0,0,enrolled,44
+104781,John,Doe_148,M,,John.Doe_148@example.com,0,0,0,8,0,3.24,0,Nebraska,Regular,0,1,80,29,37,0,0,declined,0
+104794,Mary,Major_384,F,,Mary.Major_384@example.com,1,1,0,8,0,3.47,0,Connecticut,Regular,0,0,86,29,37,0,0,enrolled,44
+104795,Jorge,Souza_423,M,,Jorge.Souza_423@example.com,1,0,0,1,1,3.5,1,Pennsylvania,Regular,0,0,87,29,37,0,0,admitted,0
+104800,Mary,Major_050,F,,Mary.Major_050@example.com,1,1,0,8,0,3.07,1,Alabama,Regular,0,0,76,29,37,0,0,enrolled,44
+104805,John,Doe_269,M,,John.Doe_269@example.com,0,0,0,3,1,3.16,0,New Jersey,Regular,1,1,79,26,37,0,0,declined,0
+104807,John,Doe_257,M,,John.Doe_257@example.com,1,1,0,6,0,2.96,1,Maryland,Regular,0,0,74,27,37,0,0,enrolled,44
+104813,Carlos,Salazar_017,M,,Carlos.Salazar_017@example.com,0,0,0,0,1,2.88,0,Colorado,Regular,0,1,71,29,37,0,0,declined,0
+104817,Martha,Rivera_259,F,,Martha.Rivera_259@example.com,1,1,0,7,0,3.32,1,Maine,Regular,0,0,83,29,37,0,0,enrolled,44
+104839,John,Doe_053,M,,John.Doe_053@example.com,0,0,0,1,1,3.17,0,Connecticut,Regular,0,1,79,29,37,0,0,declined,0
+104840,John,Stiles_369,M,,John.Stiles_369@example.com,0,0,0,0,1,3.4,0,Tennessee,Regular,0,1,84,29,37,0,0,declined,0
+104851,Maria,Garcia_417,F,,Maria.Garcia_417@example.com,1,1,0,2,1,2.7,0,South Dakota,Regular,0,0,67,29,37,0,0,enrolled,44
+104878,Jorge,Souza_189,M,,Jorge.Souza_189@example.com,1,1,0,1,1,2.21,0,Wyoming,Regular,0,0,55,28,37,0,0,enrolled,44
+104883,Nikki,Wolf_310,F,,Nikki.Wolf_310@example.com,0,0,0,4,0,3.56,0,Iowa,Regular,1,1,89,28,37,0,0,declined,0
+104884,Marcia,Oliveira_275,F,,Marcia.Oliveira_275@example.com,1,1,1,8,0,3.18,1,Idaho,Regular,0,0,79,29,37,0,0,enrolled,44
+104886,John,Stiles_414,M,,John.Stiles_414@example.com,0,0,0,0,1,3.28,0,South Dakota,Regular,0,1,81,27,37,0,0,declined,0
+104902,Carlos,Salazar_294,M,,Carlos.Salazar_294@example.com,1,1,1,2,1,3.31,1,Ohio,Regular,0,0,82,26,37,0,0,enrolled,44
+104905,Maria,Garcia_087,F,,Maria.Garcia_087@example.com,1,1,0,4,0,2.98,1,Puerto Rico,Regular,0,0,74,26,37,0,0,enrolled,44
+104908,Shirley,Rodriguez_136,F,,Shirley.Rodriguez_136@example.com,0,0,0,6,0,3.21,0,West Virginia,Regular,0,1,80,26,37,0,0,declined,0
+104915,Ana,Silva_323,F,,Ana.Silva_323@example.com,1,1,1,8,0,2.76,1,Tennessee,Regular,0,0,69,28,37,0,0,enrolled,44
+104919,Martha,Rivera_248,F,,Martha.Rivera_248@example.com,1,1,0,1,1,3.54,1,District ,Regular,0,0,88,29,37,0,0,enrolled,44
+104925,Richard,Roe_308,M,,Richard.Roe_308@example.com,1,1,0,6,0,3.17,1,New Mexico,Regular,0,0,79,26,37,0,0,enrolled,44
+104926,John,Stiles_088,M,,John.Stiles_088@example.com,1,1,0,8,0,3.56,1,Montana,Regular,0,0,89,28,37,0,0,enrolled,44
+104940,John,Doe_187,M,,John.Doe_187@example.com,1,0,0,7,0,3.26,1,Alabama,Regular,0,0,81,27,37,0,0,admitted,0
+104944,Marcia,Oliveira_385,F,,Marcia.Oliveira_385@example.com,0,0,0,6,0,3.04,0,Maryland,Regular,0,1,76,29,37,0,0,declined,0
+104957,Richard,Roe_418,M,,Richard.Roe_418@example.com,1,1,0,2,1,3.5,1,Alabama,Regular,0,0,87,26,37,0,0,enrolled,44
+104964,Maria,Garcia_217,F,,Maria.Garcia_217@example.com,1,1,1,4,0,3.29,1,Washington,Regular,0,0,82,25,37,0,0,enrolled,44
+104977,John,Doe_074,M,,John.Doe_074@example.com,1,1,0,6,0,3.13,1,Oklahoma,Regular,0,0,78,25,37,0,0,enrolled,44
+104984,Richard,Roe_036,M,,Richard.Roe_036@example.com,1,1,0,6,0,3.17,1,Michigan,Regular,0,0,79,25,37,0,0,enrolled,44
+104986,Nikki,Wolf_245,F,,Nikki.Wolf_245@example.com,0,0,0,6,0,3.07,0,Wyoming,Regular,0,1,76,25,37,0,0,declined,0
+104997,Mary,Major_417,F,,Mary.Major_417@example.com,1,1,0,5,0,3.25,0,Colorado,Regular,0,0,81,27,37,0,0,enrolled,44
+105008,Nikki,Wolf_205,F,,Nikki.Wolf_205@example.com,0,0,0,6,0,2.92,0,Wyoming,Regular,0,1,72,26,39,0,0,declined,0
+105011,Shirley,Rodriguez_273,F,,Shirley.Rodriguez_273@example.com,1,1,0,1,1,2.95,1,Louisiana,Regular,0,0,73,25,39,0,0,enrolled,46
+105014,Jane,Doe_335,F,,Jane.Doe_335@example.com,1,1,0,7,0,3.36,1,Mississippi,Regular,0,0,83,27,39,0,0,enrolled,46
+105046,Ana,Silva_112,F,,Ana.Silva_112@example.com,0,0,0,1,1,3.71,0,Guam,Regular,1,1,92,29,39,0,0,declined,0
+105050,Mateo,Jackson_057,M,,Mateo.Jackson_057@example.com,1,1,0,2,1,2.8,1,of Columbia,Regular,0,0,70,25,39,0,0,enrolled,46
+105051,Nikki,Wolf_099,F,,Nikki.Wolf_099@example.com,1,1,0,4,0,3.47,1,Louisiana,Regular,0,0,86,29,39,0,0,enrolled,46
+105054,Alejandro,Rosalez_300,M,,Alejandro.Rosalez_300@example.com,1,1,0,1,1,3.01,1,Pennsylvania,Regular,0,0,75,25,39,0,0,enrolled,46
+105064,Martha,Rivera_300,F,,Martha.Rivera_300@example.com,1,1,1,2,1,3.63,1,North Carolina,Regular,0,0,90,26,39,0,0,enrolled,46
+105065,Paulo,Santos_382,M,,Paulo.Santos_382@example.com,1,1,0,5,0,3.58,1,Idaho,Regular,0,0,89,28,39,0,0,enrolled,46
+105077,Mary,Major_036,F,,Mary.Major_036@example.com,1,0,0,3,1,3.42,1,West Virginia,Regular,0,0,85,26,39,0,0,admitted,0
+105078,Maria,Garcia_052,F,,Maria.Garcia_052@example.com,1,1,1,7,0,3.36,0,California,Regular,0,0,84,28,39,0,0,enrolled,46
+105097,Mateo,Jackson_277,M,,Mateo.Jackson_277@example.com,1,1,0,8,0,4.04,1,New Jersey,Early Action,0,0,100,29,39,0,0,enrolled,46
+105102,Nikki,Wolf_252,F,,Nikki.Wolf_252@example.com,0,0,0,5,0,3.22,0,New York,Regular,0,1,80,29,39,0,0,declined,0
+105104,Paulo,Santos_149,M,,Paulo.Santos_149@example.com,1,1,0,1,1,2.28,1,North Dakota,Regular,0,0,57,27,39,0,0,enrolled,46
+105109,Carlos,Salazar_062,M,,Carlos.Salazar_062@example.com,1,1,0,3,1,3.27,1,Vermont,Regular,0,0,81,28,39,0,0,enrolled,46
+105111,Jane,Doe_348,F,,Jane.Doe_348@example.com,1,1,0,8,0,3.15,0,Missouri,Regular,0,0,78,29,39,0,0,enrolled,46
+105122,Jorge,Souza_051,M,,Jorge.Souza_051@example.com,0,0,0,7,0,3.33,0,Utah,Regular,0,1,83,25,39,0,0,declined,0
+105127,Alejandro,Rosalez_117,M,,Alejandro.Rosalez_117@example.com,1,1,0,7,0,2.45,0,Washington,Regular,0,0,61,27,39,0,0,enrolled,46
+105131,Mary,Major_337,F,,Mary.Major_337@example.com,1,1,0,0,1,3.15,1,Arkansas,Regular,0,0,78,25,39,0,0,enrolled,46
+105139,Nikki,Wolf_436,F,,Nikki.Wolf_436@example.com,1,0,0,5,0,3.21,0,California,Regular,0,0,80,27,39,0,0,admitted,0
+105144,Diego,Ramirez_296,M,,Diego.Ramirez_296@example.com,1,1,0,6,0,3.31,1,Pennsylvania,Regular,0,0,82,25,39,0,0,enrolled,46
+105157,Ana,Silva_081,F,,Ana.Silva_081@example.com,1,1,0,7,0,3.09,0,Mississippi,Regular,0,0,77,26,39,0,0,enrolled,46
+105163,Jane,Doe_112,F,,Jane.Doe_112@example.com,0,0,0,3,1,3.41,0,Wyoming,Regular,0,1,85,25,39,0,0,declined,0
+105178,Maria,Garcia_348,F,,Maria.Garcia_348@example.com,0,0,0,2,1,2.47,0,South Carolina,Regular,1,1,61,27,39,0,0,declined,0
+105179,Jane,Doe_409,F,,Jane.Doe_409@example.com,1,1,0,7,0,3.09,1,Idaho,Regular,0,0,77,26,39,0,0,enrolled,46
+105198,John,Stiles_134,M,,John.Stiles_134@example.com,1,1,1,3,1,3.33,1,Louisiana,Regular,0,0,83,26,39,0,0,enrolled,46
+105205,Jane,Doe_049,F,,Jane.Doe_049@example.com,0,0,0,1,1,3.65,0,Illinois,Regular,1,1,91,28,39,0,0,declined,0
+105212,Ana,Silva_270,F,,Ana.Silva_270@example.com,1,1,0,8,0,2.93,1,Colorado,Regular,0,0,73,25,39,0,0,enrolled,46
+105214,Mateo,Jackson_066,M,,Mateo.Jackson_066@example.com,1,1,0,4,0,3.26,1,of Columbia,Regular,0,0,81,27,39,0,0,enrolled,46
+105226,Diego,Ramirez_249,M,,Diego.Ramirez_249@example.com,1,1,0,1,1,3.09,0,Montana,Regular,0,0,77,25,39,0,0,enrolled,46
+105236,Martha,Rivera_133,F,,Martha.Rivera_133@example.com,1,1,1,4,0,2.98,1,North Dakota,Regular,0,0,74,27,39,0,0,enrolled,46
+105257,Marcia,Oliveira_006,F,,Marcia.Oliveira_006@example.com,1,1,0,8,0,3.34,1,of Columbia,Regular,0,0,83,27,39,0,0,enrolled,46
+105266,Paulo,Santos_172,M,,Paulo.Santos_172@example.com,1,1,0,2,1,3.3,1,New Hampshire,Regular,0,0,82,29,39,0,0,enrolled,46
+105267,Jane,Doe_162,F,,Jane.Doe_162@example.com,1,1,0,0,1,4.09,1,Indiana,Early Action,0,0,100,27,39,0,0,enrolled,46
+105288,Mateo,Jackson_112,M,,Mateo.Jackson_112@example.com,1,1,0,1,1,2.85,1,Guam,Regular,0,0,71,25,39,0,0,enrolled,46
+105302,Alejandro,Rosalez_139,M,,Alejandro.Rosalez_139@example.com,1,1,0,3,1,3.18,1,Mississippi,Regular,0,0,79,26,39,0,0,enrolled,46
+105307,Mary,Major_047,F,,Mary.Major_047@example.com,1,1,0,3,1,2.85,0,West Virginia,Regular,0,0,71,25,39,0,0,enrolled,46
+105309,John,Stiles_350,M,,John.Stiles_350@example.com,1,1,1,4,0,2.89,1,Pennsylvania,Regular,0,0,72,25,39,0,0,enrolled,46
+105313,Paulo,Santos_142,M,,Paulo.Santos_142@example.com,1,1,0,8,0,3.45,1,Maine,Regular,0,0,86,27,39,0,0,enrolled,46
+105315,Diego,Ramirez_424,M,,Diego.Ramirez_424@example.com,1,1,0,0,1,3.71,0,New Mexico,Regular,0,0,92,28,39,0,0,enrolled,46
+105317,John,Stiles_082,M,,John.Stiles_082@example.com,1,1,0,2,1,3.2,1,Hawaii,Regular,0,0,80,28,39,0,0,enrolled,46
+105326,Marcia,Oliveira_188,F,,Marcia.Oliveira_188@example.com,1,0,0,8,0,3.1,0,West Virginia,Regular,0,0,77,29,39,0,0,admitted,0
+105330,Paulo,Santos_177,M,,Paulo.Santos_177@example.com,1,0,0,6,0,2.95,1,Florida,Regular,0,0,73,28,39,0,0,admitted,0
+105351,Jane,Doe_171,F,,Jane.Doe_171@example.com,1,1,1,4,0,3.15,0,Oklahoma,Regular,0,0,78,29,39,0,0,enrolled,46
+105368,Jane,Doe_244,F,,Jane.Doe_244@example.com,1,1,1,7,0,3.04,1,Vermont,Regular,0,0,76,28,39,0,0,enrolled,46
+105370,Alejandro,Rosalez_170,M,,Alejandro.Rosalez_170@example.com,0,0,0,5,0,4,0,Louisiana,Early Action,0,1,100,29,39,0,0,declined,0
+105371,John,Stiles_101,M,,John.Stiles_101@example.com,1,1,1,2,1,3.03,1,Iowa,Regular,0,0,75,29,39,0,0,enrolled,46
+105372,John,Stiles_290,M,,John.Stiles_290@example.com,0,0,0,1,1,2.73,0,of Columbia,Regular,0,1,68,29,39,0,0,declined,0
+105387,Jorge,Souza_327,M,,Jorge.Souza_327@example.com,1,1,0,2,1,2.83,1,Alabama,Regular,0,0,70,28,39,0,0,enrolled,46
+105388,John,Doe_038,M,,John.Doe_038@example.com,1,1,0,8,0,3.23,1,Arkansas,Regular,0,0,80,26,39,0,0,enrolled,46
+105411,Richard,Roe_425,M,,Richard.Roe_425@example.com,1,1,0,0,1,2.34,0,Kansas,Regular,0,0,58,29,39,0,0,enrolled,46
+105418,Mateo,Jackson_130,M,,Mateo.Jackson_130@example.com,1,1,0,5,0,3.24,1,Vermont,Regular,0,0,80,29,39,0,0,enrolled,46
+105419,Ana,Silva_167,F,,Ana.Silva_167@example.com,1,1,0,8,0,3.06,1,Minnesota,Regular,0,0,76,26,39,0,0,enrolled,46
+105420,John,Stiles_093,M,,John.Stiles_093@example.com,1,1,1,8,0,3.46,1,Florida,Regular,0,0,86,25,39,0,0,enrolled,46
+105425,Marcia,Oliveira_152,F,,Marcia.Oliveira_152@example.com,1,1,0,0,1,3.09,1,New Hampshire,Regular,0,0,77,27,39,0,0,enrolled,46
+105431,Richard,Roe_010,M,,Richard.Roe_010@example.com,1,1,0,1,1,3.54,1,Louisiana,Regular,0,0,88,25,39,0,0,enrolled,46
+105434,Mateo,Jackson_044,M,,Mateo.Jackson_044@example.com,1,1,0,5,0,3.18,1,of Columbia,Regular,0,0,79,25,39,0,0,enrolled,46
+105438,John,Doe_287,M,,John.Doe_287@example.com,0,0,0,5,0,3.32,0,Nebraska,Regular,0,1,82,27,39,0,0,declined,0
+105445,Mateo,Jackson_262,M,,Mateo.Jackson_262@example.com,1,0,0,0,1,3.54,1,New York,Regular,0,0,88,27,39,0,0,admitted,0
+105453,Nikki,Wolf_440,F,,Nikki.Wolf_440@example.com,1,1,0,8,0,3.51,0,South Dakota,Regular,0,0,87,26,39,0,0,enrolled,46
+105469,Carlos,Salazar_324,M,,Carlos.Salazar_324@example.com,1,0,0,2,1,2.96,1,Wyoming,Regular,0,0,74,27,39,0,0,admitted,0
+105473,John,Stiles_250,M,,John.Stiles_250@example.com,1,1,0,7,0,3.5,1,Kentucky,Regular,0,0,87,28,39,0,0,enrolled,46
+105493,Ana,Silva_229,F,,Ana.Silva_229@example.com,1,0,0,5,0,3.95,1,of Columbia,Early Decision,0,0,98,28,39,0,0,admitted,0
+105497,Ana,Silva_058,F,,Ana.Silva_058@example.com,1,1,0,4,0,3.22,1,Minnesota,Regular,0,0,80,25,39,0,0,enrolled,46
+105505,Ana,Silva_284,F,,Ana.Silva_284@example.com,1,1,0,5,0,3.46,1,Missouri,Regular,0,0,86,25,39,0,0,enrolled,46
+105522,Paulo,Santos_428,M,,Paulo.Santos_428@example.com,1,1,0,5,0,3.14,1,Alaska,Regular,0,0,78,27,39,0,0,enrolled,46
+105526,Alejandro,Rosalez_019,M,,Alejandro.Rosalez_019@example.com,1,1,0,3,1,3.14,1,Kansas,Regular,0,0,78,25,39,0,0,enrolled,46
+105532,John,Stiles_115,M,,John.Stiles_115@example.com,1,1,1,3,1,3.11,1,Wisconsin,Regular,0,0,77,27,39,0,0,enrolled,46
+105548,Mateo,Jackson_368,M,,Mateo.Jackson_368@example.com,1,1,1,5,0,3.8,0,Georgia,Regular,0,0,94,29,39,0,0,enrolled,46
+105554,Mary,Major_051,F,,Mary.Major_051@example.com,1,1,1,6,0,3.34,1,Massachusetts,Regular,0,0,83,29,39,0,0,enrolled,46
+105556,Richard,Roe_311,M,,Richard.Roe_311@example.com,1,1,0,6,0,2.86,1,Virgin Islands,Regular,0,0,71,28,39,0,0,enrolled,46
+105563,Marcia,Oliveira_229,F,,Marcia.Oliveira_229@example.com,1,1,0,1,1,3.17,1,Utah,Regular,0,0,79,25,39,0,0,enrolled,46
+105564,John,Doe_115,M,,John.Doe_115@example.com,1,1,0,4,0,3.7,1,Vermont,Regular,0,0,92,26,39,0,0,enrolled,46
+105566,Maria,Garcia_014,F,,Maria.Garcia_014@example.com,0,0,0,0,1,2.97,0,American Samoa,Regular,0,1,74,26,39,0,0,declined,0
+105580,Maria,Garcia_333,F,,Maria.Garcia_333@example.com,0,0,0,3,1,2.81,0,Illinois,Regular,0,1,70,26,39,0,0,declined,0
+105584,John,Stiles_005,M,,John.Stiles_005@example.com,1,1,0,5,0,3.1,1,Massachusetts,Regular,0,0,77,26,39,0,0,enrolled,46
+105585,Richard,Roe_321,M,,Richard.Roe_321@example.com,1,1,0,5,0,3.77,1,Utah,Regular,0,0,94,25,39,0,0,enrolled,46
+105587,Mateo,Jackson_367,M,,Mateo.Jackson_367@example.com,1,1,0,8,0,3.34,1,South Dakota,Regular,0,0,83,29,39,0,0,enrolled,46
+105599,Marcia,Oliveira_433,F,,Marcia.Oliveira_433@example.com,1,1,0,2,1,2.75,1,West Virginia,Regular,0,0,68,27,39,0,0,enrolled,46
+105600,Mateo,Jackson_415,M,,Mateo.Jackson_415@example.com,1,1,1,3,1,3.15,1,Delaware,Regular,0,0,78,25,39,0,0,enrolled,46
+105608,Nikki,Wolf_407,F,,Nikki.Wolf_407@example.com,0,0,0,4,0,3,0,Minnesota,Regular,1,1,74,26,39,0,0,declined,0
+105614,Richard,Roe_292,M,,Richard.Roe_292@example.com,1,1,0,5,0,3.23,1,Wisconsin,Regular,0,0,80,29,39,0,0,enrolled,46
+105618,Jane,Doe_068,F,,Jane.Doe_068@example.com,1,1,0,3,1,3.23,0,of Columbia,Regular,0,0,80,25,39,0,0,enrolled,46
+105621,Mateo,Jackson_167,M,,Mateo.Jackson_167@example.com,1,1,0,5,0,2.87,1,Arizona,Regular,0,0,71,28,39,0,0,enrolled,46
+105623,Paulo,Santos_241,M,,Paulo.Santos_241@example.com,0,0,0,0,1,3.63,0,District ,Regular,1,1,90,28,39,0,0,declined,0
+105631,Nikki,Wolf_194,F,,Nikki.Wolf_194@example.com,0,0,0,1,1,3.06,0,Wisconsin,Regular,1,1,76,25,39,0,0,declined,0
+105639,Marcia,Oliveira_110,F,,Marcia.Oliveira_110@example.com,1,1,0,3,1,3.38,1,West Virginia,Regular,0,0,84,27,39,0,0,enrolled,46
+105640,Mateo,Jackson_007,M,,Mateo.Jackson_007@example.com,1,1,0,7,0,3.07,1,Alabama,Regular,0,0,76,25,39,0,0,enrolled,46
+105642,John,Stiles_106,M,,John.Stiles_106@example.com,1,1,1,6,0,3.29,0,Puerto Rico,Regular,0,0,82,26,39,0,0,enrolled,46
+105651,John,Doe_295,M,,John.Doe_295@example.com,1,1,0,2,1,3.28,1,Arkansas,Regular,0,0,82,27,39,0,0,enrolled,46
+105654,Nikki,Wolf_301,F,,Nikki.Wolf_301@example.com,0,0,0,7,0,3.06,0,Nevada,Regular,1,1,76,26,39,0,0,declined,0
+105657,Marcia,Oliveira_172,F,,Marcia.Oliveira_172@example.com,0,0,0,7,0,3.38,0,Kansas,Regular,0,1,84,27,39,0,0,declined,0
+105662,Marcia,Oliveira_379,F,,Marcia.Oliveira_379@example.com,1,1,0,1,1,2.88,0,Kentucky,Regular,0,0,71,25,39,0,0,enrolled,46
+105664,Marcia,Oliveira_416,F,,Marcia.Oliveira_416@example.com,0,0,0,4,0,3.55,0,Utah,Regular,0,1,88,28,39,0,0,declined,0
+105666,Nikki,Wolf_212,F,,Nikki.Wolf_212@example.com,1,1,0,8,0,3.05,0,Georgia,Regular,0,0,76,26,39,0,0,enrolled,46
+105681,Ana,Silva_022,F,,Ana.Silva_022@example.com,1,1,0,2,1,2.99,1,Georgia,Regular,0,0,74,26,39,0,0,enrolled,46
+105691,Diego,Ramirez_112,M,,Diego.Ramirez_112@example.com,1,1,0,6,0,3.01,0,Vermont,Regular,0,0,75,25,39,0,0,enrolled,46
+105725,John,Doe_208,M,,John.Doe_208@example.com,0,0,0,8,0,3.61,0,West Virginia,Regular,0,1,90,28,39,0,0,declined,0
+105730,Shirley,Rodriguez_231,F,,Shirley.Rodriguez_231@example.com,1,1,0,8,0,3.23,1,Connecticut,Regular,0,0,80,26,39,0,0,enrolled,46
+105742,Richard,Roe_328,M,,Richard.Roe_328@example.com,0,0,0,5,0,3.56,0,California,Regular,1,1,88,25,39,0,0,declined,0
+105750,John,Stiles_220,M,,John.Stiles_220@example.com,0,0,0,8,0,3.01,0,Kentucky,Regular,1,1,75,27,39,0,0,declined,0
+105752,Diego,Ramirez_300,M,,Diego.Ramirez_300@example.com,1,1,0,7,0,2.92,0,Maryland,Regular,0,0,72,28,39,0,0,enrolled,46
+105757,John,Stiles_244,M,,John.Stiles_244@example.com,1,1,0,8,0,3.36,1,Mississippi,Regular,0,0,84,27,39,0,0,enrolled,46
+105762,Carlos,Salazar_276,M,,Carlos.Salazar_276@example.com,1,1,0,4,0,3,0,District ,Regular,0,0,74,25,39,0,0,enrolled,46
+105769,Maria,Garcia_018,F,,Maria.Garcia_018@example.com,0,0,0,1,1,3.13,0,Iowa,Regular,0,1,78,25,39,0,0,declined,0
+105778,Carlos,Salazar_074,M,,Carlos.Salazar_074@example.com,1,1,1,5,0,3.58,1,New Jersey,Regular,0,0,89,26,39,0,0,enrolled,46
+105781,Jorge,Souza_260,M,,Jorge.Souza_260@example.com,1,1,0,0,1,3.36,0,Oklahoma,Regular,0,0,83,28,39,0,0,enrolled,46
+105784,Jane,Doe_310,F,,Jane.Doe_310@example.com,0,0,0,8,0,3.51,0,American Samoa,Regular,1,1,87,29,39,0,0,declined,0
+105787,John,Doe_429,M,,John.Doe_429@example.com,1,1,0,6,0,3.32,0,Nebraska,Regular,0,0,82,27,39,0,0,enrolled,46
+105805,Richard,Roe_222,M,,Richard.Roe_222@example.com,1,1,0,2,1,3.23,0,Utah,Regular,0,0,80,28,39,0,0,enrolled,46
+105808,Carlos,Salazar_121,M,,Carlos.Salazar_121@example.com,0,0,0,7,0,3.07,0,Kansas,Regular,0,1,76,29,39,0,0,declined,0
+105824,John,Stiles_222,M,,John.Stiles_222@example.com,1,1,1,5,0,3.2,0,Wisconsin,Regular,0,0,80,29,39,0,0,enrolled,46
+105825,Richard,Roe_218,M,,Richard.Roe_218@example.com,1,0,0,7,0,3.33,1,South Dakota,Regular,0,0,83,26,39,0,0,admitted,0
+105850,Carlos,Salazar_038,M,,Carlos.Salazar_038@example.com,1,1,1,3,1,3.38,0,Arizona,Regular,0,0,84,27,39,0,0,enrolled,46
+105854,Marcia,Oliveira_039,F,,Marcia.Oliveira_039@example.com,0,0,0,7,0,3.22,0,Michigan,Regular,0,1,80,29,39,0,0,declined,0
+105867,John,Stiles_434,M,,John.Stiles_434@example.com,1,1,1,2,1,2.68,1,Kansas,Regular,0,0,66,29,39,0,0,enrolled,46
+105869,Richard,Roe_015,M,,Richard.Roe_015@example.com,1,1,1,0,1,3.71,1,West Virginia,Regular,0,0,92,29,39,0,0,enrolled,46
+105872,Paulo,Santos_017,M,,Paulo.Santos_017@example.com,1,1,0,4,0,3.53,1,Indiana,Regular,0,0,88,28,39,0,0,enrolled,46
+105873,Mary,Major_245,F,,Mary.Major_245@example.com,0,0,0,4,0,3.11,0,Guam,Regular,0,1,77,29,39,0,0,declined,0
+105895,Diego,Ramirez_386,M,,Diego.Ramirez_386@example.com,1,1,1,7,0,3.53,1,South Dakota,Regular,0,0,88,27,39,0,0,enrolled,46
+105906,John,Stiles_284,M,,John.Stiles_284@example.com,1,1,0,5,0,3.2,0,Arizona,Regular,0,0,79,27,39,0,0,enrolled,46
+105925,Paulo,Santos_339,M,,Paulo.Santos_339@example.com,1,1,0,0,1,3.29,0,Puerto Rico,Regular,0,0,82,26,39,0,0,enrolled,46
+105927,Richard,Roe_074,M,,Richard.Roe_074@example.com,1,1,1,2,1,3.12,1,Virginia,Regular,0,0,77,27,39,0,0,enrolled,46
+105944,Mateo,Jackson_386,M,,Mateo.Jackson_386@example.com,1,1,0,5,0,3.64,1,Virgin Islands,Regular,0,0,90,26,39,0,0,enrolled,46
+105946,Mateo,Jackson_271,M,,Mateo.Jackson_271@example.com,1,1,1,6,0,2.9,1,Kansas,Regular,0,0,72,29,39,0,0,enrolled,46
+105950,Nikki,Wolf_126,F,,Nikki.Wolf_126@example.com,1,1,0,5,0,3.08,1,Nevada,Regular,0,0,76,25,39,0,0,enrolled,46
+105951,Shirley,Rodriguez_053,F,,Shirley.Rodriguez_053@example.com,1,1,0,8,0,3.16,1,Indiana,Regular,0,0,79,26,39,0,0,enrolled,46
+105959,Marcia,Oliveira_045,F,,Marcia.Oliveira_045@example.com,0,0,0,4,0,3.72,0,Hawaii,Regular,1,1,92,25,39,0,0,declined,0
+105965,Ana,Silva_048,F,,Ana.Silva_048@example.com,1,1,1,7,0,2.92,1,Hawaii,Regular,0,0,73,26,39,0,0,enrolled,46
+105967,Alejandro,Rosalez_204,M,,Alejandro.Rosalez_204@example.com,1,1,0,5,0,3.2,1,Florida,Regular,0,0,79,26,39,0,0,enrolled,46
+105972,Carlos,Salazar_325,M,,Carlos.Salazar_325@example.com,1,1,1,2,1,3.69,1,Louisiana,Regular,0,0,92,27,39,0,0,enrolled,46
+105974,Jorge,Souza_276,M,,Jorge.Souza_276@example.com,1,1,0,3,1,2.06,1,Pennsylvania,Regular,0,0,51,28,39,0,0,enrolled,46
+105975,Shirley,Rodriguez_163,F,,Shirley.Rodriguez_163@example.com,0,0,0,6,0,3.45,0,North Dakota,Regular,1,1,86,29,39,0,0,declined,0
+105989,Mary,Major_325,F,,Mary.Major_325@example.com,1,1,0,7,0,3.88,1,American Samoa,Early Decision,0,0,96,27,39,0,0,enrolled,46
+105993,Jorge,Souza_032,M,,Jorge.Souza_032@example.com,1,1,0,0,1,3.31,1,Alabama,Regular,0,0,82,26,39,0,0,enrolled,46
+105999,Alejandro,Rosalez_047,M,,Alejandro.Rosalez_047@example.com,1,1,0,7,0,2.75,1,Pennsylvania,Regular,0,0,68,29,39,0,0,enrolled,46
+106001,Diego,Ramirez_106,M,,Diego.Ramirez_106@example.com,1,1,0,3,1,4.26,1,Iowa,Early Action,0,0,100,29,41,0,0,enrolled,48
+106005,John,Doe_373,M,,John.Doe_373@example.com,0,0,0,1,1,2.93,0,Kentucky,Regular,0,1,73,27,41,0,0,declined,0
+106006,Diego,Ramirez_360,M,,Diego.Ramirez_360@example.com,1,1,0,7,0,3.44,1,Maryland,Regular,0,0,86,27,41,0,0,enrolled,48
+106008,Richard,Roe_227,M,,Richard.Roe_227@example.com,1,1,1,4,0,2.78,0,District ,Regular,0,0,69,25,41,0,0,enrolled,48
+106011,John,Doe_141,M,,John.Doe_141@example.com,0,0,0,7,0,3.22,0,Washington,Regular,0,1,80,25,41,0,0,declined,0
+106017,John,Doe_136,M,,John.Doe_136@example.com,1,0,0,7,0,2.66,0,Massachusetts,Regular,0,0,66,29,41,0,0,admitted,0
+106020,John,Stiles_282,M,,John.Stiles_282@example.com,1,1,1,5,0,3.11,1,North Carolina,Regular,0,0,77,27,41,0,0,enrolled,48
+106025,Alejandro,Rosalez_245,M,,Alejandro.Rosalez_245@example.com,1,1,0,3,1,3.54,1,Iowa,Regular,0,0,88,26,41,0,0,enrolled,48
+106028,Paulo,Santos_170,M,,Paulo.Santos_170@example.com,1,0,0,1,1,3.11,0,Maine,Regular,0,0,77,25,41,0,0,admitted,0
+106034,Paulo,Santos_082,M,,Paulo.Santos_082@example.com,1,1,0,2,1,3.39,0,Rhode Island,Regular,0,0,84,27,41,0,0,enrolled,48
+106038,Alejandro,Rosalez_256,M,,Alejandro.Rosalez_256@example.com,1,1,1,8,0,3.24,1,Minnesota,Regular,0,0,80,29,41,0,0,enrolled,48
+106043,John,Stiles_277,M,,John.Stiles_277@example.com,1,1,0,5,0,3.41,1,Texas,Regular,0,0,85,26,41,0,0,enrolled,48
+106047,Mateo,Jackson_123,M,,Mateo.Jackson_123@example.com,1,1,0,2,1,2.59,1,Wisconsin,Regular,0,0,64,27,41,0,0,enrolled,48
+106058,Alejandro,Rosalez_166,M,,Alejandro.Rosalez_166@example.com,0,0,0,8,0,3.14,0,Vermont,Regular,1,1,78,25,41,0,0,declined,0
+106059,Shirley,Rodriguez_268,F,,Shirley.Rodriguez_268@example.com,1,1,0,6,0,2.59,1,California,Regular,0,0,64,29,41,0,0,enrolled,48
+106063,Jorge,Souza_081,M,,Jorge.Souza_081@example.com,1,1,0,5,0,3.31,1,Oklahoma,Regular,0,0,82,27,41,0,0,enrolled,48
+106065,Maria,Garcia_031,F,,Maria.Garcia_031@example.com,1,1,0,2,1,3.43,1,Guam,Regular,0,0,85,25,41,0,0,enrolled,48
+106067,Jorge,Souza_190,M,,Jorge.Souza_190@example.com,1,1,1,5,0,2.99,0,Louisiana,Regular,0,0,74,29,41,0,0,enrolled,48
+106075,Mary,Major_386,F,,Mary.Major_386@example.com,1,1,0,8,0,3.81,0,American Samoa,Regular,0,0,95,26,41,0,0,enrolled,48
+106081,Martha,Rivera_002,F,,Martha.Rivera_002@example.com,0,0,0,6,0,3,0,Michigan,Regular,0,1,74,27,41,0,0,declined,0
+106087,Jane,Doe_176,F,,Jane.Doe_176@example.com,1,1,0,1,1,3.21,1,Guam,Regular,0,0,80,26,41,0,0,enrolled,48
+106099,Mary,Major_412,F,,Mary.Major_412@example.com,1,1,0,4,0,3.48,1,Hawaii,Regular,0,0,87,29,41,0,0,enrolled,48
+106106,John,Doe_234,M,,John.Doe_234@example.com,1,1,1,7,0,3.49,1,Massachusetts,Regular,0,0,87,26,41,0,0,enrolled,48
+106111,Jorge,Souza_426,M,,Jorge.Souza_426@example.com,1,1,0,1,1,3.43,1,Hawaii,Regular,0,0,85,26,41,0,0,enrolled,48
+106127,Mateo,Jackson_055,M,,Mateo.Jackson_055@example.com,1,1,1,6,0,3.1,1,Ohio,Regular,0,0,77,28,41,0,0,enrolled,48
+106130,Maria,Garcia_213,F,,Maria.Garcia_213@example.com,0,0,0,6,0,2.77,0,Virginia,Regular,1,1,69,25,41,0,0,declined,0
+106133,Carlos,Salazar_290,M,,Carlos.Salazar_290@example.com,1,1,0,3,1,2.54,1,Connecticut,Regular,0,0,63,28,41,0,0,enrolled,48
+106148,Mary,Major_378,F,,Mary.Major_378@example.com,1,1,0,0,1,3.05,1,Massachusetts,Regular,0,0,76,27,41,0,0,enrolled,48
+106166,Jorge,Souza_215,M,,Jorge.Souza_215@example.com,1,1,0,7,0,2.87,0,Nevada,Regular,0,0,71,26,41,0,0,enrolled,48
+106172,John,Stiles_242,M,,John.Stiles_242@example.com,0,0,0,3,1,3.49,0,Indiana,Regular,0,1,87,29,41,0,0,declined,0
+106178,Jane,Doe_180,F,,Jane.Doe_180@example.com,1,1,0,7,0,3.29,0,District ,Regular,0,0,82,28,41,0,0,enrolled,48
+106191,Mateo,Jackson_064,M,,Mateo.Jackson_064@example.com,1,1,0,6,0,2.88,1,New Jersey,Regular,0,0,72,29,41,0,0,enrolled,48
+106194,Diego,Ramirez_200,M,,Diego.Ramirez_200@example.com,1,1,0,7,0,3.61,0,Maryland,Regular,0,0,90,28,41,0,0,enrolled,48
+106207,Mary,Major_073,F,,Mary.Major_073@example.com,0,0,0,2,1,3.22,0,California,Regular,0,1,80,29,41,0,0,declined,0
+106210,Nikki,Wolf_128,F,,Nikki.Wolf_128@example.com,1,1,0,6,0,3.17,1,Pennsylvania,Regular,0,0,79,26,41,0,0,enrolled,48
+106215,Jane,Doe_329,F,,Jane.Doe_329@example.com,1,1,1,0,1,3.04,1,South Dakota,Regular,0,0,75,25,41,0,0,enrolled,48
+106218,Jorge,Souza_216,M,,Jorge.Souza_216@example.com,1,1,0,5,0,3.14,1,Georgia,Regular,0,0,78,26,41,0,0,enrolled,48
+106233,Maria,Garcia_236,F,,Maria.Garcia_236@example.com,1,1,0,1,1,2.93,0,Nebraska,Regular,0,0,73,28,41,0,0,enrolled,48
+106247,Martha,Rivera_336,F,,Martha.Rivera_336@example.com,1,1,0,0,1,3.61,1,Nebraska,Regular,0,0,90,29,41,0,0,enrolled,48
+106251,John,Stiles_401,M,,John.Stiles_401@example.com,1,1,1,1,1,2.78,1,New Jersey,Regular,0,0,69,29,41,0,0,enrolled,48
+106255,Nikki,Wolf_431,F,,Nikki.Wolf_431@example.com,1,1,0,8,0,3.25,1,New Hampshire,Regular,0,0,81,29,41,0,0,enrolled,48
+106259,John,Doe_076,M,,John.Doe_076@example.com,0,0,0,5,0,3.16,0,Illinois,Regular,1,1,78,27,41,0,0,declined,0
+106263,Mateo,Jackson_427,M,,Mateo.Jackson_427@example.com,0,0,0,7,0,3.24,0,New Jersey,Regular,1,1,80,27,41,0,0,declined,0
+106286,Jane,Doe_110,F,,Jane.Doe_110@example.com,1,1,0,4,0,2.87,0,District ,Regular,0,0,71,27,41,0,0,enrolled,48
+106290,Diego,Ramirez_240,M,,Diego.Ramirez_240@example.com,1,1,0,2,1,3.26,1,Florida,Regular,0,0,81,26,41,0,0,enrolled,48
+106310,Shirley,Rodriguez_024,F,,Shirley.Rodriguez_024@example.com,0,0,0,1,1,2.95,0,Kentucky,Regular,0,1,73,29,41,0,0,declined,0
+106311,Alejandro,Rosalez_210,M,,Alejandro.Rosalez_210@example.com,1,1,0,7,0,3.3,1,North Carolina,Regular,0,0,82,29,41,0,0,enrolled,48
+106312,Alejandro,Rosalez_101,M,,Alejandro.Rosalez_101@example.com,1,1,0,5,0,3.64,1,Illinois,Regular,0,0,90,27,41,0,0,enrolled,48
+106321,John,Doe_197,M,,John.Doe_197@example.com,1,1,0,5,0,2.85,1,Puerto Rico,Regular,0,0,71,28,41,0,0,enrolled,48
+106323,John,Stiles_041,M,,John.Stiles_041@example.com,1,1,0,4,0,3.24,0,Ohio,Regular,0,0,80,26,41,0,0,enrolled,48
+106325,Mateo,Jackson_177,M,,Mateo.Jackson_177@example.com,1,1,1,1,1,3.57,1,Maryland,Regular,0,0,89,25,41,0,0,enrolled,48
+106327,Martha,Rivera_151,F,,Martha.Rivera_151@example.com,1,1,0,3,1,2.98,1,Virgin Islands,Regular,0,0,74,29,41,0,0,enrolled,48
+106336,Mateo,Jackson_393,M,,Mateo.Jackson_393@example.com,0,0,0,7,0,2.95,0,Michigan,Regular,0,1,73,29,41,0,0,declined,0
+106338,Jorge,Souza_372,M,,Jorge.Souza_372@example.com,1,1,0,5,0,2.81,0,Pennsylvania,Regular,0,0,70,25,41,0,0,enrolled,48
+106340,John,Doe_425,M,,John.Doe_425@example.com,1,1,0,3,1,3.23,1,West Virginia,Regular,0,0,80,27,41,0,0,enrolled,48
+106379,Martha,Rivera_218,F,,Martha.Rivera_218@example.com,0,0,0,1,1,3.85,0,West Virginia,Regular,0,1,96,28,41,0,0,declined,0
+106380,John,Doe_008,M,,John.Doe_008@example.com,0,0,0,0,1,3.14,0,Washington,Regular,0,1,78,28,41,0,0,declined,0
+106387,Marcia,Oliveira_093,F,,Marcia.Oliveira_093@example.com,0,0,0,3,1,3.27,0,South Carolina,Regular,0,1,81,26,41,0,0,declined,0
+106402,Carlos,Salazar_123,M,,Carlos.Salazar_123@example.com,1,1,0,7,0,2.42,1,Maryland,Regular,0,0,60,29,41,0,0,enrolled,48
+106404,Martha,Rivera_286,F,,Martha.Rivera_286@example.com,0,0,0,7,0,3.59,0,Nevada,Regular,1,1,89,26,41,0,0,declined,0
+106407,Maria,Garcia_221,F,,Maria.Garcia_221@example.com,1,1,0,4,0,3.18,0,Louisiana,Regular,0,0,79,26,41,0,0,enrolled,48
+106424,Martha,Rivera_412,F,,Martha.Rivera_412@example.com,1,1,0,2,1,3.36,1,Vermont,Regular,0,0,84,29,41,0,0,enrolled,48
+106455,Paulo,Santos_197,M,,Paulo.Santos_197@example.com,0,0,0,3,1,3.23,0,Guam,Regular,1,1,80,28,41,0,0,declined,0
+106470,Martha,Rivera_282,F,,Martha.Rivera_282@example.com,1,1,0,5,0,3.11,1,Tennessee,Regular,0,0,77,28,41,0,0,enrolled,48
+106472,John,Stiles_079,M,,John.Stiles_079@example.com,1,1,0,1,1,3.36,1,South Carolina,Regular,0,0,84,25,41,0,0,enrolled,48
+106478,Carlos,Salazar_237,M,,Carlos.Salazar_237@example.com,1,1,0,5,0,3.02,1,Illinois,Regular,0,0,75,26,41,0,0,enrolled,48
+106484,Jorge,Souza_116,M,,Jorge.Souza_116@example.com,1,1,0,5,0,2.94,0,Oregon,Regular,0,0,73,27,41,0,0,enrolled,48
+106485,Paulo,Santos_005,M,,Paulo.Santos_005@example.com,1,1,0,5,0,3.07,0,Wisconsin,Regular,0,0,76,27,41,0,0,enrolled,48
+106493,Alejandro,Rosalez_265,M,,Alejandro.Rosalez_265@example.com,1,1,0,7,0,3.26,1,Louisiana,Regular,0,0,81,25,41,0,0,enrolled,48
+106502,Alejandro,Rosalez_212,M,,Alejandro.Rosalez_212@example.com,1,1,1,3,1,2.58,1,Alaska,Regular,0,0,64,25,41,0,0,enrolled,48
+106506,Paulo,Santos_225,M,,Paulo.Santos_225@example.com,0,0,0,4,0,2.92,0,Nebraska,Regular,1,1,72,27,41,0,0,declined,0
+106513,Jane,Doe_351,F,,Jane.Doe_351@example.com,0,0,0,1,1,2.91,0,Alaska,Regular,1,1,72,26,41,0,0,declined,0
+106518,Mary,Major_181,F,,Mary.Major_181@example.com,1,1,0,5,0,3.15,1,Ohio,Regular,0,0,78,25,41,0,0,enrolled,48
+106519,Mateo,Jackson_232,M,,Mateo.Jackson_232@example.com,0,0,0,0,1,2.96,0,Colorado,Regular,0,1,73,29,41,0,0,declined,0
+106521,Maria,Garcia_407,F,,Maria.Garcia_407@example.com,1,1,0,1,1,3.96,0,Mississippi,Early Decision,0,0,99,25,41,0,0,enrolled,48
+106527,Maria,Garcia_411,F,,Maria.Garcia_411@example.com,1,1,1,6,0,3.43,1,South Carolina,Regular,0,0,85,28,41,0,0,enrolled,48
+106542,Richard,Roe_381,M,,Richard.Roe_381@example.com,1,1,0,4,0,3.85,1,Virgin Islands,Regular,0,0,96,25,41,0,0,enrolled,48
+106585,Carlos,Salazar_146,M,,Carlos.Salazar_146@example.com,1,1,0,8,0,3.41,1,Nevada,Regular,0,0,85,26,41,0,0,enrolled,48
+106590,Shirley,Rodriguez_167,F,,Shirley.Rodriguez_167@example.com,0,0,0,7,0,2.63,0,District ,Regular,0,1,65,26,41,0,0,declined,0
+106592,Mary,Major_011,F,,Mary.Major_011@example.com,1,1,1,2,1,3.12,0,Vermont,Regular,0,0,78,26,41,0,0,enrolled,48
+106598,John,Stiles_135,M,,John.Stiles_135@example.com,1,1,0,0,1,3.67,1,Idaho,Regular,0,0,91,28,41,0,0,enrolled,48
+106613,Maria,Garcia_381,F,,Maria.Garcia_381@example.com,0,0,0,6,0,3.4,0,of Columbia,Regular,0,1,84,25,41,0,0,declined,0
+106616,Jane,Doe_236,F,,Jane.Doe_236@example.com,1,1,0,6,0,3.22,1,Kentucky,Regular,0,0,80,26,41,0,0,enrolled,48
+106632,Jorge,Souza_219,M,,Jorge.Souza_219@example.com,1,1,0,1,1,3.27,1,New Hampshire,Regular,0,0,81,29,41,0,0,enrolled,48
+106646,Richard,Roe_180,M,,Richard.Roe_180@example.com,0,0,0,3,1,2.47,0,Arkansas,Regular,0,1,61,25,41,0,0,declined,0
+106651,Maria,Garcia_338,F,,Maria.Garcia_338@example.com,1,1,1,6,0,3.1,1,Vermont,Regular,0,0,77,29,41,0,0,enrolled,48
+106660,Nikki,Wolf_119,F,,Nikki.Wolf_119@example.com,1,1,0,7,0,3.34,1,Mississippi,Regular,0,0,83,28,41,0,0,enrolled,48
+106667,John,Doe_334,M,,John.Doe_334@example.com,0,0,0,5,0,2.71,0,Maine,Regular,0,1,67,28,41,0,0,declined,0
+106673,Maria,Garcia_214,F,,Maria.Garcia_214@example.com,1,1,0,8,0,3.07,1,Wisconsin,Regular,0,0,76,26,41,0,0,enrolled,48
+106677,Shirley,Rodriguez_056,F,,Shirley.Rodriguez_056@example.com,1,1,0,1,1,3.21,1,Oregon,Regular,0,0,80,25,41,0,0,enrolled,48
+106699,Maria,Garcia_013,F,,Maria.Garcia_013@example.com,1,1,0,2,1,2.94,1,Tennessee,Regular,0,0,73,26,41,0,0,enrolled,48
+106700,Ana,Silva_311,F,,Ana.Silva_311@example.com,0,0,0,6,0,2.91,0,North Carolina,Regular,0,1,72,26,41,0,0,declined,0
+106706,Marcia,Oliveira_120,F,,Marcia.Oliveira_120@example.com,1,1,0,1,1,3.6,1,Arkansas,Regular,0,0,90,25,41,0,0,enrolled,48
+106713,Jane,Doe_063,F,,Jane.Doe_063@example.com,1,1,0,6,0,3.59,0,Virginia,Regular,0,0,89,27,41,0,0,enrolled,48
+106714,Carlos,Salazar_259,M,,Carlos.Salazar_259@example.com,1,1,0,8,0,2.97,1,Oklahoma,Regular,0,0,74,27,41,0,0,enrolled,48
+106718,Paulo,Santos_132,M,,Paulo.Santos_132@example.com,1,1,1,3,1,3.44,1,Nebraska,Regular,0,0,85,26,41,0,0,enrolled,48
+106725,Diego,Ramirez_054,M,,Diego.Ramirez_054@example.com,1,1,0,3,1,3.07,1,Illinois,Regular,0,0,76,25,41,0,0,enrolled,48
+106726,John,Doe_224,M,,John.Doe_224@example.com,0,0,0,6,0,3.17,0,Pennsylvania,Regular,1,1,79,27,41,0,0,declined,0
+106730,Carlos,Salazar_009,M,,Carlos.Salazar_009@example.com,1,1,0,1,1,3.35,1,Nevada,Regular,0,0,83,25,41,0,0,enrolled,48
+106732,Jorge,Souza_381,M,,Jorge.Souza_381@example.com,1,1,0,3,1,2.64,0,Utah,Regular,0,0,66,28,41,0,0,enrolled,48
+106740,John,Stiles_102,M,,John.Stiles_102@example.com,1,1,0,3,1,3,1,Wisconsin,Regular,0,0,74,26,41,0,0,enrolled,48
+106744,Mateo,Jackson_366,M,,Mateo.Jackson_366@example.com,1,1,0,5,0,3.85,1,New Mexico,Regular,0,0,96,26,41,0,0,enrolled,48
+106745,Maria,Garcia_321,F,,Maria.Garcia_321@example.com,1,1,0,1,1,2.75,1,New Hampshire,Regular,0,0,68,26,41,0,0,enrolled,48
+106754,Nikki,Wolf_137,F,,Nikki.Wolf_137@example.com,1,1,0,4,0,3.36,0,Rhode Island,Regular,0,0,84,26,41,0,0,enrolled,48
+106755,Mateo,Jackson_269,M,,Mateo.Jackson_269@example.com,1,1,1,8,0,3.39,1,New York,Regular,0,0,84,29,41,0,0,enrolled,48
+106756,Marcia,Oliveira_291,F,,Marcia.Oliveira_291@example.com,1,1,0,3,1,3.67,0,Guam,Regular,0,0,91,25,41,0,0,enrolled,48
+106759,Richard,Roe_091,M,,Richard.Roe_091@example.com,1,1,0,3,1,3.44,0,Georgia,Regular,0,0,86,27,41,0,0,enrolled,48
+106762,Maria,Garcia_404,F,,Maria.Garcia_404@example.com,1,1,0,4,0,2.81,1,Michigan,Regular,0,0,70,28,41,0,0,enrolled,48
+106788,Jane,Doe_075,F,,Jane.Doe_075@example.com,1,1,0,8,0,3.3,0,Nevada,Regular,0,0,82,29,41,0,0,enrolled,48
+106792,Ana,Silva_166,F,,Ana.Silva_166@example.com,1,1,0,8,0,2.53,1,Hawaii,Regular,0,0,63,28,41,0,0,enrolled,48
+106795,Mateo,Jackson_164,M,,Mateo.Jackson_164@example.com,1,1,0,1,1,2.9,1,American Samoa,Regular,0,0,72,25,41,0,0,enrolled,48
+106818,Nikki,Wolf_181,F,,Nikki.Wolf_181@example.com,1,1,0,3,1,3.05,1,Rhode Island,Regular,0,0,76,25,41,0,0,enrolled,48
+106822,Jorge,Souza_383,M,,Jorge.Souza_383@example.com,0,0,0,2,1,3.56,0,Connecticut,Regular,0,1,89,25,41,0,0,declined,0
+106824,Mary,Major_254,F,,Mary.Major_254@example.com,0,0,0,4,0,3.16,0,New Mexico,Regular,1,1,78,25,41,0,0,declined,0
+106834,John,Stiles_191,M,,John.Stiles_191@example.com,0,0,0,8,0,2.72,0,Montana,Regular,1,1,67,28,41,0,0,declined,0
+106835,John,Stiles_397,M,,John.Stiles_397@example.com,1,1,0,4,0,3.11,1,Washington,Regular,0,0,77,27,41,0,0,enrolled,48
+106838,Maria,Garcia_384,F,,Maria.Garcia_384@example.com,1,1,0,1,1,3,1,Rhode Island,Regular,0,0,75,29,41,0,0,enrolled,48
+106839,Jorge,Souza_026,M,,Jorge.Souza_026@example.com,1,1,0,3,1,3.21,1,Washington,Regular,0,0,80,26,41,0,0,enrolled,48
+106865,John,Stiles_200,M,,John.Stiles_200@example.com,1,1,0,0,1,2.89,1,Connecticut,Regular,0,0,72,29,41,0,0,enrolled,48
+106867,John,Doe_241,M,,John.Doe_241@example.com,1,1,0,6,0,3.29,0,Texas,Regular,0,0,82,28,41,0,0,enrolled,48
+106868,Diego,Ramirez_059,M,,Diego.Ramirez_059@example.com,1,1,1,7,0,3.6,1,New Mexico,Regular,0,0,89,28,41,0,0,enrolled,48
+106871,Alejandro,Rosalez_112,M,,Alejandro.Rosalez_112@example.com,1,1,0,1,1,3.16,1,Montana,Regular,0,0,78,27,41,0,0,enrolled,48
+106879,Jane,Doe_073,F,,Jane.Doe_073@example.com,1,1,0,3,1,3.25,0,Tennessee,Regular,0,0,81,28,41,0,0,enrolled,48
+106883,Maria,Garcia_232,F,,Maria.Garcia_232@example.com,1,1,0,2,1,3.68,1,Pennsylvania,Regular,0,0,92,25,41,0,0,enrolled,48
+106891,Ana,Silva_019,F,,Ana.Silva_019@example.com,1,1,0,3,1,3.26,1,Kentucky,Regular,0,0,81,29,41,0,0,enrolled,48
+106896,Diego,Ramirez_037,M,,Diego.Ramirez_037@example.com,0,0,0,5,0,3.28,0,Iowa,Regular,0,1,81,29,41,0,0,declined,0
+106902,Jane,Doe_065,F,,Jane.Doe_065@example.com,0,0,0,2,1,2.52,0,Tennessee,Regular,1,1,62,25,41,0,0,declined,0
+106903,Paulo,Santos_238,M,,Paulo.Santos_238@example.com,1,1,0,3,1,3.22,1,Ohio,Regular,0,0,80,29,41,0,0,enrolled,48
+106904,John,Doe_051,M,,John.Doe_051@example.com,1,1,0,6,0,4.06,1,Rhode Island,Early Action,0,0,100,26,41,0,0,enrolled,48
+106908,Maria,Garcia_432,F,,Maria.Garcia_432@example.com,0,0,0,8,0,3.92,0,Virgin Islands,Early Decision,1,1,97,25,41,0,0,declined,0
+106916,Shirley,Rodriguez_010,F,,Shirley.Rodriguez_010@example.com,1,1,0,8,0,3.44,1,District ,Regular,0,0,85,26,41,0,0,enrolled,48
+106931,Mary,Major_262,F,,Mary.Major_262@example.com,1,1,0,3,1,3.02,1,Guam,Regular,0,0,75,25,41,0,0,enrolled,48
+106939,John,Doe_433,M,,John.Doe_433@example.com,1,1,0,7,0,3.17,1,Indiana,Regular,0,0,79,27,41,0,0,enrolled,48
+106968,Richard,Roe_023,M,,Richard.Roe_023@example.com,0,0,0,1,1,2.63,0,Georgia,Regular,0,1,65,27,41,0,0,declined,0
+106975,Maria,Garcia_216,F,,Maria.Garcia_216@example.com,1,1,0,8,0,2.86,0,Rhode Island,Regular,0,0,71,28,41,0,0,enrolled,48
+106983,Carlos,Salazar_106,M,,Carlos.Salazar_106@example.com,0,0,0,6,0,3.59,0,Florida,Regular,1,1,89,29,41,0,0,declined,0
+106993,Martha,Rivera_107,F,,Martha.Rivera_107@example.com,1,1,0,0,1,3.41,0,Puerto Rico,Regular,0,0,85,25,41,0,0,enrolled,48

@@ -1,0 +1,61 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >
+  S3 buckets for education data (Athena/Glue source) and query results.
+  Part of the data foundation for agents - split from workshop 4-athena.yaml.
+
+Resources:
+  AthenaDataBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub ${AWS::AccountId}-${AWS::Region}-education-data
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      LoggingConfiguration:
+        DestinationBucketName: !ImportValue AccessLogsBucketName
+        LogFilePrefix: education-data/
+
+  AthenaResultsBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub ${AWS::AccountId}-${AWS::Region}-education-results
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      LoggingConfiguration:
+        DestinationBucketName: !ImportValue AccessLogsBucketName
+        LogFilePrefix: education-results/
+      LifecycleConfiguration:
+        Rules:
+          - Id: DeleteOldResults
+            Status: Enabled
+            ExpirationInDays: 7
+
+Outputs:
+  AthenaDataBucketName:
+    Description: Education data bucket name
+    Value: !Ref AthenaDataBucket
+    Export:
+      Name: AthenaDataBucketName
+
+  AthenaDataBucketArn:
+    Description: Education data bucket ARN
+    Value: !GetAtt AthenaDataBucket.Arn
+    Export:
+      Name: AthenaDataBucketArn
+
+  AthenaResultsBucketName:
+    Description: Athena query results bucket name
+    Value: !Ref AthenaResultsBucket
+    Export:
+      Name: AthenaResultsBucketName
+
+  AthenaResultsBucketArn:
+    Description: Athena query results bucket ARN
+    Value: !GetAtt AthenaResultsBucket.Arn
+    Export:
+      Name: AthenaResultsBucketArn
