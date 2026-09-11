@@ -34,18 +34,6 @@ CloudFormation templates and knowledge base documents from the **Building Agents
 
 4. **Education data** (`education-data/`) - Structured CSV datasets (12 tables, 987 students) used as the Athena/Glue data source for the student information system.
 
-## Local Runbook: Run the Streamlit advisor
-
-```powershell
-# 1. Check AWS credentials (must print your Isengard ARN, not an error)
-aws sts get-caller-identity
-
-# 2. Activate the venv and launch the app (one shot)
-.\venv\Scripts\Activate.ps1; streamlit run src\streamlit_advisor.py
-```
-
-Opens at http://localhost:8501. If step 1 errors, refresh your credentials before step 2.
-
 ## Deployment
 
 ### Prerequisites
@@ -90,6 +78,18 @@ Then edit `.env`:
 | `KNOWLEDGE_BASE_ID` | The Bedrock Knowledge Base ID from the deployment step above. Required. |
 
 `.env` is git-ignored so your values are never committed. Valid AWS credentials with Bedrock access in the configured region are also required.
+
+## Runbook: Run local Streamlit advisor
+
+```powershell
+# 1. Check AWS credentials (must print your Isengard ARN, not an error)
+aws sts get-caller-identity
+
+# 2. Activate the venv and launch the app (one shot)
+.\venv\Scripts\Activate.ps1; streamlit run src\streamlit_advisor.py
+```
+
+Opens at http://localhost:8501. If step 1 errors, refresh your credentials before step 2.
 
 ## Local Development
 
