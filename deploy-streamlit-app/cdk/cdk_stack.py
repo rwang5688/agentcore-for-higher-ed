@@ -128,17 +128,25 @@ class CdkStack(Stack):
                 subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS),
         )
 
-        # Grant access to Bedrock
-        bedrock_policy = iam.Policy(self, f"{prefix}BedrockPolicy",
-                                    statements=[
-                                        iam.PolicyStatement(
-                                            actions=["bedrock:InvokeModel"],
-                                            resources=["*"]
-                                        )
-                                    ]
-                                    )
+        # Grant the task permission to invoke the deployed AgentCore runtime.
+        # This app is a thin client: it calls invoke_agent_runtime and all agent
+        # logic (model, KB, Athena, memory) runs on the runtime, so the task
+        # role needs bedrock-agentcore:InvokeAgentRuntime, NOT bedrock:InvokeModel.
+        # The wildcard suffix covers the runtime's DEFAULT (and any named)
+        # endpoints under the runtime resource.
+        agentcore_policy = iam.Policy(self, f"{prefix}AgentCorePolicy",
+                                      statements=[
+                                          iam.PolicyStatement(
+                                              actions=["bedrock-agentcore:InvokeAgentRuntime"],
+                                              resources=[
+                                                  Config.AGENTCORE_RUNTIME_ARN,
+                                                  f"{Config.AGENTCORE_RUNTIME_ARN}/*",
+                                              ]
+                                          )
+                                      ]
+                                      )
         task_role = fargate_task_definition.task_role
-        task_role.attach_inline_policy(bedrock_policy)
+        task_role.attach_inline_policy(agentcore_policy)
 
         # Grant access to read the secret in Secrets Manager
         secret.grant_read(task_role)

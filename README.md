@@ -19,10 +19,27 @@ CloudFormation templates and knowledge base documents from the **Building Agents
 ├── education-kb-docs/  # Knowledge Base source documents (Peculiar U course catalog)
 ├── iam/                # IAM policy documents
 ├── notes/              # Workshop observations, issues, and feedback
+├── src/                # Older standalone Strands scripts (simple_agent, kb_advisor, advisor_agent, query_student_db)
+├── streamlit-thick-client/ # App mode 1: runs the Strands agent locally (all AWS calls local)
+├── streamlit-thin-client/  # App mode 2: invokes the deployed AgentCore runtime (thin client)
+├── deploy-streamlit-app/   # App mode 3: thin client on ECS Fargate + Cognito (CDK)
 ├── README.md
-├── requirements.txt
-└── src/                # Strands agent scripts (simple_agent, kb_advisor, streamlit_advisor)
+└── requirements.txt
 ```
+
+## Streamlit advisor — three app modes
+
+The advisor UI ships in three self-contained flavors, one per phase of the demo
+roadmap (see `ROADMAP.md`). Pick the one that matches what you want to show:
+
+| Directory | Mode | Where agent logic runs | Auth | Run |
+| --- | --- | --- | --- | --- |
+| `streamlit-thick-client/` | Local Strands agent | In-process (Bedrock + KB + Athena, your creds) | none | `streamlit run app.py` |
+| `streamlit-thin-client/` | Managed backend | Deployed AgentCore runtime | none | `streamlit run app.py` |
+| `deploy-streamlit-app/` | Hosted thin client | Deployed AgentCore runtime | Cognito | `cdk deploy` (EC2) |
+
+Each directory is self-contained (its own `config.py`/app code) and carries its
+own README with exact prerequisites and run commands.
 
 ## Purpose
 
@@ -79,17 +96,30 @@ Then edit `.env`:
 
 `.env` is git-ignored so your values are never committed. Valid AWS credentials with Bedrock access in the configured region are also required.
 
-## Runbook: Run local Streamlit advisor
+## Runbook: Run the local Streamlit advisor
+
+Two local modes (both open at http://localhost:8501). Check credentials first:
 
 ```powershell
-# 1. Check AWS credentials (must print your Isengard ARN, not an error)
+# Must print your Isengard ARN, not an error
 aws sts get-caller-identity
-
-# 2. Activate the venv and launch the app (one shot)
-.\venv\Scripts\Activate.ps1; streamlit run src\streamlit_advisor.py
 ```
 
-Opens at http://localhost:8501. If step 1 errors, refresh your credentials before step 2.
+Thick client — runs the Strands agent locally (Bedrock + KB + Athena):
+
+```powershell
+.\venv\Scripts\Activate.ps1; streamlit run streamlit-thick-client\app.py
+```
+
+Thin client — invokes the deployed AgentCore runtime (needs
+`AGENTCORE_RUNTIME_ARN` in `.env`):
+
+```powershell
+.\venv\Scripts\Activate.ps1; streamlit run streamlit-thin-client\app.py
+```
+
+If the credentials check errors, refresh your credentials before launching. For
+the hosted (Cognito + ECS Fargate) mode, see `deploy-streamlit-app/README.md`.
 
 ## Runbook: Deploy the AgentCore agent (from the EC2 Code Editor)
 
@@ -265,10 +295,11 @@ Knowledge Base advisor agent (course handbook + student_profile tool):
 python src\kb_advisor.py
 ```
 
-Streamlit chat interface (opens in your browser at http://localhost:8501):
+Streamlit chat interface (opens in your browser at http://localhost:8501) — see
+the "three app modes" section above; e.g. the local thick client:
 
 ```powershell
-.\venv\Scripts\Activate.ps1; streamlit run src\streamlit_advisor.py
+.\venv\Scripts\Activate.ps1; streamlit run streamlit-thick-client\app.py
 ```
 
 ## Notes

@@ -1,133 +1,111 @@
 # deploy-streamlit-app
 
-This app can be used as a starting point to easily create and deploy a GenAI demo, with web interface and user authentication. It is written in python only, with cdk template to deploy on AWS.
+Phase 3 of the demo roadmap: the Peculiar University advisor as a **hosted thin
+client** — the Streamlit UI behind Cognito authentication, running on ECS
+Fargate (ALB + CloudFront), invoking the deployed AgentCore runtime.
 
-It deploys a basic Streamlit app, and contains the following components:
+This is the same thin-client business logic as `streamlit-thin-client/`, merged
+into the aws-samples ECS Fargate + Cognito shell. All agent intelligence (model,
+Knowledge Base retrieval, Athena queries, multi-agent orchestration, memory)
+runs on the AgentCore backend. The authenticated Cognito username is passed as
+`actor_id`, so long-term memory is scoped per user.
 
-* The Streamlit app in ECS/Fargate, behind an ALB and CloudFront
-* A Cognito user pool in which you can manage users
+## Components
 
-By default, the Streamlit app has the following features:
+- Streamlit app in ECS/Fargate, behind an ALB and CloudFront.
+- A Cognito user pool for authentication (manage users from the console).
+- The Fargate task role granted `bedrock-agentcore:InvokeAgentRuntime` on the
+  deployed runtime (NOT `bedrock:InvokeModel` — this is a thin client).
 
-* Authentication through Cognito
-* Connection to Bedrock 
+## What changed from the aws-samples baseline
 
-## Architecture diagram
+- `docker_app/utils/agentcore.py` (new) — `AgentCoreClient.invoke()` calls the
+  deployed runtime via `invoke_agent_runtime` and parses the streamed response
+  (same logic as `streamlit-thin-client`).
+- `docker_app/app.py` — after the Cognito login gate, renders the advisor chat
+  UI and calls the AgentCore client with `actor_id = authenticator.get_username()`.
+- `docker_app/utils/llm.py` — removed (was a direct claude-v2 Bedrock demo).
+- `docker_app/config_file.py` — `DEPLOYMENT_REGION = "us-west-2"` and
+  `AGENTCORE_RUNTIME_ARN` (the deployed `AdmissionAgent` runtime).
+- `cdk/cdk_stack.py` — task-role IAM swapped to
+  `bedrock-agentcore:InvokeAgentRuntime` scoped to the runtime ARN.
 
-![Architecture diagram](img/archi_streamlit_cdk.png)
+## Prerequisites
 
-## Usage
+- The `AdmissionAgent` AgentCore runtime already deployed in `us-west-2` (see
+  the repo's `AdmissionAgent/` and `agentcore status`).
+- Docker, AWS CLI, and AWS CDK on the deploy host.
+- Bedrock/AgentCore access in `us-west-2`.
 
-In the docker_app folder, you will find the streamlit app. You can run it locally or with docker.
+NOTE: the laptop has NO Docker, so build/synth/deploy happen on the Amazon Linux
+2023 Code Editor EC2 instance, not the laptop. Laptop work stops at code edits +
+import smoke tests.
 
-Note: for the docker version to run, you will need to give appropriate permissions to the container for bedrock access. This is not implemented yet.
+## Configure
 
-In the main folder, you will find a cdk template to deploy the app on ECS / ALB.
+Edit `docker_app/config_file.py`:
 
-Prerequisites:
+- `STACK_NAME` / `CUSTOM_HEADER_VALUE` — change if deploying a second instance.
+- `AGENTCORE_RUNTIME_ARN` — must match the deployed runtime
+  (`agentcore status`, or `AdmissionAgent/agentcore/.cli/deployed-state.json`).
+- `DEPLOYMENT_REGION` — keep `us-west-2` (matches the runtime/KB/Lambda).
 
-* python >= 3.8
-* docker
-* use a Chrome browser for development
-* `anthropic.claude-v2` model activated in Amazon Bedrock in your AWS account
-* the environment used to create this demo was an AWS Cloud9 m5.large instance with Amazon Linux 2023, but it should also work with other configurations. It has also been tested on a mac laptop with colima as container runtime.
-* You also need to install the AWS Command Line Interface (CLI), the AWS Cloud Development KIT (CDK), and to configure the AWS CLI on your development environment (not required if you use Cloud9, as it is already configured by default). One way to configure the AWS CLI is to get your access key through the AWS console, and use the `aws configure` command in your terminal to setup your credentials.
+## Deploy runbook (EC2 Code Editor, human-run)
 
-To deploy:
-
-1. Edit `docker_app/config_file.py`, choose a `STACK_NAME` and a `CUSTOM_HEADER_VALUE`.
-
-2. Install dependencies
- 
-```
+```bash
+# From deploy-streamlit-app/ on the EC2 instance (Docker available):
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
+
+cdk bootstrap        # first time in the account/region only
+cdk deploy           # ~5-10 min; builds the docker_app image and pushes to ECR
 ```
 
-3. Deploy the cdk template
+Note the stack outputs: the CloudFront distribution URL and the Cognito user
+pool id.
 
-```
-cdk bootstrap
-cdk deploy
-```
+Then:
 
-The deployment takes 5 to 10 minutes.
+1. In the Cognito user pool (AWS console), create a user.
+2. Open the CloudFront URL in a browser (use a pop-out window, not an embedded
+   preview, so session cookies persist).
+3. Log in with the Cognito user.
+4. Ask the advisor a question (name a student ID, e.g. "student 100033"). The
+   response comes from the deployed AgentCore runtime, with memory scoped to
+   your Cognito user.
 
-Make a note of the output, in which you will find the CloudFront distribution URL
-and the Cognito user pool id.
+## Run locally for development (EC2, no Docker)
 
-4. Create a user in the Cognito UserPool that has been created. You can perform this action from your AWS Console. 
-5. From your browser, connect to the CloudFront distribution url.
-6. Log in to the Streamlit app with the user you have created in Cognito.
+After the Cognito user pool exists (post-`cdk deploy`), you can run the Streamlit
+app directly against it:
 
-## Testing and developing in Cloud9
-
-After deployment of the cdk template containing the Cognito user pool required for authentication, you can test the Streamlit app directly from Cloud9.
-You can either use docker, but this would require setting up a role with appropriate permissions, or run the Streamlit app directly in your terminal after having installed the required python dependencies.
-
-To run the Streamlit app directly:
-
-1. If you have activated a virtual env for deploying the cdk template, deactivate it:
-
-```
-deactivate
-```
-
-2. cd into the streamlit-docker directory, create a new virtual env, and install dependencies:
-
-```
+```bash
 cd docker_app
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-```
-
-3. Launch the streamlit server
-
-```
 streamlit run app.py --server.port 8080
 ```
 
-4. Click on the Preview/Preview running application button in Cloud9, and click on the button to Pop out the browser in a new window, as the Cloud9 embedded browser does not keep session cookies, which prevents the authentication mechanism to work properly.
-If the new window does not display the app, you may need to configure your browser to accept cross-site tracking cookies.
+You still need AWS credentials with `bedrock-agentcore:InvokeAgentRuntime` and
+`secretsmanager:GetSecretValue` on the Cognito secret.
 
-5. You can now modify the streamlit app to build your own demo!
+## Limitations (from the aws-samples baseline)
 
-## Some limitations
-
-* The connection between CloudFront and the ALB is in HTTP, not SSL encrypted.
-This means traffic between CloudFront and the ALB is unencrypted.
-It is **strongly recommended** to configure HTTPS by bringing your own domain name and SSL/TLS certificate to the ALB.
-* The provided code is intended as a demo and starting point, not production ready.
-The Python app relies on third party libraries like Streamlit and streamlit-cognito-auth.
-As the developer, it is your responsibility to properly vet, maintain, and test all third party dependencies.
-The authentication and authorization mechanisms in particular should be thoroughly evaluated.
-More generally, you should perform security reviews and testing before incorporating this demo code in a production application or with sensitive data.
-* In this demo, Amazon Cognito is in a simple configuration.
-Note that Amazon Cognito user pools can be configured to enforce strong password policies,
-enable multi-factor authentication,
-and set the AdvancedSecurityMode to ENFORCED to enable the system to detect and act upon malicious sign-in attempts.
-* AWS provides various services, not implemented in this demo, that can improve the security of this application.
-Network security services like network ACLs and AWS WAF can control access to resources.
-You could also use AWS Shield for DDoS protection and Amazon GuardDuty for threats detection.
-Amazon Inspector performs security assessments.
-There are many more AWS services and best practices that can enhance security -
-refer to the AWS Shared Responsibility Model and security best practices guidance for additional recommendations.
-The developer is responsible for properly implementing and configuring these services to meet their specific security requirements.
-* Regular rotation of secrets is recommended, not implemented in this demo.
+- CloudFront-to-ALB traffic is HTTP, not TLS. For real use, bring your own domain
+  and certificate to the ALB.
+- This is demo/starter code. Vet third-party deps (Streamlit,
+  streamlit-cognito-auth), harden the Cognito configuration (password policy,
+  MFA, advanced security), and add WAF/Shield/network controls before production.
 
 ## Acknowledgments
 
-This code is inspired from:
+Inspired by:
 
-* https://github.com/tzaffi/streamlit-cdk-fargate.git
-* https://github.com/aws-samples/build-scale-generative-ai-applications-with-amazon-bedrock-workshop/
-
-## Security
-
-See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
+- https://github.com/tzaffi/streamlit-cdk-fargate.git
+- https://github.com/aws-samples/build-scale-generative-ai-applications-with-amazon-bedrock-workshop/
 
 ## License
 
-This application is licensed under the MIT-0 License. See the LICENSE file.
+Licensed under the MIT-0 License. See the LICENSE file.
