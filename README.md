@@ -12,9 +12,10 @@ CloudFormation templates and knowledge base documents from the **Building Agents
 ```
 .
 ├── cloudformation/
-│   ├── workshop/       # Original CloudFormation templates from the workshop (as-is)
-│   └── self-hosted/    # Modified templates for deploying in your own AWS account
+│   ├── self-hosted/    # Modified templates for deploying in your own AWS account
+│   └── workshop/       # Original CloudFormation templates from the workshop (as-is)
 ├── data/               # Test data for the agents (e.g. students.json)
+├── deploy-streamlit-app/   # App mode 3: thin client on ECS Fargate + Cognito (CDK)
 ├── education-data/     # Structured CSV datasets (Athena/Glue student information source)
 ├── education-kb-docs/  # Knowledge Base source documents (Peculiar U course catalog)
 ├── iam/                # IAM policy documents
@@ -22,7 +23,6 @@ CloudFormation templates and knowledge base documents from the **Building Agents
 ├── src/                # Older standalone Strands scripts (simple_agent, kb_advisor, advisor_agent, query_student_db)
 ├── streamlit-thick-client/ # App mode 1: runs the Strands agent locally (all AWS calls local)
 ├── streamlit-thin-client/  # App mode 2: invokes the deployed AgentCore runtime (thin client)
-├── deploy-streamlit-app/   # App mode 3: thin client on ECS Fargate + Cognito (CDK)
 ├── README.md
 └── requirements.txt
 ```
