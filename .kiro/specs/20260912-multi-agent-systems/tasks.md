@@ -49,12 +49,21 @@ provisioned AWS resources, run from the Code Editor EC2 instance.
   `AWS_DEFAULT_REGION=us-west-2`) and
   `executionRoleArn=arn:aws:iam::331773567763:role/agentcore-agent-role`;
   `agentcore validate` → **Valid**. _(R4.1, R4.2, R4.4, R4.5)_ — DONE
-- [ ] 1.7 **[EC2 only]** Local test via `agentcore dev -b` — MOVED TO EC2. The
-  laptop has NO Docker; Container builds require it. Run on EC2 per the README
-  deploy runbook. Verify no `ModuleNotFoundError` (`uv lock` if needed), then:
-  - "What are the prerequisites for Database Systems?" → `retrieve` called;
-  - "Look up student 100016 ..." → `query_student_db` called with SQL. _(R1.6,
-    R1.7, R3.3, R5.1, R5.2)_
+- [x] 1.7 **[EC2 only]** Local test via two-terminal `agentcore dev --logs` +
+  `agentcore dev "<prompt>"` (NOT the TUI; laptop has no Docker). **PASSED on EC2
+  2026-09-13:**
+  - "What are the prerequisites for Database Systems?" → KB retrieval returned
+    real handbook prereqs (COMP-3210/3450/3620).
+  - "Look up student 100016 ..." → `query_student_db` returned Mateo Jackson's 8
+    completed courses from Athena.
+  _(R1.6, R1.7, R3.3, R5.1, R5.2)_ — DONE
+- [x] 1.8 **[local]** Replaced deprecated `retrieve`/`strands-agents-tools` with
+  core `BedrockKnowledgeBaseStore` + `MemoryManager` (matches `src/advisor_agent.py`).
+  Dropped the bloat and the `STRANDS_KNOWLEDGE_BASE_ID` var; single
+  `KNOWLEDGE_BASE_ID`. — DONE
+
+**Phase 1 (Module 7 local) COMPLETE.** Agent verified locally on EC2. Next:
+`agentcore deploy` on EC2 (Module 7 Ex 3-6), then Phase 2 (memory).
 
 ## Phase 2: Module 8 — Memory wiring (code local, provisioning deploy)
 

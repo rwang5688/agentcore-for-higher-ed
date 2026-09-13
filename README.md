@@ -123,23 +123,27 @@ agentcore validate
 #   Use TWO terminals. Do NOT use the `agentcore dev -b` TUI (output can't be
 #   copied, hard to exit). This is the only local-test path we use.
 #
-#   ALWAYS kill any old dev server first so you don't creep up ports (8081, 8082...):
+#   ALWAYS clean up old dev servers/containers first so you don't creep up ports
+#   (8081, 8082...). pkill alone may leave the Docker container holding the port:
 #     pkill -f "agentcore dev"
+#     docker rm -f $(docker ps -aq --filter "name=agentcore-dev") 2>/dev/null
+#     docker ps            # should be empty
 #
 #   TERMINAL 1 — start the dev server and leave it running:
 #     cd AdmissionAgent
 #     agentcore dev --logs
-#     # Note the port it prints (it uses 8081 if 8080 is busy).
+#     # Note the port it prints (uses 8081 if 8080 is busy).
 #     # OpenTelemetry "host.docker.internal:4318" connection errors are NOISE —
 #     # ignore them. Wait for "Application startup complete".
 #
-#   TERMINAL 2 — send prompts (copyable output). Match --port to Terminal 1:
+#   TERMINAL 2 — send prompts (copyable output). Match --port to Terminal 1.
+#   These are the two acceptance tests (both VERIFIED working 2026-09-13):
 #     cd AdmissionAgent
-agentcore dev "What are the prerequisites for Database Systems?" --port 8081                         # -> retrieve / KB
-agentcore dev "Look up student 100016 and tell me what courses they have completed." --port 8081     # -> query_student_db / Athena
+agentcore dev "What are the prerequisites for Database Systems?" --port 8081                         # KB retrieval -> returns COMP-3210/3450/3620 prereqs
+agentcore dev "Look up student 100016 and tell me what courses they have completed." --port 8081     # Athena query_student_db -> returns Mateo Jackson's 8 courses
 #
-#   Stop the server: Ctrl+C in Terminal 1. If a stray server lingers:
-#     pkill -f "agentcore dev"
+#   Stop the server: Ctrl+C in Terminal 1. If a stray server/container lingers,
+#   run the cleanup block above again.
 
 # E. Deploy
 agentcore deploy                    # first run: approve one-time CDK bootstrap (Y)

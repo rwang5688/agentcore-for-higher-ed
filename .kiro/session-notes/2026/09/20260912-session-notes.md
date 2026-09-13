@@ -129,10 +129,34 @@ Executing spec Phase 1 (tasks 1.1-1.7) locally. Status:
 - Account 331773567763; `executionRoleArn` filled in `agentcore.json`.
 - 1.7 (local test) is EC2-only now.
 
+## MODULE 7 LOCAL TEST PASSED (EC2, 2026-09-13)
+- Two-terminal path (no TUI): `agentcore dev --logs` in T1, `agentcore dev
+  "<prompt>" --port <port>` in T2. Both acceptance tests passed:
+  - KB retrieval → real handbook prereqs (COMP-3210/3450/3620).
+  - Athena `query_student_db` → student 100016 (Mateo Jackson) 8 courses.
+
+## Key cleanup decision (resolved the bloat + dual-env-var mess)
+- Container now uses core `strands` `BedrockKnowledgeBaseStore` + `MemoryManager`
+  (same as `src/advisor_agent.py`), NOT the deprecated `retrieve` tool.
+- Removed `strands-agents-tools` and its transitive bloat (slack, pillow, sympy,
+  markdownify, rich, ...). uv.lock reflects the slim tree.
+- Single KB env var everywhere: `KNOWLEDGE_BASE_ID`. Killed
+  `STRANDS_KNOWLEDGE_BASE_ID` (that var only existed because the deprecated
+  `retrieve` tool hardcoded it — the "dictator" was strands-agents-tools).
+- KB is RAG (handbook lookup), NOT memory. AgentCore Memory (Module 8) is separate.
+
+## EC2 gotchas captured in README runbook
+- Clean up before each dev run: `pkill -f "agentcore dev"` AND
+  `docker rm -f $(docker ps -aq --filter "name=agentcore-dev")` (pkill alone
+  leaves the container holding the port → creeps 8080→8081→8082).
+- OTel `host.docker.internal:4318` errors are noise; ignore.
+- `.env.local` is gitignored; recreate on EC2 each pull.
+
 ## Next Steps
-1. (User) Commit + push the AdmissionAgent changes; upload/pull to EC2.
-2. (User, EC2) Run README deploy runbook: `uv sync`, recreate `.env.local`,
-   `agentcore dev -b` local test, then `agentcore deploy`.
+1. (User) Commit + push this cleanup (KB store rewrite).
+2. (User, EC2) `agentcore deploy` (Module 7 Ex 3-6): deploy, `agentcore status`,
+   `agentcore invoke`, logs/traces.
+3. Then Phase 2 (Module 8 memory).
 
 ## Open Questions
-- `strands-agents-tools` bloat: slim vs accept workshop dep.
+- None. strands-agents-tools bloat resolved (removed).
