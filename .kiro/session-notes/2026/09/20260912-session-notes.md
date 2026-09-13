@@ -80,12 +80,59 @@ Scope = the workshop content (Modules 7-9), provided as `workshop-content.md`.
 - Only the spec trilogy + reformatted workshop content were produced. No changes
   to any `AdmissionAgent/app/**` source or `agentcore.json`.
 
+## Module 7 execution progress (this session, later)
+
+Executing spec Phase 1 (tasks 1.1-1.7) locally. Status:
+- [x] 1.1 `tools/query_student_db.py` (+ `__init__.py`) — adapted to read
+  `ATHENA_LAMBDA_NAME`/region from `os.environ`, docstring verbatim.
+- [x] 1.2 `model/load.py` → `us.anthropic.claude-sonnet-4-6`.
+- [x] 1.2b Pinned `runtimeVersion` `PYTHON_3_14` → `PYTHON_3_13` in
+  `agentcore.json` (3.14 too new; scaffold default, NOT from workshop). Logged
+  in ISSUES.md.
+- [x] 1.3 `main.py` rewritten: logging, `STRANDS_KNOWLEDGE_BASE_ID`, `retrieve` +
+  `query_student_db`, "Alex" prompt; removed example ExaAI MCP client +
+  `add_numbers`; kept the scaffold's payload/session-cache/streaming machinery.
+- [x] 1.4 `pyproject.toml` + `uv lock` (added `strands-agents-tools`).
+- [x] 1.5 `agentcore/.env.local` created (KB, Athena Lambda, region us-west-2).
+- [ ] 1.6 `agentcore.json` envVars + executionRoleArn — PAUSED (role ARN needs
+  account ID via `aws sts get-caller-identity`, needs credentials).
+- [ ] 1.7 `agentcore dev -b` local test — BLOCKED on credentials (this shell has
+  none; tool calls hit real Bedrock/KB/Athena in us-west-2).
+
+### Concern flagged: strands-agents-tools bloat
+- Adding `strands-agents-tools` (for `retrieve`) dragged in a large transitive
+  tree (slack-sdk, pillow, sympy, markdownify, rich, beautifulsoup4, ...), yet we
+  only use `retrieve`. This is the workshop's prescribed dep, but it bloats the
+  ARM64 container. OPEN QUESTION: slim it (import only what's needed) vs accept
+  the workshop's dependency as-is. Not resolved.
+
+### uv lock — is it repeated on EC2?
+- No. `uv.lock` IS committed and travels via git. On EC2 you run `uv sync` (or
+  `agentcore dev`/`deploy` does it) to MATERIALIZE `.venv` from the committed
+  lock — no re-resolution. The "Added X, Added Y" noise was one-time resolution
+  from adding `strands-agents-tools`, now captured in the committed lockfile.
+
+### EC2 manual commands
+- Created `.kiro/specs/20260912-multi-agent-systems/ec2-manual-commands.md` — the
+  by-hand command list for the EC2 Code Editor (no Kiro there). Kiro will keep
+  appending exact commands as each local phase completes.
+
+## WORKFLOW REFINEMENT: laptop has NO Docker → local test is EC2-only
+- `agentcore dev`/`deploy` do Container builds, which need Docker. The laptop has
+  none. So ALL local testing + deploy happen on EC2, not the laptop.
+- Laptop's role shrinks to: code/config edits + `agentcore validate` (no Docker,
+  no creds needed). Updated the steering doc, tasks.md (1.7 → EC2), and merged the
+  EC2 deploy runbook into README.md (deleted the misplaced ec2-manual-commands.md).
+
+## Phase 1 status: code COMPLETE, valid, ready to upload (CP-C)
+- 1.1-1.6 all DONE. `agentcore validate` → Valid.
+- Account 331773567763; `executionRoleArn` filled in `agentcore.json`.
+- 1.7 (local test) is EC2-only now.
+
 ## Next Steps
-1. User uploads to the Linux Code Editor, commits + pushes the spec files.
-2. User pulls back down here and reviews `tasks.md`.
-3. Then we execute Phases 0-4 (`[local]`) together, task by task; Phases 5-7
-   (`[deploy]`) run on the EC2 instance.
+1. (User) Commit + push the AdmissionAgent changes; upload/pull to EC2.
+2. (User, EC2) Run README deploy runbook: `uv sync`, recreate `.env.local`,
+   `agentcore dev -b` local test, then `agentcore deploy`.
 
 ## Open Questions
-- None blocking. Region (`us-west-2`) and model (`us.anthropic.claude-sonnet-4-6`)
-  are confirmed and reflected in the specs.
+- `strands-agents-tools` bloat: slim vs accept workshop dep.

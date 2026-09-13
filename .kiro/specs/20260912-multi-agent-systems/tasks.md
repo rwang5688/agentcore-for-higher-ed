@@ -21,35 +21,37 @@ provisioned AWS resources, run from the Code Editor EC2 instance.
 
 ## Phase 1: Module 7 — Admission Agent (local-testable)
 
-- [ ] 1.1 **[local]** Add the Athena tool at
+- [x] 1.1 **[local]** Add the Athena tool at
   `app/AdmissionAgent/tools/query_student_db.py` (+ `tools/__init__.py`). Adapt
   from `src/query_student_db.py`: read `ATHENA_LAMBDA_NAME` and region from
   `os.environ` (fallback `AWS_DEFAULT_REGION`/`AWS_REGION`) instead of
   `config.get_config()`; keep the full docstring and the list/`{"error":...}`
-  return contract. _(R1.1, R1.7)_
-- [ ] 1.2 **[local]** Update `app/AdmissionAgent/model/load.py` to
-  `model_id="us.anthropic.claude-sonnet-4-6"`. _(R2.1, R2.2)_
-- [ ] 1.3 **[local]** Update `app/AdmissionAgent/main.py`:
-  - add `import os, logging` + `logging.basicConfig(level=logging.INFO)`;
-  - set `os.environ["STRANDS_KNOWLEDGE_BASE_ID"]` from `KNOWLEDGE_BASE_ID` at
-    import;
-  - import `retrieve` (from `strands_tools`) and `query_student_db` (from
-    `tools.query_student_db`); set `tools = [retrieve, query_student_db]` (remove
-    `add_numbers` placeholder);
-  - set the "Alex" Admission Advisor system prompt;
-  - keep `BedrockAgentCoreApp`, `load_model()`, session cache, streaming,
-    `_extract_prompt`/`strip_trailing_tool_use`. _(R1.1-R1.5)_
-- [ ] 1.4 **[local]** Update `app/AdmissionAgent/pyproject.toml` deps
-  (`aws-opentelemetry-distro`, `bedrock-agentcore`, `botocore[crt]`, `mcp`,
-  `strands-agents`, `strands-agents-tools`); then `uv lock`. _(R3.1, R3.2)_
-- [ ] 1.5 **[local]** Create/populate `agentcore/.env.local` with
-  `KNOWLEDGE_BASE_ID=ONVQOQ7XJB` and `ATHENA_LAMBDA_NAME=education-athena-query`
-  (and region). _(R4.3, R5)_
-- [ ] 1.6 **[local]** Edit `agentcore/agentcore.json` runtime entry: add
-  `envVars` (`KNOWLEDGE_BASE_ID`, `ATHENA_LAMBDA_NAME`, region) and
-  `executionRoleArn`; run `agentcore validate`. _(R4.1, R4.2, R4.4, R4.5)_
-- [ ] 1.7 **[local]** Run `agentcore dev -b`; verify no `ModuleNotFoundError`
-  (regenerate `uv lock` if needed), then test:
+  return contract. _(R1.1, R1.7)_ — DONE
+- [x] 1.2 **[local]** Update `app/AdmissionAgent/model/load.py` to
+  `model_id="us.anthropic.claude-sonnet-4-6"`. _(R2.1, R2.2)_ — DONE
+- [x] 1.2b **[local]** Pin `runtimeVersion` in `agentcore.json` from the scaffold
+  default `PYTHON_3_14` to `PYTHON_3_13` (3.14 too new). Logged in ISSUES.md. — DONE
+- [x] 1.3 **[local]** Update `app/AdmissionAgent/main.py`: logging;
+  `STRANDS_KNOWLEDGE_BASE_ID` from `KNOWLEDGE_BASE_ID`; import `retrieve` +
+  `query_student_db`; `tools = [retrieve, query_student_db]`; "Alex" system prompt;
+  removed example ExaAI MCP client and `add_numbers`; kept `BedrockAgentCoreApp`,
+  `load_model()`, session cache, streaming, `_extract_prompt`/`strip_trailing_tool_use`.
+  _(R1.1-R1.5)_ — DONE
+- [x] 1.4 **[local]** Update `pyproject.toml` (added `strands-agents-tools`); ran
+  `uv lock`. _(R3.1, R3.2)_ — DONE. NOTE: `strands-agents-tools` pulls a large
+  transitive tree (slack-sdk, pillow, sympy, markdownify, rich, ...) though we only
+  use `retrieve`. Flagged for possible slimming (see session notes / open question).
+- [x] 1.5 **[local]** Created `agentcore/.env.local` with
+  `KNOWLEDGE_BASE_ID=ONVQOQ7XJB`, `ATHENA_LAMBDA_NAME=education-athena-query`,
+  `AWS_DEFAULT_REGION=us-west-2`. _(R4.3, R5)_ — DONE
+- [x] 1.6 **[local]** Edit `agentcore/agentcore.json` runtime entry: added
+  `envVars` (`KNOWLEDGE_BASE_ID=ONVQOQ7XJB`, `ATHENA_LAMBDA_NAME=education-athena-query`,
+  `AWS_DEFAULT_REGION=us-west-2`) and
+  `executionRoleArn=arn:aws:iam::331773567763:role/agentcore-agent-role`;
+  `agentcore validate` → **Valid**. _(R4.1, R4.2, R4.4, R4.5)_ — DONE
+- [ ] 1.7 **[EC2 only]** Local test via `agentcore dev -b` — MOVED TO EC2. The
+  laptop has NO Docker; Container builds require it. Run on EC2 per the README
+  deploy runbook. Verify no `ModuleNotFoundError` (`uv lock` if needed), then:
   - "What are the prerequisites for Database Systems?" → `retrieve` called;
   - "Look up student 100016 ..." → `query_student_db` called with SQL. _(R1.6,
     R1.7, R3.3, R5.1, R5.2)_

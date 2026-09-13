@@ -91,6 +91,59 @@ aws sts get-caller-identity
 
 Opens at http://localhost:8501. If step 1 errors, refresh your credentials before step 2.
 
+## Runbook: Deploy the AgentCore agent (from the EC2 Code Editor)
+
+The `AdmissionAgent/` AgentCore project is built and deployed from the Amazon
+Linux 2023 Code Editor EC2 instance (Docker + instance-profile credentials). The
+laptop is used for code edits and local testing; the EC2 instance runs the
+container build and `agentcore deploy`. Run these by hand on EC2 after pulling
+the latest.
+
+```bash
+# 0. From the repo root on EC2, pull the latest
+git pull
+
+# A. Recreate the gitignored local environments (from committed lockfiles)
+cd AdmissionAgent/app/AdmissionAgent && uv sync && cd -
+cd AdmissionAgent/agentcore/cdk && npm install && cd -
+
+# B. Recreate .env.local for local dev (gitignored; does NOT travel via git)
+cd AdmissionAgent
+grep -E 'KNOWLEDGE_BASE_ID|ATHENA_LAMBDA_NAME' ../.env >> agentcore/.env.local
+echo "AWS_DEFAULT_REGION=us-west-2" >> agentcore/.env.local
+cat agentcore/.env.local            # verify all three present
+
+# C. Fill values that need live credentials (executionRoleArn in agentcore.json)
+aws sts get-caller-identity --query Account --output text
+#   -> edit agentcore/agentcore.json: set
+#      "executionRoleArn": "arn:aws:iam::<ACCOUNT_ID>:role/agentcore-agent-role"
+agentcore validate
+
+# D. Local test on EC2 (instance profile provides credentials)
+agentcore dev -b
+#   If ModuleNotFoundError on startup (lock drift):
+#     cd app/AdmissionAgent && uv lock && cd .. && agentcore dev -b
+#   Test prompts in the TUI:
+#     What are the prerequisites for Database Systems?              (-> retrieve / KB)
+#     Look up student 100016 and tell me what courses they completed.  (-> query_student_db / Athena)
+
+# E. Deploy
+agentcore deploy                    # first run: approve one-time CDK bootstrap (Y)
+#   preview only:  agentcore deploy --plan
+agentcore status                    # runtime should reach ACTIVE
+
+# F. Test the production endpoint
+agentcore invoke "What are the prerequisites for Database Systems?"
+agentcore invoke "Look up student 100016 and tell me what courses they have completed."
+
+# G. Observability
+agentcore logs
+agentcore traces list
+```
+
+> Region for this repo is **us-west-2** (KB `ONVQOQ7XJB` + `education-athena-query`
+> Lambda), not the workshop's us-east-1 examples.
+
 ## Local Development
 
 ### Activate the virtual environment (PowerShell)

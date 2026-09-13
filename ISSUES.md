@@ -91,6 +91,21 @@ Issues specific to Amazon Bedrock AgentCore and the `@aws/agentcore` CLI
     finds out when `cd AdmissionAgent` fails); on Windows it crashes with a
     libuv assertion and a 0xC0000409 exit code instead of a clean error.
 
+### Scaffold defaults `runtimeVersion` to the newest Python (`PYTHON_3_14`)
+- **Status:** Worked around (pinned to `PYTHON_3_13`).
+- **CLI / version:** @aws/agentcore 0.29.0
+- **Symptom:** A fresh `agentcore create` writes
+  `"runtimeVersion": "PYTHON_3_14"` into `agentcore/agentcore.json`. Python 3.14
+  is very new; many native wheels and the surrounding ecosystem lag a new Python
+  release, so a brand-new project defaulting to it risks container-build/runtime
+  failures.
+- **Note:** This is NOT from the workshop content. The workshop only specifies
+  `requires-python = ">=3.10"` (a lower bound) and never mentions 3.14 or any
+  `runtimeVersion`. The value is purely the CLI's default.
+- **Fix / workaround:** Set `runtimeVersion` to `PYTHON_3_13` in `agentcore.json`
+  (valid enum per AGENTS.md: `PYTHON_3_10..3_14`). Re-run `agentcore validate`
+  after editing.
+
 
 ## Workshop content
 

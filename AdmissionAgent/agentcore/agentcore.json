@@ -13,9 +13,15 @@
       "build": "Container",
       "entrypoint": "main.py",
       "codeLocation": "app/AdmissionAgent/",
-      "runtimeVersion": "PYTHON_3_14",
+      "runtimeVersion": "PYTHON_3_13",
       "networkMode": "PUBLIC",
-      "protocol": "HTTP"
+      "protocol": "HTTP",
+      "executionRoleArn": "arn:aws:iam::331773567763:role/agentcore-agent-role",
+      "envVars": [
+        { "name": "KNOWLEDGE_BASE_ID", "value": "ONVQOQ7XJB" },
+        { "name": "ATHENA_LAMBDA_NAME", "value": "education-athena-query" },
+        { "name": "AWS_DEFAULT_REGION", "value": "us-west-2" }
+      ]
     }
   ],
   "memories": [],

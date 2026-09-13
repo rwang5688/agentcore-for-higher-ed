@@ -1,42 +1,50 @@
+import logging
+import os
 from typing import Any
 from collections import OrderedDict
-from strands import Agent, tool
-import asyncio
+from strands import Agent
 from strands.agent.conversation_manager.null_conversation_manager import NullConversationManager
+from strands_tools import retrieve
 from bedrock_agentcore.runtime import BedrockAgentCoreApp
 from model.load import load_model
-from mcp_client.client import get_streamable_http_mcp_client
+from tools.query_student_db import query_student_db
+
+logging.basicConfig(level=logging.INFO)
+
+# The `retrieve` tool from strands_tools locates the Knowledge Base via the
+# STRANDS_KNOWLEDGE_BASE_ID env var. Map it from KNOWLEDGE_BASE_ID (injected by
+# AgentCore envVars in production, or agentcore/.env.local during `agentcore dev`).
+if os.environ.get("KNOWLEDGE_BASE_ID"):
+    os.environ["STRANDS_KNOWLEDGE_BASE_ID"] = os.environ["KNOWLEDGE_BASE_ID"]
 
 app = BedrockAgentCoreApp()
 log = app.logger
 
-# Define a Streamable HTTP MCP Client
-mcp_clients = [get_streamable_http_mcp_client()]
-
 DEFAULT_SYSTEM_PROMPT = """
-You are a helpful assistant. Use tools when appropriate.
+You are Alex, a university Admission Advisor for Peculiar University's College of
+Engineering. You help prospective and current students with course information and
+their academic records.
 
+You have two tools:
+- `retrieve`: search the course handbook Knowledge Base. Use this for questions
+  about courses, prerequisites, programs, electives, and handbook/catalog content.
+- `query_student_db`: run read-only SQL against the `education_workshop_db` Athena
+  database. Use this for live student records — enrollments, completed courses,
+  GPA, degree plans, schedules, and related structured data.
+
+Guidance:
+- Choose the right tool for each question; some questions need both (e.g. "what
+  should student 100016 take next?" needs the student's record AND handbook data).
+- Ground every answer in what the tools return. Do not invent course names,
+  prerequisites, grades, or student data.
+- Be concise, accurate, and helpful.
 """
 
 
 # Define a collection of tools used by the model
-tools = []
+tools = [retrieve, query_student_db]
 
 _INLINE_FUNCTION_NAMES = set()
-
-# Define a simple function tool
-@tool
-def add_numbers(a: int, b: int) -> int:
-    """Return the sum of two numbers"""
-    return a+b
-tools.append(add_numbers)
-
-
-
-# Add MCP client to tools if available
-for mcp_client in mcp_clients:
-    if mcp_client:
-        tools.append(mcp_client)
 
 
 def _make_conversation_manager():
