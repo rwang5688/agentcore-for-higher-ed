@@ -14,17 +14,32 @@
       "entrypoint": "main.py",
       "codeLocation": "app/AdmissionAgent/",
       "runtimeVersion": "PYTHON_3_13",
+      "envVars": [
+        {
+          "name": "ATHENA_LAMBDA_NAME",
+          "value": "education-athena-query"
+        },
+        {
+          "name": "AWS_DEFAULT_REGION",
+          "value": "us-west-2"
+        },
+        {
+          "name": "KNOWLEDGE_BASE_ID",
+          "value": "ONVQOQ7XJB"
+        }
+      ],
       "networkMode": "PUBLIC",
       "protocol": "HTTP",
-      "executionRoleArn": "arn:aws:iam::331773567763:role/agentcore-agent-role",
-      "envVars": [
-        { "name": "ATHENA_LAMBDA_NAME", "value": "education-athena-query" },
-        { "name": "AWS_DEFAULT_REGION", "value": "us-west-2" },
-        { "name": "KNOWLEDGE_BASE_ID", "value": "ONVQOQ7XJB" }
-      ]
+      "executionRoleArn": "arn:aws:iam::331773567763:role/agentcore-agent-role"
     }
   ],
-  "memories": [],
+  "memories": [
+    {
+      "name": "admission_agent_memory",
+      "eventExpiryDuration": 30,
+      "strategies": []
+    }
+  ],
   "knowledgeBases": [],
   "credentials": [],
   "evaluators": [],

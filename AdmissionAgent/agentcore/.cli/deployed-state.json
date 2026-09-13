@@ -9,8 +9,14 @@
             "roleArn": "arn:aws:iam::331773567763:role/agentcore-agent-role"
           }
         },
+        "memories": {
+          "admission_agent_memory": {
+            "memoryId": "AdmissionAgent_admission_agent_memory-r5PK4LAa39",
+            "memoryArn": "arn:aws:bedrock-agentcore:us-west-2:331773567763:memory/AdmissionAgent_admission_agent_memory-r5PK4LAa39"
+          }
+        },
         "stackName": "AgentCore-AdmissionAgent-default",
-        "deployHash": "7a6df53edd6d7df8"
+        "deployHash": "36dbee966d0da418"
       }
     }
   }

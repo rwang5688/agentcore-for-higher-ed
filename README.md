@@ -159,6 +159,17 @@ agentcore logs
 agentcore traces list
 ```
 
+### Adding AgentCore Memory (Module 8) — order matters
+
+Provision memory FIRST so `agentcore deploy` injects
+`MEMORY_ADMISSION_AGENT_MEMORY_ID`, THEN change app code to use it. Two rounds:
+
+1. **Provision (EC2):** `agentcore add memory --name admission_agent_memory`,
+   then `agentcore deploy`. Commit `agentcore/agentcore.json` +
+   `agentcore/.cli/deployed-state.json`, push.
+2. **Use it (laptop→EC2):** pull; add `memory/session.py` + wire `main.py`;
+   commit, push; pull to EC2; `agentcore deploy`.
+
 > Region for this repo is **us-west-2** (KB `ONVQOQ7XJB` + `education-athena-query`
 > Lambda), not the workshop's us-east-1 examples.
 
