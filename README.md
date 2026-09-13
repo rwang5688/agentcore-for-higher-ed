@@ -1,10 +1,17 @@
-# AgentCore for Higher Education - Workshop Templates
+# AgentCore for Higher Education — Agentic Advisor Demo
 
-CloudFormation templates and knowledge base documents from the **Building Agents for Higher Education** AWS Workshop, with self-hosted equivalents for deploying in your own AWS account.
+An end-to-end agentic academic advisor for Higher Education, built with Strands
+Agents on Amazon Bedrock (Knowledge Base + model) and Amazon Bedrock AgentCore.
+The advisor answers questions about courses, programs, and prerequisites (course
+handbook RAG) and looks up live student records (Athena), and ships in three
+self-contained app modes: a local full-stack prototype (the "thick client"), a
+thin client over a managed AgentCore runtime, and a hosted deployment on Amazon
+Cognito + Amazon ECS Fargate. See [ROADMAP.md](ROADMAP.md) for the three-phase
+story. Grounded in the AWS *Building Agents for Higher Education* workshop, with
+self-hosted CloudFormation for deploying in your own AWS account.
 
-## Workshop References
+## AgentCore for Higher Education Workshop
 
-- [Workshop Studio](https://studio.us-east-1.prod.workshops.aws/workshops/public/4277be71-fc3e-4ec3-a6e2-8c8f20db36a8)
 - [Workshop Content](https://catalog.us-east-1.prod.workshops.aws/workshops/4277be71-fc3e-4ec3-a6e2-8c8f20db36a8/en-US)
 
 ## Repository Structure
