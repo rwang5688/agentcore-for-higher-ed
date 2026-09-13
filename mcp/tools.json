@@ -1,0 +1,26 @@
+[
+  {
+    "name": "submit_advisor_request",
+    "description": "Submit an advisor request for a student (course override, advisor meeting, program change, or special consideration)",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "student_id": { "type": "string", "description": "The student ID" },
+        "request_type": { "type": "string", "enum": ["course_override", "advisor_meeting", "program_change", "special_consideration"] },
+        "description": { "type": "string", "description": "Details about the request" }
+      },
+      "required": ["student_id", "request_type", "description"]
+    }
+  },
+  {
+    "name": "list_advisor_requests",
+    "description": "List all advisor requests for a student",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "student_id": { "type": "string", "description": "The student ID" }
+      },
+      "required": ["student_id"]
+    }
+  }
+]
