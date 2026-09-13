@@ -120,12 +120,14 @@ aws sts get-caller-identity --query Account --output text
 agentcore validate
 
 # D. Local test on EC2 (instance profile provides credentials)
-agentcore dev -b
-#   If ModuleNotFoundError on startup (lock drift):
-#     cd app/AdmissionAgent && uv lock && cd .. && agentcore dev -b
-#   Test prompts in the TUI:
-#     What are the prerequisites for Database Systems?              (-> retrieve / KB)
-#     Look up student 100016 and tell me what courses they completed.  (-> query_student_db / Athena)
+#   AVOID the `agentcore dev -b` TUI — its output can't be copied. Run the dev
+#   server in the background and use `agentcore invoke` from the plain shell.
+agentcore dev -b > /tmp/dev.log 2>&1 &
+sleep 20
+#   If ModuleNotFoundError in /tmp/dev.log (lock drift):
+#     cd app/AdmissionAgent && uv lock && cd .. && (restart the dev server)
+agentcore invoke "What are the prerequisites for Database Systems?" 2>&1 | tee /tmp/out1.txt          # -> retrieve / KB
+agentcore invoke "Look up student 100016 and tell me what courses they have completed." 2>&1 | tee /tmp/out2.txt   # -> query_student_db / Athena
 
 # E. Deploy
 agentcore deploy                    # first run: approve one-time CDK bootstrap (Y)

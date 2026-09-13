@@ -50,7 +50,11 @@ checkpoint without an explicit go-ahead.
   checkpoint: no Docker on the laptop.)
 - **CP-D — EC2 handoff.** Everything the human runs by hand on EC2 (Stages 4-5) is
   written in the README deploy runbook. Kiro stops; the human runs EC2 local
-  tests (`agentcore dev`) and `agentcore deploy`.
+  tests and `agentcore deploy`.
+
+**NEVER suggest the `agentcore dev -b` interactive TUI** — its output can't be
+copied and it wastes the human's time. Always use the background-server +
+`agentcore invoke` pattern (see README runbook / ISSUES.md).
 
 ## Kiro's Responsibilities
 

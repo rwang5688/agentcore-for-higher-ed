@@ -107,6 +107,21 @@ Issues specific to Amazon Bedrock AgentCore and the `@aws/agentcore` CLI
   after editing.
 
 
+### `agentcore dev -b` TUI output can't be copied — use `agentcore invoke`
+- **Status:** Worked around.
+- **CLI / version:** @aws/agentcore 0.29.0
+- **Symptom:** The interactive `agentcore dev -b` chat TUI renders in a way that
+  makes it impossible to select/copy the agent's output (esp. in the web Code
+  Editor terminal). Wastes time.
+- **Fix / workaround:** Don't use the TUI. Run the dev server in the background
+  and use `agentcore invoke` from the plain shell, which prints copyable output:
+  ```bash
+  agentcore dev -b > /tmp/dev.log 2>&1 &
+  sleep 20
+  agentcore invoke "your prompt here" 2>&1 | tee /tmp/out.txt
+  ```
+
+
 ## Workshop content
 
 ### Out-of-date CLI commands in workshop content
