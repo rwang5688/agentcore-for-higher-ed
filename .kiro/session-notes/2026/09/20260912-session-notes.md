@@ -214,21 +214,39 @@ Executing spec Phase 1 (tasks 1.1-1.7) locally. Status:
   `education-advisor-requests` + Lambda) and is deployed; AgentCore role already
   has lambda:InvokeFunction on it.
 
-## Next Steps (Module 9, tomorrow)
-1. (User) Commit + push the mcp/ folder.
-2. (Kiro) Write agent code: `agents/admission.py` (route_to_admission @tool),
-   `agents/advisor_requests.py` (route_to_advisor_requests @tool: MCP client +
-   query_student_db, evaluate-then-act), refactor `main.py` into orchestrator
-   (tools = the two route_*; keep memory session manager).
-3. (EC2) Provision gateway: `agentcore add gateway --authorizer-type NONE
-   --runtimes AdmissionAgent` + `add gateway-target` (lambda-function-arn, using
-   mcp/tools.json) → deploy. Set ADVISOR_MCP_URL in .env.local + agentcore.json.
-   NOTE: self-hosted CFN provisions Cognito for the gateway; workshop uses
-   authorizer NONE — reconcile at that step.
-4. (EC2) deploy + verify routing (justified submit, trivial decline,
-   cross-domain).
+## MODULE 9 MULTI-AGENT DEPLOYED + VERIFIED (2026-09-13) — WORKSHOP COMPLETE
+- Agent code: `agents/admission.py` (route_to_admission @tool: KB + query_student_db),
+  `agents/advisor_requests.py` (route_to_advisor_requests @tool: MCP via
+  ADVISOR_MCP_URL + query_student_db, evaluate-then-act, graceful if URL unset),
+  `main.py` refactored to orchestrator (tools = the 2 route_*; KB moved into the
+  admission specialist; memory retained).
+- Gateway (2-deploy dance): add gateway (--authorizer-type NONE) + add
+  gateway-target (Lambda ARN + mcp/tools.json) → deploy → set ADVISOR_MCP_URL in
+  agentcore.json → deploy. gatewayId
+  admissionagent-education-advisor-gateway-n3fuofcvdx.
+- VERIFIED via CLI AND Streamlit thin client: justified request (student 100033,
+  3.8 GPA) → orchestrator → advisor-requests agent → checked record via
+  query_student_db → submitted via MCP→gateway→Lambda→DynamoDB (Request ID
+  28a5f9cf...). On a 2nd invoke the agent used list_advisor_requests, found the
+  existing request, and correctly declined to submit a duplicate. Smart behavior.
+
+## FINAL STATE — READY FOR TUESDAY DEMO
+- Deployed in us-west-2 (account 331773567763):
+  - Runtime: AdmissionAgent_AdmissionAgent-zc7w8t847K
+  - Memory: admission_agent_memory (SEMANTIC, USER_PREFERENCE)
+  - Gateway: education-advisor-gateway (target advisor-requests → Lambda → DynamoDB)
+- Demo path = Streamlit thin client (laptop): `streamlit run src/streamlit_advisor.py`.
+  Sample questions cover KB retrieval, Athena lookup, next-course recommendation,
+  and advisor-request submission (routes to advisor-requests agent).
+- Demonstrates the full AgentCore story: thin client, managed runtime,
+  memory, RAG (KB) + live data (Athena), multi-agent orchestration, MCP gateway
+  write path. Observability (logs/traces) available via agentcore CLI if needed.
+
+## Next (post-demo, own specs)
+- deploy-streamlit-app: ECS Fargate + Cognito; actor_id = Cognito sub (agent
+  already accepts actor_id from payload — no agent change).
+- Optional: observability walkthrough (Module 7 Ex 6).
 
 ## Open Questions
-- Gateway auth: NONE (workshop) vs Cognito (self-hosted CFN) — decide at gateway
-  provisioning.
-- Observability (Module 7 Ex 6): optional, not run.
+- Gateway auth is NONE (workshop). Self-hosted CFN also provisions Cognito for a
+  gateway authorizer — revisit if locking down the gateway for real use.

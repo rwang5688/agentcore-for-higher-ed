@@ -99,7 +99,24 @@ provisioned AWS resources, run from the Code Editor EC2 instance.
   without a shared --session-id gets a NEW session → no memory; must pass
   --session-id to chain.)
 
-**MODULE 8 COMPLETE.** Next: Phase 3 (Module 9 multi-agent).
+**MODULE 8 COMPLETE.**
+
+## Phase 3 + 7: Module 9 Multi-Agent — DONE
+- [x] mcp/ folder in repo (advisor_requests_server.py, tools.json, requirements.txt).
+- [x] agents/admission.py (route_to_admission @tool: KB + query_student_db).
+- [x] agents/advisor_requests.py (route_to_advisor_requests @tool: MCP via
+  ADVISOR_MCP_URL + query_student_db; evaluate-then-act; graceful if URL unset).
+- [x] main.py orchestrator: tools=[route_to_admission, route_to_advisor_requests];
+  KB moved to admission specialist; memory retained.
+- [x] Gateway provisioned on EC2 (2-deploy dance): add gateway
+  (--authorizer-type NONE) + add gateway-target (Lambda ARN + mcp/tools.json) →
+  deploy → set ADVISOR_MCP_URL in agentcore.json → deploy.
+  gatewayId admissionagent-education-advisor-gateway-n3fuofcvdx, target advisor-requests.
+- [x] VERIFIED (2026-09-13): justified request (student 100033, 3.8 GPA) →
+  orchestrator routed to advisor-requests → checked record via query_student_db →
+  submitted via MCP→gateway→Lambda→DynamoDB (Request ID 28a5f9cf..., pending).
+
+**MODULE 9 COMPLETE. Workshop scope (Modules 7-9) DONE.**
 
 ## Phase 2: Module 8 — Memory wiring (code local, provisioning deploy)
 
