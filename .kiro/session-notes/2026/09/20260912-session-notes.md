@@ -204,10 +204,31 @@ Executing spec Phase 1 (tasks 1.1-1.7) locally. Status:
   agent already accepts `actor_id` from the payload, so only the Streamlit client
   needs to supply it. No agent change needed.
 
-## Next Steps
-1. (User) Commit + push Module 8 (via EC2 5-step cycle).
-2. Phase 3: Module 9 multi-agent — Advisor Requests Agent (MCP on AgentCore
-   Gateway, DynamoDB-backed) + orchestrator. Then slides.
+## MODULE 9 STARTED — stopping for the night
+- Added repo `mcp/` folder (was only inline in CFN UserData / on the EC2 box):
+  - `advisor_requests_server.py` (FastMCP; submit_advisor_request +
+    list_advisor_requests → invokes education-advisor-requests Lambda). Region
+    fixed to us-west-2.
+  - `tools.json` (gateway tool schema), `requirements.txt`.
+- Backend already exists as IaC in `4-athena-setup.yaml` (DynamoDB
+  `education-advisor-requests` + Lambda) and is deployed; AgentCore role already
+  has lambda:InvokeFunction on it.
+
+## Next Steps (Module 9, tomorrow)
+1. (User) Commit + push the mcp/ folder.
+2. (Kiro) Write agent code: `agents/admission.py` (route_to_admission @tool),
+   `agents/advisor_requests.py` (route_to_advisor_requests @tool: MCP client +
+   query_student_db, evaluate-then-act), refactor `main.py` into orchestrator
+   (tools = the two route_*; keep memory session manager).
+3. (EC2) Provision gateway: `agentcore add gateway --authorizer-type NONE
+   --runtimes AdmissionAgent` + `add gateway-target` (lambda-function-arn, using
+   mcp/tools.json) → deploy. Set ADVISOR_MCP_URL in .env.local + agentcore.json.
+   NOTE: self-hosted CFN provisions Cognito for the gateway; workshop uses
+   authorizer NONE — reconcile at that step.
+4. (EC2) deploy + verify routing (justified submit, trivial decline,
+   cross-domain).
 
 ## Open Questions
+- Gateway auth: NONE (workshop) vs Cognito (self-hosted CFN) — decide at gateway
+  provisioning.
 - Observability (Module 7 Ex 6): optional, not run.

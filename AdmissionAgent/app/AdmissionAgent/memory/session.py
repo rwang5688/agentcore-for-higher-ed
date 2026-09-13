@@ -39,7 +39,7 @@ def build_session_manager(session_id: str, actor_id: str):
 
     retrieval_config = {
         f"/users/{actor_id}/facts": RetrievalConfig(top_k=5, relevance_score=0.5),
-        f"/users/{actor_id}/preferences/": RetrievalConfig(top_k=5, relevance_score=0.5),
+        f"/users/{actor_id}/preferences": RetrievalConfig(top_k=5, relevance_score=0.5),
     }
 
     config = AgentCoreMemoryConfig(

@@ -1,61 +1,41 @@
 import logging
-import os
 from typing import Any
 from collections import OrderedDict
 from strands import Agent
 from strands.agent.conversation_manager.null_conversation_manager import NullConversationManager
-from strands.memory import MemoryManager
-from strands.vended_memory_stores import BedrockKnowledgeBaseStore
 from bedrock_agentcore.runtime import BedrockAgentCoreApp
 from model.load import load_model
-from tools.query_student_db import query_student_db
 from memory.session import build_session_manager
+from agents.admission import route_to_admission
+from agents.advisor_requests import route_to_advisor_requests
 
 logging.basicConfig(level=logging.INFO)
-
-# Course handbook Knowledge Base, search-only (no writable=True). Uses the core
-# strands BedrockKnowledgeBaseStore — same approach as src/advisor_agent.py — so
-# we DON'T need the deprecated `retrieve` tool or the strands-agents-tools
-# package. KB ID comes from KNOWLEDGE_BASE_ID (no STRANDS_-prefixed var).
-_kb_store = BedrockKnowledgeBaseStore(
-    name="course_handbook",
-    description=(
-        "Peculiar University course handbook: courses, programs, "
-        "prerequisites, and degree requirements."
-    ),
-    config={
-        "knowledge_base_id": os.environ["KNOWLEDGE_BASE_ID"],
-        "region_name": os.getenv("AWS_DEFAULT_REGION") or os.getenv("AWS_REGION"),
-    },
-)
 
 app = BedrockAgentCoreApp()
 log = app.logger
 
 DEFAULT_SYSTEM_PROMPT = """
-You are Alex, a university Admission Advisor for Peculiar University's College of
-Engineering. You help prospective and current students with course information and
-their academic records.
+You are the student services orchestrator for Peculiar University's College of
+Engineering. You route each student query to the right specialist tool.
 
-You can:
-- Search the course handbook Knowledge Base (attached automatically). Use it for
-  questions about courses, prerequisites, programs, electives, and handbook/catalog
-  content, and cite what you find.
-- `query_student_db`: run read-only SQL against the `education_workshop_db` Athena
-  database. Use this for live student records — enrollments, completed courses,
-  GPA, degree plans, schedules, and related structured data.
+- `route_to_admission`: information lookups — course handbook content
+  (courses, prerequisites, programs, electives) and a student's academic records
+  (completed courses, GPA, degree plan, eligibility).
+- `route_to_advisor_requests`: ACTION requests — submitting or listing advisor
+  requests (course override, advisor meeting, program change, special
+  consideration).
 
-Guidance:
-- Some questions need both sources (e.g. "what should student 100016 take next?"
-  needs the student's record AND handbook data).
-- Ground every answer in what you retrieve/query. Do not invent course names,
-  prerequisites, grades, or student data.
-- Be concise, accurate, and helpful.
+Analyze the query and delegate:
+- Information questions -> route_to_admission.
+- "Submit / request / apply / show my requests" -> route_to_advisor_requests.
+- A cross-domain query may need BOTH (e.g. "what's my GPA, and submit a program
+  change?"): call each specialist for its part.
+Pass the student_id along when the student identifies one. Be concise.
 """
 
 
-# Only the Athena tool; KB search is provided via the memory_manager (KB store).
-tools = [query_student_db]
+# The orchestrator delegates to specialists (agents-as-tools).
+tools = [route_to_admission, route_to_advisor_requests]
 
 _INLINE_FUNCTION_NAMES = set()
 
@@ -80,11 +60,11 @@ def agent_factory():
         # MEMORY_ADMISSION_AGENT_MEMORY_ID isn't set; the agent still runs, just
         # without cross-session memory.
         session_manager = build_session_manager(session_id, actor_id)
+        # Orchestrator holds no KB store — the admission specialist owns the KB.
         agent_kwargs = dict(
             model=load_model(),
             system_prompt=DEFAULT_SYSTEM_PROMPT,
             tools=tools,
-            memory_manager=MemoryManager(stores=[_kb_store]),
             hooks=[],
         )
         if session_manager is not None:

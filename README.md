@@ -169,6 +169,41 @@ agentcore logs
 agentcore traces list
 ```
 
+### Adding the Advisor Requests Gateway (Module 9) — 2 deploys
+
+The advisor MCP URL doesn't exist until the gateway is deployed, and the agent
+needs that URL — so this is 2 deploys. Backend Lambda `education-advisor-requests`
+must already exist (stack 4). On EC2:
+
+```bash
+cd AdmissionAgent
+# 1. define gateway + target (target = the existing Lambda ARN + our tools.json)
+agentcore add gateway --name education-advisor-gateway --authorizer-type NONE --runtimes AdmissionAgent
+agentcore add gateway-target \
+  --name advisor-requests \
+  --type lambda-function-arn \
+  --lambda-arn $(aws lambda get-function --function-name education-advisor-requests --query 'Configuration.FunctionArn' --output text) \
+  --tool-schema-file ../mcp/tools.json \
+  --gateway education-advisor-gateway
+
+# 2. deploy #1 — creates the gateway (agent's advisor tool is inert until URL set)
+agentcore deploy
+
+# 3. get the gateway URL
+agentcore status    # note the gateway id
+#   ADVISOR_MCP_URL = https://<gateway-id>.gateway.bedrock-agentcore.us-west-2.amazonaws.com/mcp
+
+# 4. set the URL in BOTH places, then deploy #2
+#    - agentcore/.env.local:   ADVISOR_MCP_URL=<url>
+#    - agentcore/agentcore.json envVars ADVISOR_MCP_URL value
+agentcore deploy
+
+# 5. verify
+agentcore invoke "I'm student 100033. Submit a course override for Data Science: Machine Learning; I have a 3.8 GPA and completed equivalent prereqs." --session-id gwtest-0001-0001-0001-000000000001
+```
+
+Commit `agentcore.json` + `.cli/deployed-state.json` after each deploy.
+
 ### Adding AgentCore Memory (Module 8) — order matters
 
 We go straight to memory with **both** long-term strategies (SEMANTIC +

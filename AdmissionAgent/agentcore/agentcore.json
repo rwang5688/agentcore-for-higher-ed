@@ -16,6 +16,10 @@
       "runtimeVersion": "PYTHON_3_13",
       "envVars": [
         {
+          "name": "ADVISOR_MCP_URL",
+          "value": ""
+        },
+        {
           "name": "ATHENA_LAMBDA_NAME",
           "value": "education-athena-query"
         },

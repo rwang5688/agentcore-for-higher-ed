@@ -7,7 +7,10 @@ from mcp.server.fastmcp import FastMCP
 mcp = FastMCP("advisor-requests")
 
 LAMBDA_NAME = os.environ.get("ADVISOR_REQUESTS_LAMBDA", "education-advisor-requests")
-client = boto3.client("lambda", region_name=os.environ.get("AWS_REGION", "us-east-1"))
+client = boto3.client(
+    "lambda",
+    region_name=os.environ.get("AWS_DEFAULT_REGION") or os.environ.get("AWS_REGION", "us-west-2"),
+)
 
 
 def _invoke_lambda(payload: dict) -> dict:
@@ -27,7 +30,7 @@ def submit_advisor_request(student_id: str, request_type: str, description: str)
 
     Args:
         student_id: The student's ID (e.g. '100016')
-        request_type: Type of request ? one of: course_override, advisor_meeting, program_change, special_consideration
+        request_type: one of course_override, advisor_meeting, program_change, special_consideration
         description: Detailed description of what the student is requesting
     """
     result = _invoke_lambda({
