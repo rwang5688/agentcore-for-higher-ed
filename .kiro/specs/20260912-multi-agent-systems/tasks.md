@@ -81,7 +81,25 @@ provisioned AWS resources, run from the Code Editor EC2 instance.
 - [ ] 5.4 Observability (`agentcore logs`/`traces`) — optional, not yet run.
 
 **MODULE 7 COMPLETE (deployed + verified, incl. Streamlit thin client).**
-Next: Phase 2 (Module 8 memory).
+
+## Phase 2 + 6: Module 8 Memory — DONE
+- [x] Provisioned memory with BOTH strategies in one shot (skipped the
+  short-term-only step): `agentcore add memory --strategies SEMANTIC,USER_PREFERENCE`
+  → `admission_agent_memory` ACTIVE.
+- [x] `memory/session.py`: AgentCoreMemorySessionManager from
+  MEMORY_ADMISSION_AGENT_MEMORY_ID; long-term retrieval over
+  /users/{actor}/facts + /preferences/; async_mode; None locally (graceful).
+- [x] `main.py`: per-session session_manager (falls back to conversation_manager
+  locally); actor_id from payload.
+- [x] `list_memories.py`: workshop inspection script (annotated as optional
+  fluff — console shows the same).
+- [x] Deployed + VERIFIED (2026-09-13): two `agentcore invoke` with the SAME
+  `--session-id` → turn 2 ("Do I meet those...") correctly resolved "those" to
+  the DATA-3300 prereqs from turn 1. Short-term memory works. (Each invoke
+  without a shared --session-id gets a NEW session → no memory; must pass
+  --session-id to chain.)
+
+**MODULE 8 COMPLETE.** Next: Phase 3 (Module 9 multi-agent).
 
 ## Phase 2: Module 8 — Memory wiring (code local, provisioning deploy)
 

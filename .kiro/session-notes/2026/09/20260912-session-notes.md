@@ -182,10 +182,32 @@ Executing spec Phase 1 (tasks 1.1-1.7) locally. Status:
 - Also redeployed the agent after the config-var sort (values unchanged);
   production `agentcore invoke` re-verified for both prompts.
 
+## MODULE 8 MEMORY DEPLOYED + VERIFIED (2026-09-13)
+- Collapsed the workshop's verbose flow: provisioned memory with BOTH strategies
+  (SEMANTIC, USER_PREFERENCE) directly — skipped the short-term-only step (a
+  strategies-enabled resource is a superset).
+- App: memory/session.py + main.py wired; graceful skip locally (no memory env
+  var during agentcore dev).
+- Verified via two `agentcore invoke` sharing `--session-id`: turn 2 resolved
+  "those" to turn 1's DATA-3300 prereqs. Short-term memory confirmed.
+- GOTCHA: `agentcore invoke` mints a NEW session each call unless you pass
+  `--session-id`; without it there's no memory across calls.
+- list_memories.py kept but annotated as workshop fluff (console shows same).
+
+## DEMO SCOPE DECISION (Tuesday)
+- Stay within workshop scope (Modules 7-9). Finish Module 9, then slides.
+- SKIP deploy-streamlit-app (Fargate + Cognito) for the demo — the current
+  local thin client already demonstrates the AgentCore value story (thin client,
+  managed runtime, memory, observability, tools/RAG + live data). Fargate/Cognito
+  is hosting polish, not a new concept. It becomes its own post-demo spec.
+- When deploy-streamlit-app happens later: actor_id = Cognito user `sub`. The
+  agent already accepts `actor_id` from the payload, so only the Streamlit client
+  needs to supply it. No agent change needed.
+
 ## Next Steps
-1. (User) Checkpoint commit + push before memory/2nd agent.
-2. Phase 2: Module 8 memory (short-term + long-term).
-3. Phase 3: Module 9 multi-agent (Advisor Requests via MCP/Gateway).
+1. (User) Commit + push Module 8 (via EC2 5-step cycle).
+2. Phase 3: Module 9 multi-agent — Advisor Requests Agent (MCP on AgentCore
+   Gateway, DynamoDB-backed) + orchestrator. Then slides.
 
 ## Open Questions
-- Observability (Module 7 Ex 6): optional, not run yet.
+- Observability (Module 7 Ex 6): optional, not run.
