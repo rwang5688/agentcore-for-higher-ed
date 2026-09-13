@@ -149,6 +149,13 @@ with st.sidebar:
         "prerequisites.",
         language=None,
     )
+    st.code(
+        "I'm student 100033. I'd like to request to have a conversation with an "
+        "advisor for a course override for Data Science: Machine Learning — I "
+        "completed equivalent prerequisites at another university and have a 3.8 "
+        "GPA.",
+        language=None,
+    )
 
 # --- Render prior conversation ------------------------------------------
 for message in st.session_state.messages:

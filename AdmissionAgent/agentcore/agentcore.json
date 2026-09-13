@@ -61,7 +61,26 @@
   "credentials": [],
   "evaluators": [],
   "onlineEvalConfigs": [],
-  "agentCoreGateways": [],
+  "agentCoreGateways": [
+    {
+      "name": "education-advisor-gateway",
+      "protocolType": "None",
+      "description": "Gateway for education-advisor-gateway",
+      "targets": [
+        {
+          "name": "advisor-requests",
+          "targetType": "lambdaFunctionArn",
+          "lambdaFunctionArn": {
+            "lambdaArn": "arn:aws:lambda:us-west-2:331773567763:function:education-advisor-requests",
+            "toolSchemaFile": "../mcp/tools.json"
+          }
+        }
+      ],
+      "authorizerType": "NONE",
+      "enableSemanticSearch": true,
+      "exceptionLevel": "NONE"
+    }
+  ],
   "policyEngines": [],
   "configBundles": [],
   "abTests": [],
