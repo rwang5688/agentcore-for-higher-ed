@@ -17,7 +17,7 @@
       "envVars": [
         {
           "name": "ADVISOR_MCP_URL",
-          "value": ""
+          "value": "https://admissionagent-education-advisor-gateway-n3fuofcvdx.gateway.bedrock-agentcore.us-west-2.amazonaws.com/mcp"
         },
         {
           "name": "ATHENA_LAMBDA_NAME",
