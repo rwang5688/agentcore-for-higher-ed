@@ -113,13 +113,19 @@ Issues specific to Amazon Bedrock AgentCore and the `@aws/agentcore` CLI
 - **Symptom:** The interactive `agentcore dev -b` chat TUI renders in a way that
   makes it impossible to select/copy the agent's output (esp. in the web Code
   Editor terminal). Wastes time.
-- **Fix / workaround:** Don't use the TUI. Run the dev server in the background
-  and use `agentcore invoke` from the plain shell, which prints copyable output:
+- **Fix / workaround:** Don't use the TUI, and don't try to background
+  `agentcore dev -b` (it errors: "This command requires an interactive
+  terminal"). Use the TWO-TERMINAL pattern with copyable output:
   ```bash
-  agentcore dev -b > /tmp/dev.log 2>&1 &
-  sleep 20
-  agentcore invoke "your prompt here" 2>&1 | tee /tmp/out.txt
+  # Terminal 1: start the dev server, leave running (note the port, e.g. 8081)
+  agentcore dev --logs
+  # Terminal 2: send prompts (match --port to Terminal 1)
+  agentcore dev "your prompt here" --port 8081
   ```
+- **Also note:** `agentcore invoke` targets the DEPLOYED runtime, not the local
+  dev server. For local testing use `agentcore dev "prompt"`, not
+  `agentcore invoke`. And the OpenTelemetry `host.docker.internal:4318`
+  connection errors in the dev server log are harmless noise on EC2.
 
 
 ## Workshop content

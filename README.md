@@ -120,14 +120,26 @@ aws sts get-caller-identity --query Account --output text
 agentcore validate
 
 # D. Local test on EC2 (instance profile provides credentials)
-#   AVOID the `agentcore dev -b` TUI — its output can't be copied. Run the dev
-#   server in the background and use `agentcore invoke` from the plain shell.
-agentcore dev -b > /tmp/dev.log 2>&1 &
-sleep 20
-#   If ModuleNotFoundError in /tmp/dev.log (lock drift):
-#     cd app/AdmissionAgent && uv lock && cd .. && (restart the dev server)
-agentcore invoke "What are the prerequisites for Database Systems?" 2>&1 | tee /tmp/out1.txt          # -> retrieve / KB
-agentcore invoke "Look up student 100016 and tell me what courses they have completed." 2>&1 | tee /tmp/out2.txt   # -> query_student_db / Athena
+#   Use TWO terminals. Do NOT use the `agentcore dev -b` TUI (output can't be
+#   copied, hard to exit). This is the only local-test path we use.
+#
+#   ALWAYS kill any old dev server first so you don't creep up ports (8081, 8082...):
+#     pkill -f "agentcore dev"
+#
+#   TERMINAL 1 — start the dev server and leave it running:
+#     cd AdmissionAgent
+#     agentcore dev --logs
+#     # Note the port it prints (it uses 8081 if 8080 is busy).
+#     # OpenTelemetry "host.docker.internal:4318" connection errors are NOISE —
+#     # ignore them. Wait for "Application startup complete".
+#
+#   TERMINAL 2 — send prompts (copyable output). Match --port to Terminal 1:
+#     cd AdmissionAgent
+agentcore dev "What are the prerequisites for Database Systems?" --port 8081                         # -> retrieve / KB
+agentcore dev "Look up student 100016 and tell me what courses they have completed." --port 8081     # -> query_student_db / Athena
+#
+#   Stop the server: Ctrl+C in Terminal 1. If a stray server lingers:
+#     pkill -f "agentcore dev"
 
 # E. Deploy
 agentcore deploy                    # first run: approve one-time CDK bootstrap (Y)

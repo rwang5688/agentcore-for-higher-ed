@@ -4,18 +4,29 @@ from typing import Any
 from collections import OrderedDict
 from strands import Agent
 from strands.agent.conversation_manager.null_conversation_manager import NullConversationManager
-from strands_tools import retrieve
+from strands.memory import MemoryManager
+from strands.vended_memory_stores import BedrockKnowledgeBaseStore
 from bedrock_agentcore.runtime import BedrockAgentCoreApp
 from model.load import load_model
 from tools.query_student_db import query_student_db
 
 logging.basicConfig(level=logging.INFO)
 
-# The `retrieve` tool from strands_tools locates the Knowledge Base via the
-# STRANDS_KNOWLEDGE_BASE_ID env var. Map it from KNOWLEDGE_BASE_ID (injected by
-# AgentCore envVars in production, or agentcore/.env.local during `agentcore dev`).
-if os.environ.get("KNOWLEDGE_BASE_ID"):
-    os.environ["STRANDS_KNOWLEDGE_BASE_ID"] = os.environ["KNOWLEDGE_BASE_ID"]
+# Course handbook Knowledge Base, search-only (no writable=True). Uses the core
+# strands BedrockKnowledgeBaseStore — same approach as src/advisor_agent.py — so
+# we DON'T need the deprecated `retrieve` tool or the strands-agents-tools
+# package. KB ID comes from KNOWLEDGE_BASE_ID (no STRANDS_-prefixed var).
+_kb_store = BedrockKnowledgeBaseStore(
+    name="course_handbook",
+    description=(
+        "Peculiar University course handbook: courses, programs, "
+        "prerequisites, and degree requirements."
+    ),
+    config={
+        "knowledge_base_id": os.environ["KNOWLEDGE_BASE_ID"],
+        "region_name": os.getenv("AWS_DEFAULT_REGION") or os.getenv("AWS_REGION"),
+    },
+)
 
 app = BedrockAgentCoreApp()
 log = app.logger
@@ -25,24 +36,25 @@ You are Alex, a university Admission Advisor for Peculiar University's College o
 Engineering. You help prospective and current students with course information and
 their academic records.
 
-You have two tools:
-- `retrieve`: search the course handbook Knowledge Base. Use this for questions
-  about courses, prerequisites, programs, electives, and handbook/catalog content.
+You can:
+- Search the course handbook Knowledge Base (attached automatically). Use it for
+  questions about courses, prerequisites, programs, electives, and handbook/catalog
+  content, and cite what you find.
 - `query_student_db`: run read-only SQL against the `education_workshop_db` Athena
   database. Use this for live student records — enrollments, completed courses,
   GPA, degree plans, schedules, and related structured data.
 
 Guidance:
-- Choose the right tool for each question; some questions need both (e.g. "what
-  should student 100016 take next?" needs the student's record AND handbook data).
-- Ground every answer in what the tools return. Do not invent course names,
+- Some questions need both sources (e.g. "what should student 100016 take next?"
+  needs the student's record AND handbook data).
+- Ground every answer in what you retrieve/query. Do not invent course names,
   prerequisites, grades, or student data.
 - Be concise, accurate, and helpful.
 """
 
 
-# Define a collection of tools used by the model
-tools = [retrieve, query_student_db]
+# Only the Athena tool; KB search is provided via the memory_manager (KB store).
+tools = [query_student_db]
 
 _INLINE_FUNCTION_NAMES = set()
 
@@ -67,6 +79,7 @@ def agent_factory():
             model=load_model(),
             system_prompt=DEFAULT_SYSTEM_PROMPT,
             tools=tools,
+            memory_manager=MemoryManager(stores=[_kb_store]),
             conversation_manager=_make_conversation_manager(),
             hooks=[
             ],
