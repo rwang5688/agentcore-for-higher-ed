@@ -101,6 +101,13 @@ class CdkStack(Stack):
             f"{prefix}WebappTaskDef",
             memory_limit_mib=512,
             cpu=256,
+            # Run on Graviton (ARM64). The image is built on the EC2 Code Editor,
+            # which is ARM64, so the Dockerfile no longer pins linux/amd64. The
+            # Fargate runtime platform must match the built image architecture.
+            runtime_platform=ecs.RuntimePlatform(
+                cpu_architecture=ecs.CpuArchitecture.ARM64,
+                operating_system_family=ecs.OperatingSystemFamily.LINUX,
+            ),
         )
 
         # Build Dockerfile from local folder and push to ECR
