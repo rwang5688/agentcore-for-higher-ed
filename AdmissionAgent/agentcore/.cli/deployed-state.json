@@ -1,3 +1,17 @@
 {
-  "targets": {}
+  "targets": {
+    "default": {
+      "resources": {
+        "runtimes": {
+          "AdmissionAgent": {
+            "runtimeId": "AdmissionAgent_AdmissionAgent-zc7w8t847K",
+            "runtimeArn": "arn:aws:bedrock-agentcore:us-west-2:331773567763:runtime/AdmissionAgent_AdmissionAgent-zc7w8t847K",
+            "roleArn": "arn:aws:iam::331773567763:role/agentcore-agent-role"
+          }
+        },
+        "stackName": "AgentCore-AdmissionAgent-default",
+        "deployHash": "d9c4b4b0424d84bd"
+      }
+    }
+  }
 }
