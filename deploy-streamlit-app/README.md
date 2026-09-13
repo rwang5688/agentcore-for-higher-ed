@@ -54,13 +54,28 @@ Edit `docker_app/config_file.py`:
 
 ```bash
 # From deploy-streamlit-app/ on the EC2 instance (Docker available):
+
+# 0. Preflight
+docker ps                       # Docker daemon must be running (builds the image)
+aws sts get-caller-identity     # instance-profile creds active
+
+# 1. CDK CLI (the `cdk` command, separate from the Python aws-cdk-lib below).
+#    Skip if `cdk --version` already prints a version.
+npm install -g aws-cdk
+cdk --version
+
+# 2. Python deps for the CDK app (in a venv)
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 
+# 3. Bootstrap + deploy
 cdk bootstrap        # first time in the account/region only
 cdk deploy           # ~5-10 min; builds the docker_app image and pushes to ECR
 ```
+
+> NOTE: the `cdk` CLI (Node) and `aws-cdk-lib` (Python) are two different things.
+> You need both — the CLI to run `cdk deploy`, the library for the stack code.
 
 Note the stack outputs: the CloudFront distribution URL and the Cognito user
 pool id.
