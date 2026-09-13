@@ -62,8 +62,21 @@ provisioned AWS resources, run from the Code Editor EC2 instance.
   Dropped the bloat and the `STRANDS_KNOWLEDGE_BASE_ID` var; single
   `KNOWLEDGE_BASE_ID`. — DONE
 
-**Phase 1 (Module 7 local) COMPLETE.** Agent verified locally on EC2. Next:
-`agentcore deploy` on EC2 (Module 7 Ex 3-6), then Phase 2 (memory).
+**Phase 1 (Module 7 local) COMPLETE.** Agent verified locally on EC2.
+
+## Phase 5: Module 7 deploy + verify (EC2) — DONE
+- [x] 5.1 `agentcore deploy` succeeded (CDK bootstrap approved). Runtime READY:
+  `arn:aws:bedrock-agentcore:us-west-2:331773567763:runtime/AdmissionAgent_AdmissionAgent-zc7w8t847K`.
+- [x] 5.1b IAM fix: deployed KB retrieval hit AccessDenied on
+  `bedrock:GetKnowledgeBase` (BedrockKnowledgeBaseStore needs it; the deprecated
+  retrieve tool did not). Added that action to `cloudformation/self-hosted/3-agentcore-role.yaml`
+  and updated the role stack via console (in-place, no replacement).
+- [x] 5.2 `agentcore invoke` PASSED in production for BOTH prompts (KB prereqs +
+  student 100016 Athena lookup). Real data returned.
+- [ ] 5.3 Streamlit thin client — deferred.
+- [ ] 5.4 Observability (`agentcore logs`/`traces`) — optional, not yet run.
+
+**MODULE 7 COMPLETE (deployed + verified).** Next: Phase 2 (Module 8 memory).
 
 ## Phase 2: Module 8 — Memory wiring (code local, provisioning deploy)
 

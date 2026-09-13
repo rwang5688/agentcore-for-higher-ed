@@ -152,11 +152,25 @@ Executing spec Phase 1 (tasks 1.1-1.7) locally. Status:
 - OTel `host.docker.internal:4318` errors are noise; ignore.
 - `.env.local` is gitignored; recreate on EC2 each pull.
 
+## MODULE 7 DEPLOYED + VERIFIED IN PRODUCTION (2026-09-13)
+- `agentcore deploy` on EC2 → runtime READY (us-west-2,
+  AdmissionAgent_AdmissionAgent-zc7w8t847K).
+- IAM gap found: deployed KB retrieval failed with AccessDenied on
+  `bedrock:GetKnowledgeBase`. Root cause: `BedrockKnowledgeBaseStore` calls
+  GetKnowledgeBase; the pre-provisioned role only had Retrieve/RetrieveAndGenerate.
+  Fix: added `bedrock:GetKnowledgeBase` to
+  `cloudformation/self-hosted/3-agentcore-role.yaml`; updated role stack via
+  console (Modify, Replacement=False).
+- `agentcore invoke` PASSED in production for both prompts (KB prereqs + student
+  100016 Athena). Real data.
+- NOTE for workshop write-up: this GetKnowledgeBase permission is only needed
+  because we use the (better) BedrockKnowledgeBaseStore instead of the deprecated
+  retrieve tool. Trade-off: cleaner code, one extra IAM action.
+
 ## Next Steps
-1. (User) Commit + push this cleanup (KB store rewrite).
-2. (User, EC2) `agentcore deploy` (Module 7 Ex 3-6): deploy, `agentcore status`,
-   `agentcore invoke`, logs/traces.
-3. Then Phase 2 (Module 8 memory).
+1. (User) Commit + push (role template change + tasks/notes).
+2. Phase 2: Module 8 memory.
 
 ## Open Questions
-- None. strands-agents-tools bloat resolved (removed).
+- Streamlit thin client + observability (Module 7 Ex 5-6): do them now or skip
+  to Module 8? (deferred)

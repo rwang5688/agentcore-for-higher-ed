@@ -18,9 +18,9 @@
       "protocol": "HTTP",
       "executionRoleArn": "arn:aws:iam::331773567763:role/agentcore-agent-role",
       "envVars": [
-        { "name": "KNOWLEDGE_BASE_ID", "value": "ONVQOQ7XJB" },
         { "name": "ATHENA_LAMBDA_NAME", "value": "education-athena-query" },
-        { "name": "AWS_DEFAULT_REGION", "value": "us-west-2" }
+        { "name": "AWS_DEFAULT_REGION", "value": "us-west-2" },
+        { "name": "KNOWLEDGE_BASE_ID", "value": "ONVQOQ7XJB" }
       ]
     }
   ],

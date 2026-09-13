@@ -1,43 +1,117 @@
 """Streamlit chat interface for the Peculiar University admission advisor.
 
-The agent (Knowledge Base search + the ``query_student_db`` live-data tool) is
-defined in ``advisor_agent``; this file is only the chat UI.
+Thin client: this app no longer runs the agent locally. It forwards prompts to
+the deployed AgentCore runtime (via the ``bedrock-agentcore`` SDK's
+``invoke_agent_runtime``) and renders the response. All agent logic — model
+invocation, KB retrieval, Athena queries — runs in AgentCore, not here. This
+keeps the UI a thin client, which also makes it straightforward to deploy on
+ECS Fargate later.
+
+Requires ``AGENTCORE_RUNTIME_ARN`` in ``.env`` (from ``agentcore status``).
 
 Run from the repo root with:
 
     streamlit run src/streamlit_advisor.py
 """
 
+import json
+import uuid
+
+import boto3
 import streamlit as st
 
-from advisor_agent import create_agent
 from config import get_config
 
-# Load configuration explicitly, up front, before building any agent.
-get_config()
+config = get_config()
+
+if not config.agentcore_runtime_arn:
+    st.error(
+        "AGENTCORE_RUNTIME_ARN is not set in .env. Deploy the agent with "
+        "`agentcore deploy`, then copy the runtime ARN from `agentcore status` "
+        "into .env as AGENTCORE_RUNTIME_ARN."
+    )
+    st.stop()
+
+
+@st.cache_resource
+def _client():
+    """One bedrock-agentcore data-plane client per process."""
+    return boto3.client("bedrock-agentcore", region_name=config.aws_region)
+
+
+def _extract_text(chunk: dict) -> str:
+    """Pull assistant text out of one streamed Strands event.
+
+    The deployed agent streams Strands events. Text arrives as
+    contentBlockDelta.delta.text. We ignore tool-use / metadata events.
+    """
+    event = chunk.get("event", chunk)
+    delta = (
+        event.get("contentBlockDelta", {}).get("delta", {})
+        if isinstance(event, dict)
+        else {}
+    )
+    text = delta.get("text")
+    return text if isinstance(text, str) else ""
+
+
+def invoke_agent(prompt: str, session_id: str) -> str:
+    """Invoke the deployed AgentCore runtime and return the full response text.
+
+    Reads the streaming response body, accumulating assistant text. Falls back
+    to rendering the raw body if it isn't the expected event stream.
+    """
+    resp = _client().invoke_agent_runtime(
+        agentRuntimeArn=config.agentcore_runtime_arn,
+        runtimeSessionId=session_id,
+        contentType="application/json",
+        accept="application/json",
+        payload=json.dumps({"prompt": prompt}).encode("utf-8"),
+    )
+
+    raw = resp["response"].read()
+    if isinstance(raw, bytes):
+        raw = raw.decode("utf-8", errors="replace")
+
+    parts: list[str] = []
+    for line in raw.splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        # SSE frames are prefixed with "data: "
+        if line.startswith("data:"):
+            line = line[len("data:"):].strip()
+        try:
+            parts.append(_extract_text(json.loads(line)))
+        except (json.JSONDecodeError, AttributeError):
+            continue
+
+    text = "".join(parts).strip()
+    return text or raw.strip()
+
 
 st.set_page_config(page_title="Peculiar University Advisor", page_icon="🎓")
 
 st.title("🎓 Peculiar University Advisor")
 st.caption(
-    "An assistant for academic advisors. Look up a student's live records, "
-    "registrations, and degree plans, and cross-reference the course handbook "
-    "for programs and prerequisites. Name the student ID in your question "
-    "(e.g. \"student 100033\")."
+    "An assistant for academic advisors, powered by the deployed AgentCore "
+    "agent. Look up a student's live records, registrations, and degree plans, "
+    "and cross-reference the course handbook for programs and prerequisites. "
+    "Name the student ID in your question (e.g. \"student 100033\")."
 )
 
 # --- Session state -------------------------------------------------------
-# The agent holds its own conversation history, so we keep one agent per
-# browser session. `messages` is the display transcript rendered on rerun.
-if "agent" not in st.session_state:
-    st.session_state.agent = create_agent()
+# One AgentCore runtime session per browser session keeps conversation context
+# on the server. `messages` is the local display transcript.
+if "session_id" not in st.session_state:
+    st.session_state.session_id = uuid.uuid4().hex
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
 # --- Sidebar: sample questions + controls -------------------------------
 with st.sidebar:
     if st.button("Clear conversation"):
-        st.session_state.agent = create_agent()
+        st.session_state.session_id = uuid.uuid4().hex
         st.session_state.messages = []
         st.rerun()
 
@@ -77,8 +151,7 @@ if prompt := st.chat_input("Ask the advisor a question..."):
 
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
-            result = st.session_state.agent(prompt)
-            response = str(result)
+            response = invoke_agent(prompt, st.session_state.session_id)
         st.markdown(response)
 
     st.session_state.messages.append({"role": "assistant", "content": response})
