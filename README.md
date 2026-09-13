@@ -95,9 +95,19 @@ Opens at http://localhost:8501. If step 1 errors, refresh your credentials befor
 
 The `AdmissionAgent/` AgentCore project is built and deployed from the Amazon
 Linux 2023 Code Editor EC2 instance (Docker + instance-profile credentials). The
-laptop is used for code edits and local testing; the EC2 instance runs the
-container build and `agentcore deploy`. Run these by hand on EC2 after pulling
-the latest.
+laptop has NO Docker, so it is used only for code edits and review — all
+container build, local test, and deploy happen on EC2.
+
+**The change cycle (who does what, in order):**
+
+1. **Laptop:** make code edits; upload the changed files to the EC2 instance.
+2. **EC2:** `git add` / commit + push the changes.
+3. **Laptop / WorkSpaces:** `git pull` and review.
+4. **EC2:** local test — `agentcore dev --logs` (Terminal 1) +
+   `agentcore dev "<prompt>"` (Terminal 2).
+5. **EC2:** `agentcore deploy`, then `agentcore invoke` to verify.
+
+The by-hand EC2 steps (env recreate, local test, deploy, verify) are below.
 
 ```bash
 # 0. From the repo root on EC2, pull the latest

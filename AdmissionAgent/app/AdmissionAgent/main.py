@@ -9,6 +9,7 @@ from strands.vended_memory_stores import BedrockKnowledgeBaseStore
 from bedrock_agentcore.runtime import BedrockAgentCoreApp
 from model.load import load_model
 from tools.query_student_db import query_student_db
+from memory.session import build_session_manager
 
 logging.basicConfig(level=logging.INFO)
 
@@ -69,21 +70,28 @@ def _make_conversation_manager():
 # between them or grow without limit. For durable history, attach a session manager.
 def agent_factory():
     cache = OrderedDict()
-    def get_or_create_agent(session_id):
+    def get_or_create_agent(session_id, actor_id):
         if session_id in cache:
             cache.move_to_end(session_id)
             return cache[session_id]
         if len(cache) >= 128:
             cache.popitem(last=False)
-        cache[session_id] = Agent(
+        # AgentCore Memory (short-term + long-term). None during local dev when
+        # MEMORY_ADMISSION_AGENT_MEMORY_ID isn't set; the agent still runs, just
+        # without cross-session memory.
+        session_manager = build_session_manager(session_id, actor_id)
+        agent_kwargs = dict(
             model=load_model(),
             system_prompt=DEFAULT_SYSTEM_PROMPT,
             tools=tools,
             memory_manager=MemoryManager(stores=[_kb_store]),
-            conversation_manager=_make_conversation_manager(),
-            hooks=[
-            ],
+            hooks=[],
         )
+        if session_manager is not None:
+            agent_kwargs["session_manager"] = session_manager
+        else:
+            agent_kwargs["conversation_manager"] = _make_conversation_manager()
+        cache[session_id] = Agent(**agent_kwargs)
         return cache[session_id]
     return get_or_create_agent
 get_or_create_agent = agent_factory()
@@ -166,8 +174,13 @@ async def invoke(payload, context):
     log.info("Invoking Agent.....")
 
 
-    session_id = getattr(context, 'session_id', 'default-session')
-    agent = get_or_create_agent(session_id)
+    session_id = getattr(context, 'session_id', None) or 'default-session'
+    # actor_id scopes long-term memory per user. Prefer an explicit payload
+    # value (e.g. a student id); fall back to a default actor.
+    actor_id = 'default-actor'
+    if isinstance(payload, dict):
+        actor_id = payload.get('actor_id') or actor_id
+    agent = get_or_create_agent(session_id, actor_id)
 
     prompt = _extract_prompt(payload)
 
