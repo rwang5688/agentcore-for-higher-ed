@@ -90,6 +90,23 @@ Then:
    response comes from the deployed AgentCore runtime, with memory scoped to
    your Cognito user.
 
+## Gotcha: first-request latency is cold start (expected)
+
+The first prompt after an idle period is slower; subsequent prompts are fast.
+This is **expected cold-start**, not a bug and not a sizing problem:
+
+- The Fargate task is intentionally tiny (256 CPU / 512 MB). The thin client is
+  I/O-bound — it just makes one `invoke_agent_runtime` call and renders the
+  stream — so it spends each request waiting on AgentCore, not on CPU/memory.
+  Upsizing the task would add cost for zero latency benefit. Keeping it thin is
+  the point.
+- The latency is AgentCore runtime warmup (model client, KB store, and tool
+  connections initialize on the first invoke of an idle runtime).
+
+**For demos:** send one throwaway prompt ~1 minute before presenting so the first
+*live* prompt is fast. (You can also show cold-vs-warm deliberately as part of
+the managed-runtime story.)
+
 ## Teardown
 
 This stack creates real, billed infrastructure (VPC + NAT gateway, ALB,

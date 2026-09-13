@@ -66,15 +66,25 @@ tagged `[deploy]` (EC2/Docker, human-run). Each task cites requirements.
     so a full runtime `import app` can't run here — expected. `cdk synth` needs
     Docker (image asset) so it's an EC2 step, not a laptop check.
 
-## Phase 5 — deploy (EC2/Docker, human-run) (R4, R7) — NOT STARTED (CP-D handoff)
+## Phase 5 — deploy (EC2/Docker, human-run) (R4, R7) — DONE + VERIFIED
 
-Laptop work is complete; these are EC2/Docker steps for the human. Full runbook
-is in `deploy-streamlit-app/README.md`.
+Deployed from the EC2 Code Editor. Full runbook in `deploy-streamlit-app/README.md`.
 
-- [ ] 5.1 `[deploy]` On EC2 with Docker: `cdk bootstrap` (if needed) +
-  `cdk deploy` from `deploy-streamlit-app/`.
-- [ ] 5.2 `[deploy]` Create a Cognito user; open the CloudFront URL; log in;
-  verify the advisor answers via the deployed runtime with per-user memory.
+- [x] 5.1 `[deploy]` `cdk deploy` from `deploy-streamlit-app/` on EC2. Stack
+  `AdvisorStreamlit` deployed in ~7.5 min (453s). Outputs:
+  - CloudFrontDistributionURL = d2oez7aqlzbdec.cloudfront.net
+  - CognitoPoolId = us-west-2_ibTcOAKpA
+  - IAM diff confirmed the task role got `bedrock-agentcore:InvokeAgentRuntime`
+    scoped to the runtime ARN + `/*`.
+  - Prereqs discovered/fixed along the way: CDK CLI needed (`npm install -g
+    aws-cdk`, separate from Python aws-cdk-lib); Graviton fix (Dockerfile
+    `--platform` pin removed + Fargate runtimePlatform ARM64) — the amd64 pin had
+    failed on the ARM64 box with "exec format error".
+- [x] 5.2 `[deploy]` Created Cognito user `streamlit-user`; opened CloudFront URL;
+  logged in; student-100033 recommendation streamed back from the deployed
+  runtime (KB + Athena). PASS.
+  - NOTE: first response was slower = cold start (Fargate task + AgentCore
+    runtime warmup). Pre-warm with a throwaway prompt before demos.
 
 ## Local verification summary (all `[local]` phases) — VERIFIED
 

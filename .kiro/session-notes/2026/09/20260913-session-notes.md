@@ -137,3 +137,104 @@ Next after pull-down: user review, then Phase 5 EC2 `cdk deploy`.
   invoke_agent_runtime). Refactor confirmed good.
 
 Ready for CP-C: commit + upload to EC2 for Phase 5 `cdk deploy`.
+
+## PHASE 5 DEPLOYED + VERIFIED — deploy-streamlit-app live (2026-09-13)
+
+`cdk deploy` from EC2 succeeded. Stack `AdvisorStreamlit` (us-west-2), ~7.5 min.
+- CloudFrontDistributionURL = d2oez7aqlzbdec.cloudfront.net
+- CognitoPoolId = us-west-2_ibTcOAKpA
+- Cognito user `streamlit-user`; login OK; student-100033 recommendation streamed
+  from the deployed runtime (KB + Athena). All three roadmap phases now live.
+
+### Deploy gotchas found + fixed (folded into deploy README runbook)
+1. **CDK CLI missing** — `cdk` command not installed (only Python aws-cdk-lib
+   was). Fixed: `npm install -g aws-cdk`. AgentCore wraps CDK internally so the
+   agent side never needed a global cdk; this plain CDK app does. Runbook now has
+   the install + a CLI-vs-library note + Docker/creds preflight.
+2. **Graviton / ARM64** — baseline Dockerfile pinned `FROM --platform=linux/amd64`
+   -> "exec /bin/sh: exec format error" on the ARM64 Code Editor at the pip layer.
+   Fixed (2 coordinated changes): Dockerfile drop the platform pin +
+   cdk_stack.py Fargate `runtime_platform=ARM64/LINUX`. Native Graviton build,
+   cheaper Fargate, consistent with the ARM64 AgentCore runtime.
+
+### Demo note
+- First response is slower = cold start (Fargate task + AgentCore runtime warmup).
+  Pre-warm with a throwaway prompt ~1 min before presenting. Can also be shown
+  deliberately as part of the managed-runtime story.
+
+### Teardown reminder
+- Stack bills hourly (NAT gateway + ALB especially). `cdk destroy` from
+  deploy-streamlit-app/ when done. Does NOT touch the AgentCore runtime/KB/Lambda.
+
+## SESSION WRAP-UP (2026-09-13)
+
+Goal (set this morning): build out all three Streamlit app modes as
+self-contained directories. DONE and verified end to end.
+
+### Final state — three roadmap phases live
+1. **streamlit-thick-client/** (Phase 1, prototype) — local Strands agent
+   (Bedrock + KB + Athena). Verified locally.
+2. **streamlit-thin-client/** (Phase 2, go live) — invokes deployed AgentCore
+   runtime; no local agent. Verified locally + on EC2.
+3. **deploy-streamlit-app/** (Phase 3, production capstone) — thin client on
+   Cognito + ECS Fargate (Graviton/ARM64), behind ALB + CloudFront. LIVE at
+   d2oez7aqlzbdec.cloudfront.net; verified (recommendation + advisor-request
+   multi-agent write path). `src/` untouched for backward compat.
+
+### Why this matters (the demo story)
+The hosted app is production-quality end to end: no local setup, no expiring
+credentials, no Code Editor — just a URL + Cognito login. Same UX and same agent
+across all three phases; only the backend location changes. Prototype on thick,
+go live on thin + AgentCore, host it on Fargate + Cognito.
+
+### Cold-start = expected (my gotcha to remember; NOT in ISSUES.md)
+First prompt after idle is slower (Fargate task + AgentCore runtime warmup);
+warm calls are fast. Thin client is I/O-bound, so the tiny 256/512 task is
+correct — not undersized. I run the demo, so I'll pre-warm with a throwaway
+prompt ~1 min before presenting. Documented in deploy-streamlit-app/README.md.
+
+### Docs to commit before pulling to the laptop tonight
+- `deploy-streamlit-app/README.md` — CDK CLI install + preflight + Graviton +
+  teardown + cold-start gotcha.
+- `.kiro/specs/2026/09/20260913-streamlit-app-refactoring/tasks.md` — Phase 5 DONE.
+- this session-notes file.
+Suggested commit: `docs: record Phase 5 deploy success + CDK CLI/Graviton/cold-start gotchas`
+
+### For slides tonight (laptop)
+- Refine ROADMAP.md (Overview + thick->thin comparison table are the anchor).
+- Talking points: thin-client latency drop, cold-vs-warm, per-user memory via
+  Cognito sub as actor_id, Graviton cost/consistency, "one URL, no setup".
+
+### Teardown when done demoing
+`cdk destroy` from deploy-streamlit-app/ (NAT + ALB bill hourly). Does NOT touch
+the AgentCore runtime / KB / Athena Lambda.
+
+## Demo environment + flow (locked 2026-09-13)
+
+### Environment
+- Account: Isengard `wangrob-agentcore-for-higher-ed-01`, dedicated to hosting
+  the whole setup. Stack is PERSISTENT (not a spin-up-for-the-session thing) —
+  no teardown pressure before the demo. `cdk destroy` only if deliberately
+  pausing NAT/ALB spend during long idle; not a demo risk.
+- Region: **us-west-2 everywhere** — deliberate, and the primary reason is
+  customer fit: this is SLG/EDU **West** — those customers want us-west-2, and any
+  us-east-1 resource in the demo would invite "why isn't this in our region?"
+  questions that distract from the agent story. Pinning us-west-2 also forces KB,
+  Athena Lambda, AgentCore runtime, and the Fargate app all in-region and removes
+  any accidental us-east-1 fallback (incl. Kiro). Region discipline as customer
+  empathy + a "self-contained regional deployment" talking point.
+- Tooling: local Kiro (Windows laptop) for code/specs; EC2 Code Editor only for
+  Docker build + deploy.
+
+### Demo flow (decided)
+- Go STRAIGHT to the hosted app (Phase 3) live: open the CloudFront URL, Cognito
+  login, ask a question, get an answer — no terminal, no creds, no Code Editor.
+  Leads with the "real product" payoff.
+- Narrate Phases 1-2 as lead-in (slides/talk, NOT live app-switching):
+  thick = local prototype lab; thin = managed backend, same UX, faster; hosted =
+  that thin client + Cognito on Fargate, same agent, production-shaped.
+- ROADMAP.md Overview + thick->thin comparison table = backbone of the talk.
+- Pre-warm ~1 min before (throwaway prompt); optionally show cold-vs-warm as a
+  live teaching beat for the managed-runtime story.
+- Fallback if CloudFront/Cognito hiccups live: local thin client (same answers,
+  needs creds) — keep a terminal ready. (Low risk given dedicated account.)
