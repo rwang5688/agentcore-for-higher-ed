@@ -39,7 +39,15 @@ roadmap (see `ROADMAP.md`). Pick the one that matches what you want to show:
 | `deploy-streamlit-app/` | Hosted thin client | Deployed AgentCore runtime | Cognito | `cdk deploy` (EC2) |
 
 Each directory is self-contained (its own `config.py`/app code) and carries its
-own README with exact prerequisites and run commands.
+own README with exact prerequisites and run commands:
+
+- Local modes (thick + thin): see "Runbook: Run the local Streamlit advisor" below.
+- Hosted mode: **[`deploy-streamlit-app/README.md`](deploy-streamlit-app/README.md)**
+  has the full EC2 `cdk deploy` runbook (build, Cognito user, CloudFront test)
+  and the `cdk destroy` teardown.
+
+See `ROADMAP.md` for why you prototype on the thick client and go live on the
+thin client + AgentCore.
 
 ## Purpose
 

@@ -75,6 +75,26 @@ Then:
    response comes from the deployed AgentCore runtime, with memory scoped to
    your Cognito user.
 
+## Teardown
+
+This stack creates real, billed infrastructure (VPC + NAT gateway, ALB,
+CloudFront, ECS Fargate, Cognito user pool). NAT gateway and ALB in particular
+bill hourly whether or not anyone uses the app. When you're done with the demo,
+tear it down:
+
+```bash
+# From deploy-streamlit-app/ on the EC2 instance:
+cdk destroy
+```
+
+Notes:
+- The Cognito parameter secret in Secrets Manager is scheduled for deletion (not
+  immediate). If you redeploy the same `STACK_NAME` soon after, either wait out
+  the recovery window or change `SECRETS_MANAGER_ID` in `config_file.py` (see the
+  comment there).
+- `cdk destroy` removes only this stack. It does NOT touch the AgentCore runtime,
+  Knowledge Base, or Athena Lambda — those are separate and stay up.
+
 ## Run locally for development (EC2, no Docker)
 
 After the Cognito user pool exists (post-`cdk deploy`), you can run the Streamlit
