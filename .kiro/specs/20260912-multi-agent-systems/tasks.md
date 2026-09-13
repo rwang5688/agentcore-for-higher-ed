@@ -73,10 +73,15 @@ provisioned AWS resources, run from the Code Editor EC2 instance.
   and updated the role stack via console (in-place, no replacement).
 - [x] 5.2 `agentcore invoke` PASSED in production for BOTH prompts (KB prereqs +
   student 100016 Athena lookup). Real data returned.
-- [ ] 5.3 Streamlit thin client — deferred.
+- [x] 5.3 Streamlit thin client — DONE. `src/streamlit_advisor.py` now calls the
+  deployed runtime via `invoke_agent_runtime` (no local agent). Added
+  `AGENTCORE_RUNTIME_ARN` to config/.env; session id `session-<uuid>` (>=33 chars
+  for the API). Sidebar + terminal log prove it's calling AgentCore (ARN, session,
+  prompt). Verified on laptop against the deployed runtime. Sets up ECS Fargate later.
 - [ ] 5.4 Observability (`agentcore logs`/`traces`) — optional, not yet run.
 
-**MODULE 7 COMPLETE (deployed + verified).** Next: Phase 2 (Module 8 memory).
+**MODULE 7 COMPLETE (deployed + verified, incl. Streamlit thin client).**
+Next: Phase 2 (Module 8 memory).
 
 ## Phase 2: Module 8 — Memory wiring (code local, provisioning deploy)
 

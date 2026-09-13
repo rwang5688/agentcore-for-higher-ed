@@ -61,6 +61,11 @@ def invoke_agent(prompt: str, session_id: str) -> str:
     Reads the streaming response body, accumulating assistant text. Falls back
     to rendering the raw body if it isn't the expected event stream.
     """
+    print(
+        f"[thin-client] invoke_agent_runtime -> {config.agentcore_runtime_arn} "
+        f"(session={session_id})\n  prompt: {prompt!r}",
+        flush=True,
+    )
     resp = _client().invoke_agent_runtime(
         agentRuntimeArn=config.agentcore_runtime_arn,
         runtimeSessionId=session_id,
@@ -104,16 +109,23 @@ st.caption(
 # One AgentCore runtime session per browser session keeps conversation context
 # on the server. `messages` is the local display transcript.
 if "session_id" not in st.session_state:
-    st.session_state.session_id = uuid.uuid4().hex
+    st.session_state.session_id = f"session-{uuid.uuid4().hex}"  # >= 33 chars (AgentCore min)
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
 # --- Sidebar: sample questions + controls -------------------------------
 with st.sidebar:
     if st.button("Clear conversation"):
-        st.session_state.session_id = uuid.uuid4().hex
+        st.session_state.session_id = f"session-{uuid.uuid4().hex}"
         st.session_state.messages = []
         st.rerun()
+
+    st.divider()
+    st.subheader("Thin client → AgentCore")
+    st.caption("This UI runs no agent locally. Each prompt is sent to the "
+               "deployed AgentCore runtime.")
+    st.code(config.agentcore_runtime_arn, language=None)
+    st.caption(f"Session: {st.session_state.session_id}")
 
     st.divider()
     st.header("Sample questions")

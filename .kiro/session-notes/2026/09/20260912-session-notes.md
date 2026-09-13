@@ -167,10 +167,25 @@ Executing spec Phase 1 (tasks 1.1-1.7) locally. Status:
   because we use the (better) BedrockKnowledgeBaseStore instead of the deprecated
   retrieve tool. Trade-off: cleaner code, one extra IAM action.
 
+## STREAMLIT THIN CLIENT DONE (2026-09-13)
+- `src/streamlit_advisor.py` rewritten: calls deployed AgentCore runtime via
+  `bedrock-agentcore` `invoke_agent_runtime`; no local agent/tools. Parses the
+  streamed response body for assistant text.
+- `config.py`: added `agentcore_runtime_arn`; all config fields + `.env`/
+  `.env.example` sorted (AGENTCORE, ATHENA, AWS, BEDROCK, KNOWLEDGE).
+- Session id = `session-<uuid.hex>` (AgentCore requires runtimeSessionId >= 33
+  chars; bare uuid hex is 32 → was failing).
+- Proof-of-thin-client: sidebar shows ARN + session; terminal logs
+  `[thin-client] invoke_agent_runtime -> <ARN> (session=...) prompt: ...`.
+- Verified on laptop (no Docker needed — just calls AWS). This is the same app
+  we'll later deploy to ECS Fargate.
+- Also redeployed the agent after the config-var sort (values unchanged);
+  production `agentcore invoke` re-verified for both prompts.
+
 ## Next Steps
-1. (User) Commit + push (role template change + tasks/notes).
-2. Phase 2: Module 8 memory.
+1. (User) Checkpoint commit + push before memory/2nd agent.
+2. Phase 2: Module 8 memory (short-term + long-term).
+3. Phase 3: Module 9 multi-agent (Advisor Requests via MCP/Gateway).
 
 ## Open Questions
-- Streamlit thin client + observability (Module 7 Ex 5-6): do them now or skip
-  to Module 8? (deferred)
+- Observability (Module 7 Ex 6): optional, not run yet.
