@@ -37,7 +37,20 @@
     {
       "name": "admission_agent_memory",
       "eventExpiryDuration": 30,
-      "strategies": []
+      "strategies": [
+        {
+          "type": "SEMANTIC",
+          "namespaceTemplates": [
+            "/users/{actorId}/facts"
+          ]
+        },
+        {
+          "type": "USER_PREFERENCE",
+          "namespaceTemplates": [
+            "/users/{actorId}/preferences"
+          ]
+        }
+      ]
     }
   ],
   "knowledgeBases": [],

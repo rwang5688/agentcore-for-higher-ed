@@ -161,14 +161,23 @@ agentcore traces list
 
 ### Adding AgentCore Memory (Module 8) — order matters
 
+We go straight to memory with **both** long-term strategies (SEMANTIC +
+USER_PREFERENCE). One memory resource with strategies also stores short-term
+session events, so this is a superset of the workshop's short-term-only step —
+no need to do that intermediate step separately.
+
 Provision memory FIRST so `agentcore deploy` injects
 `MEMORY_ADMISSION_AGENT_MEMORY_ID`, THEN change app code to use it. Two rounds:
 
-1. **Provision (EC2):** `agentcore add memory --name admission_agent_memory`,
-   then `agentcore deploy`. Commit `agentcore/agentcore.json` +
-   `agentcore/.cli/deployed-state.json`, push.
-2. **Use it (laptop→EC2):** pull; add `memory/session.py` + wire `main.py`;
-   commit, push; pull to EC2; `agentcore deploy`.
+1. **Provision with strategies (EC2):**
+   ```bash
+   agentcore remove memory --name admission_agent_memory   # only if a prior short-term-only one exists
+   agentcore add memory --name admission_agent_memory --strategies SEMANTIC,USER_PREFERENCE
+   agentcore deploy
+   ```
+   Commit `agentcore/agentcore.json` + `agentcore/.cli/deployed-state.json`, push.
+2. **Use it (laptop→EC2):** pull; add `memory/session.py` (short + long-term
+   retrieval_config) + wire `main.py`; commit, push; pull to EC2; `agentcore deploy`.
 
 > Region for this repo is **us-west-2** (KB `ONVQOQ7XJB` + `education-athena-query`
 > Lambda), not the workshop's us-east-1 examples.
